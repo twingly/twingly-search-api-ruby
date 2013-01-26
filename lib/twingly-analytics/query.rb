@@ -17,7 +17,7 @@ module Twingly
       end
 
       def execute
-        Result.new(get_response.body)
+        Parser.new.parse(get_response.body)
       end
 
       def start_time=(time)
