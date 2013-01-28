@@ -5,9 +5,11 @@ module Twingly
     class Parser
       def parse(document)
         result = Result.new
-        Nokogiri::XML(document).xpath('//post').each do |post|
+        nokogiri = Nokogiri::XML(document)
+        nokogiri.xpath('//post').each do |post|
           result.posts << parse_post(post)
         end
+        result.number_of_documents = nokogiri.at_xpath('/TermSearch/@numberOfDocuments').value.to_i
         result
       end
     private
@@ -16,7 +18,7 @@ module Twingly
         element.element_children.each do |child|
           post[child.name] = child.text
         end
-        post
+        Post.new(post)
       end
     end
   end
