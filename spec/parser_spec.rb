@@ -16,8 +16,28 @@ describe Parser do
       end
 
       # TODO testa någon annanstans
+      it "should return number of results" do
+        subject.parse(document).number_of_documents.should == 756
+      end
+
       it "should return posts" do
         subject.parse(document).posts.should be_a Array
+      end
+
+      it "should return post" do
+        subject.parse(document).posts.first.should be_a Post
+      end
+
+      describe "Post" do
+        subject { Parser.new.parse(document).posts.first }
+        it { should respond_to :url }
+        it { should respond_to :title }
+        it { should respond_to :summary }
+        it { should respond_to :language_code }
+        it { should respond_to :date }
+        it { should respond_to :blog_url }
+        it { should respond_to :blog_name }
+        it { should respond_to :authority }
       end
     end
   end
