@@ -30,54 +30,76 @@ describe Query do
   it { should respond_to(:end_time) }
   it { should respond_to(:execute) }
   it { should respond_to(:client) }
-  it { subject.client.should == @client }
+
+  its(:client) { should == @client }
 
   describe "#url" do
-    it "should add searchpattern" do
-      subject.pattern = "spotify"
-      subject.url.should include("searchpattern=spotify")
+    let(:query) { Query.new(@client) }
+
+    context "with valid pattern" do
+      before { Query.any_instance.stub(:pattern).and_return('') }
+      subject { query.url }
+      it { should include("xmloutputversion=2") }
     end
 
-    it "should require searchpattern" do
-      expect { subject.url }.to raise_error(RuntimeError, "Missing pattern")
-    end
-
-    it "should add document_language" do
-      subject.pattern = ""
-      subject.document_language = "en"
-      URI(subject.url).query.split('&').should include('documentlang=en')
-    end
-
-    it "should add start_time" do
-      subject.pattern = ""
-      subject.start_time = Time.new(2012,12,28,9,01,22)
-      URI(subject.url).query.split('&').should include("ts=2012-12-28+09%3A01%3A22")
-    end
-
-    it "should add end_time" do
-      subject.pattern = ""
-      subject.end_time = Time.new(2013,12,28,9,01,22)
-      URI(subject.url).query.split('&').should include("tsTo=2013-12-28+09%3A01%3A22")
-    end
-  end
-
-  describe "#execute" do
-    # it "should return a result" do
-    #   subject.execute.should be_a Twingly::Analytics::Result
-    # end
-
-    # Är egentligen ett integrationstest? Borde ligga separat?
-    # Bara testa så Query bygger rätt URL, och skickar en request
-    # Testa så resultatet byggs upp korrekt sen
-
-    context "when searching for spotify" do
-      before { subject.pattern = "spotify" }
-      it "should get posts about spotify" do
-        VCR.use_cassette('search_for_spotify_on_sv_blogs', :record => :once) do
-          result = subject.execute
-          result.posts.should_not be_empty # Borde inte testa resultat, borde bara kolla så att den nyttjar VCR
-        end
+    context "without valid pattern" do
+      it "raises an error" do
+        expect { query.url }.to raise_error RuntimeError, "Missing pattern"
       end
     end
   end
+
+  # it "should add document_language" do
+  #   subject.document_language = "en"
+  #   URI(subject.url).query.split('&').should include('documentlang=en')
+  # end
+
+  # it "should add start_time" do
+  #   subject.start_time = Time.new(2012,12,28,9,01,22)
+  #   URI(subject.url).query.split('&').should include("ts=2012-12-28+09%3A01%3A22")
+  # end
+
+  # it "should add end_time" do
+  #   subject.end_time = Time.new(2013,12,28,9,01,22)
+  #   URI(subject.url).query.split('&').should include("tsTo=2013-12-28+09%3A01%3A22")
+  # end
+
+  describe "#start_time=" do
+    it "formats time" do
+
+    end
+  end
+  describe "#end_time=" do
+  end
+  describe "#pattern" do
+    it "should add searchpattern" do
+      subject.pattern = 'spotify'
+      subject.url.should include("searchpattern=spotify")
+    end
+  end
+  describe "#document_language" do
+  end
+  describe "#client" do
+  end
+
+  # describe "#execute" do
+  #   context "with invalid API key" do
+  #     subject { Query.new(Client.new('wrong')) }
+  #     it "should raise error on invalid API key" do
+  #       VCR.use_cassette('search_without_valid_api_key', :record => :all) do
+  #         expect { subject.execute }.to raise_error(RuntimeError, "The API key does not exist.")
+  #       end
+  #     end
+  #   end
+
+  #   context "when searching for spotify" do
+  #     subject { Query.new(Client.new) }
+  #     it "should get posts about spotify" do
+  #       VCR.use_cassette('search_for_spotify_on_sv_blogs', :record => :all) do
+  #         result = subject.execute
+  #         result.posts.should_not be_empty # Borde inte testa resultat, borde bara kolla så att den nyttjar VCR
+  #       end
+  #     end
+  #   end
+  # end
 end
