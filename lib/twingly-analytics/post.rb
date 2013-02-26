@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+require 'date'
+
 module Twingly
   module Analytics
     class Post
