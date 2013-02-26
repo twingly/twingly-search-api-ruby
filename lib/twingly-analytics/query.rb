@@ -34,14 +34,15 @@ module Twingly
       end
 
       def url_parameters
-        fail("Missing pattern") unless @pattern
+        fail("Missing pattern") unless pattern
 
         URI.encode_www_form({
-          :key => @client.api_key,
-          :searchpattern => @pattern,
-          :documentlang => @document_language,
-          :ts => @start_time,
-          :tsTo => @end_time
+          :key => client.api_key,
+          :searchpattern => pattern,
+          :documentlang => document_language,
+          :ts => start_time,
+          :tsTo => end_time,
+          :xmloutputversion => 2
         })
       end
     end

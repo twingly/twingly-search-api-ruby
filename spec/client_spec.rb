@@ -4,7 +4,7 @@ include Twingly::Analytics
 
 describe Client do
   subject { Client.new('api_key') }
-  context 'with valid arguments' do
+  context 'with APi key as arguments' do
     it { should be_a Client }
   end
 
@@ -14,13 +14,14 @@ describe Client do
     it { should be_a Client }
   end
 
-  context 'without valid argument' do
+  context 'without valid API key' do
+    before { Client.any_instance.stub(:env_api_key).and_return(nil) }
     subject { Client.new }
-    it { expect { subject }.to raise_error(RuntimeError) }
+    it { expect { subject }.to raise_error(RuntimeError, 'Missing API key') }
   end
 
   describe '#query' do
-    it { should respond_to :query }
-    it { subject.query.should be_a Query }
+    subject { Client.new.query }
+    it { should be_a Query }
   end
 end
