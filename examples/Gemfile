@@ -1,0 +1,1 @@
+gem 'twingly-analytics-api', path: '~/Source/twingly-analytics-api-ruby', require: 'twingly-analytics'
