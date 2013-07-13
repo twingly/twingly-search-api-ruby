@@ -3,7 +3,7 @@ require 'net/http'
 module Twingly
   module Analytics
     class Query
-      attr_accessor :pattern, :document_language, :client
+      attr_accessor :pattern, :language, :client
       attr_reader :start_time, :end_time
 
       BASE_URL='http://api.twingly.com/analytics/Analytics.ashx'
@@ -39,7 +39,7 @@ module Twingly
         URI.encode_www_form({
           :key => client.api_key,
           :searchpattern => pattern,
-          :documentlang => document_language,
+          :documentlang => language,
           :ts => start_time,
           :tsTo => end_time,
           :xmloutputversion => 2
