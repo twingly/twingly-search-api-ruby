@@ -25,7 +25,7 @@ describe Query do
   subject { Query.new(@client) }
 
   it { should respond_to(:pattern) }
-  it { should respond_to(:document_language) }
+  it { should respond_to(:language) }
   it { should respond_to(:start_time) }
   it { should respond_to(:end_time) }
   it { should respond_to(:execute) }
@@ -49,8 +49,8 @@ describe Query do
     end
   end
 
-  # it "should add document_language" do
-  #   subject.document_language = "en"
+  # it "should add language" do
+  #   subject.language = "en"
   #   URI(subject.url).query.split('&').should include('documentlang=en')
   # end
 
@@ -77,7 +77,7 @@ describe Query do
       subject.url.should include("searchpattern=spotify")
     end
   end
-  describe "#document_language" do
+  describe "#language" do
   end
   describe "#client" do
   end

@@ -10,9 +10,9 @@ blogs      = Set.new
 
 until finished
   query = client.query
-  query.pattern = "sort-order:asc sort:published twingly"
+  query.pattern    = "sort-order:asc sort:published twingly"
   query.start_time = start_time
-  query.document_language = 'sv'
+  query.language   = 'sv'
   result = query.execute
 
   result.posts.each do |post|
