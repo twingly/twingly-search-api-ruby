@@ -21,7 +21,7 @@ describe Client do
   end
 
   describe '#query' do
-    subject { Client.new.query }
+    subject { Client.new('api_key').query }
     it { should be_a Query }
   end
 end
