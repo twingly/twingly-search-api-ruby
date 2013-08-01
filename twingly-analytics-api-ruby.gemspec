@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/twingly/twingly-analytics-api-ruby"
   s.summary     = "Ruby API client for Twingly Analytics"
   s.description = "Twingly Analytics is a product from Twingly AB"
+  s.required_ruby_version = ">= 1.9.3"
 
   s.add_dependency "nokogiri"
   s.add_development_dependency "rspec"
