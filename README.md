@@ -1,4 +1,4 @@
 # TODO
 
-* Bättre katalogstruktur twingly/analytics/blabla
-* TomDoc?
+* Improve directory structure
+* Add TomDoc?
