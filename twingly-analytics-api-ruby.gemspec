@@ -15,6 +15,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency "nokogiri"
   s.add_development_dependency "rspec"
+  s.add_development_dependency "vcr"
+  s.add_development_dependency "fakeweb"
 
   s.files        = Dir.glob("{lib}/**/*") + %w(README.md)
   s.require_path = 'lib'
