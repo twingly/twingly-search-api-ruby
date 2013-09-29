@@ -49,37 +49,29 @@ describe Query do
     end
   end
 
-  # it "should add language" do
-  #   subject.language = "en"
-  #   URI(subject.url).query.split('&').should include('documentlang=en')
-  # end
+  context "with valid pattern" do
+    before { Query.any_instance.stub(:pattern).and_return('') }
+    it "should add language" do
+      subject.language = "en"
+      URI(subject.url).query.split('&').should include('documentlang=en')
+    end
 
-  # it "should add start_time" do
-  #   subject.start_time = Time.new(2012,12,28,9,01,22)
-  #   URI(subject.url).query.split('&').should include("ts=2012-12-28+09%3A01%3A22")
-  # end
+    it "should add start_time" do
+      subject.start_time = Time.new(2012,12,28,9,01,22)
+      URI(subject.url).query.split('&').should include("ts=2012-12-28+09%3A01%3A22")
+    end
 
-  # it "should add end_time" do
-  #   subject.end_time = Time.new(2013,12,28,9,01,22)
-  #   URI(subject.url).query.split('&').should include("tsTo=2013-12-28+09%3A01%3A22")
-  # end
-
-  describe "#start_time=" do
-    it "formats time" do
-
+    it "should add end_time" do
+      subject.end_time = Time.new(2013,12,28,9,01,22)
+      URI(subject.url).query.split('&').should include("tsTo=2013-12-28+09%3A01%3A22")
     end
   end
-  describe "#end_time=" do
-  end
+
   describe "#pattern" do
     it "should add searchpattern" do
       subject.pattern = 'spotify'
       subject.url.should include("searchpattern=spotify")
     end
-  end
-  describe "#language" do
-  end
-  describe "#client" do
   end
 
   # describe "#execute" do
