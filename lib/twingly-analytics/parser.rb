@@ -7,8 +7,7 @@ module Twingly
         result = Result.new
         nokogiri = Nokogiri::XML(document)
 
-        failure = nokogiri.at_xpath('//name:blogstream/name:operationResult[@resultType="failure"]',
-          :name => 'http://www.twingly.com')
+        failure = nokogiri.at_xpath('//name:blogstream/name:operationResult[@resultType="failure"]', :name => 'http://www.twingly.com')
         fail failure.text if failure
 
         result.number_of_matches_returned = nokogiri.at_xpath('/twinglydata/@numberOfMatchesReturned').value.to_i
