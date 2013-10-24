@@ -29,6 +29,7 @@ module Twingly
       end
 
     private
+
       def get_response
         Net::HTTP.get_response(URI(url))
       end

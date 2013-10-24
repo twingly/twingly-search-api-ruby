@@ -5,7 +5,7 @@ Bundler.require
 client = Twingly::Analytics::Client.new('<API_KEY>')
 
 finished   = nil
-start_time = Time.new(2013,01,01)
+start_time = Time.new(2013, 01, 01)
 blogs      = Set.new
 
 until finished

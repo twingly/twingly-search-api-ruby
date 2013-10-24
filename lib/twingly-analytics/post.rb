@@ -5,7 +5,8 @@ require 'date'
 module Twingly
   module Analytics
     class Post
-      attr_reader :url, :title, :summary, :language_code, :indexed, :published, :blog_url, :blog_name, :authority, :blog_rank, :tags
+      attr_reader :url, :title, :summary, :language_code, :indexed,
+        :published, :blog_url, :blog_name, :authority, :blog_rank, :tags
 
       # Omvandlingen hör nog hemma i Parser
       def set_values(params)
