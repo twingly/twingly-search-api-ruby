@@ -4,7 +4,7 @@ include Twingly::Analytics
 
 describe Client do
   subject { Client.new('api_key') }
-  context 'with APi key as arguments' do
+  context 'with API key as arguments' do
     it { should be_a Client }
   end
 
