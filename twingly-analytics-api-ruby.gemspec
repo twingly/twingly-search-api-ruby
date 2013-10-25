@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rspec", "~> 2.0")
   s.add_development_dependency("vcr", "~> 2.6")
   s.add_development_dependency("fakeweb", "~> 1.3")
+  s.add_development_dependency("rake", "~> 10.0")
 
   s.files        = Dir.glob("{lib}/**/*") + %w(README.md)
   s.require_path = 'lib'
