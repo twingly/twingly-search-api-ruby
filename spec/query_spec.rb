@@ -31,8 +31,6 @@ describe Query do
   it { should respond_to(:execute) }
   it { should respond_to(:client) }
 
-  its(:client) { should == @client }
-
   describe "#url" do
     let(:query) { Query.new(@client) }
 
