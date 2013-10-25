@@ -78,24 +78,35 @@ describe Query do
     end
   end
 
-  # describe "#execute" do
-  #   context "with invalid API key" do
-  #     subject { Query.new(Client.new('wrong')) }
-  #     it "should raise error on invalid API key" do
-  #       VCR.use_cassette('search_without_valid_api_key', :record => :all) do
-  #         expect { subject.execute }.to raise_error(RuntimeError, "The API key does not exist.")
-  #       end
-  #     end
-  #   end
+  describe "#execute" do
+    context "with invalid API key" do
+      subject {
+        query = Query.new(Client.new('wrong'))
+        query.pattern = 'something'
+        query
+      }
 
-  #   context "when searching for spotify" do
-  #     subject { Query.new(Client.new) }
-  #     it "should get posts about spotify" do
-  #       VCR.use_cassette('search_for_spotify_on_sv_blogs', :record => :all) do
-  #         result = subject.execute
-  #         result.posts.should_not be_empty # Borde inte testa resultat, borde bara kolla så att den nyttjar VCR
-  #       end
-  #     end
-  #   end
-  # end
+      it "should raise error on invalid API key" do
+        VCR.use_cassette('search_without_valid_api_key') do
+          expect { subject.execute }.to raise_error(RuntimeError, "The API key does not exist.")
+        end
+      end
+    end
+
+    context "when searching for spotify" do
+      subject {
+        query = Query.new(Client.new('api_key'))
+        query.pattern = 'spotify page-size:10'
+        query.language = 'sv'
+        query
+      }
+
+      it "should get posts when searching for spotify" do
+        VCR.use_cassette('search_for_spotify_on_sv_blogs') do
+          result = subject.execute
+          result.posts.should_not be_empty
+        end
+      end
+    end
+  end
 end
