@@ -42,7 +42,7 @@ describe Query do
 
     context "without valid pattern" do
       it "raises an error" do
-        expect { query.url }.to raise_error RuntimeError, "Missing pattern"
+        expect { query.url }.to raise_error(RuntimeError, "Missing pattern")
       end
     end
   end
