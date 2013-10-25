@@ -9,11 +9,10 @@ module Twingly
       end
 
       def inspect
-        matches = [
-          "@posts",
-          "@number_of_matches_returned=#{self.number_of_matches_returned}",
-          "@number_of_matches_total=#{self.number_of_matches_total}"
-        ].join(', ')
+        matches = "@posts, "
+        matches << "@number_of_matches_returned=#{self.number_of_matches_returned}, "
+        matches << "@number_of_matches_total=#{self.number_of_matches_total}"
+
         sprintf("#<%s:0x%x %s>", self.class.name, __id__, matches)
       end
     end
