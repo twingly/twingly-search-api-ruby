@@ -2,7 +2,8 @@ require 'set'
 require 'bundler'
 Bundler.require
 
-client = Twingly::Analytics::Client.new('<API_KEY>')
+# Set environment variable TWINGLY_ANALYTICS_KEY
+client = Twingly::Analytics::Client.new
 
 finished   = nil
 start_time = Time.new(2013, 01, 01)
