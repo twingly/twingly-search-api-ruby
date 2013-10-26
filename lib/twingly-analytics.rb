@@ -1,5 +1,3 @@
-$:.unshift File.dirname(__FILE__)
-
 require 'twingly-analytics/client'
 require 'twingly-analytics/query'
 require 'twingly-analytics/result'
