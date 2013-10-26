@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'twingly-analytics/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "twingly-analytics-api"
+  spec.name          = "twingly-analytics"
   spec.version       = Twingly::Analytics::VERSION
   spec.platform      = Gem::Platform::RUBY
   spec.authors       = ["Johan Eckerström"]
