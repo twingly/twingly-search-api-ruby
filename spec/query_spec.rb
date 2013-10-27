@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'uri'
 require 'vcr_setup'
 
 include Twingly::Analytics
@@ -51,30 +50,29 @@ describe Query do
     before { Query.any_instance.stub(:pattern).and_return('') }
     it "should add language" do
       subject.language = "en"
-      params = URI(subject.url).query.split('&')
-
-      params.should include('documentlang=en')
+      subject.request_parameters.should include(documentlang: 'en')
     end
 
     it "should add start_time" do
       subject.start_time = Time.new(2012, 12, 28, 9, 01, 22)
-      params = URI(subject.url).query.split('&')
-
-      params.should include("ts=2012-12-28+09%3A01%3A22")
+      subject.request_parameters.should include(ts: '2012-12-28 09:01:22')
     end
 
     it "should add end_time" do
       subject.end_time = Time.new(2013, 12, 28, 9, 01, 22)
-      params = URI(subject.url).query.split('&')
+      subject.request_parameters.should include(tsTo: '2013-12-28 09:01:22')
+    end
 
-      params.should include("tsTo=2013-12-28+09%3A01%3A22")
+    it "should encode url paramters" do
+      subject.end_time = Time.new(2013, 12, 28, 9, 01, 22)
+      subject.url_parameters.should include('tsTo=2013-12-28+09%3A01%3A22')
     end
   end
 
   describe "#pattern" do
     it "should add searchpattern" do
       subject.pattern = 'spotify'
-      subject.url.should include("searchpattern=spotify")
+      subject.url_parameters.should include("searchpattern=spotify")
     end
   end
 
