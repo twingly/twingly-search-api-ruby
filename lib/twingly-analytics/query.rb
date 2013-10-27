@@ -1,4 +1,4 @@
-require 'net/http'
+require 'faraday'
 
 module Twingly
   module Analytics
@@ -31,7 +31,7 @@ module Twingly
     private
 
       def get_response
-        Net::HTTP.get_response(URI(url))
+        Faraday.get(url)
       end
 
       def url_parameters
