@@ -8,19 +8,18 @@ module Twingly
       attr_reader :url, :title, :summary, :language_code, :indexed,
         :published, :blog_url, :blog_name, :authority, :blog_rank, :tags
 
-      # Omvandlingen hör nog hemma i Parser
       def set_values(params)
-        @url = params.fetch('url')
-        @title = params.fetch('title')
-        @summary = params.fetch('summary')
+        @url           = params.fetch('url')
+        @title         = params.fetch('title')
+        @summary       = params.fetch('summary')
         @language_code = params.fetch('languageCode')
-        @published = DateTime.parse(params.fetch('published'))
-        @indexed = DateTime.parse(params.fetch('indexed'))
-        @blog_url = params.fetch('blogUrl')
-        @blog_name = params.fetch('blogName')
-        @authority  = params.fetch('authority').to_i
-        @blog_rank  = params.fetch('blogRank').to_i
-        @tags = params.fetch('tags', [])
+        @published     = DateTime.parse(params.fetch('published'))
+        @indexed       = DateTime.parse(params.fetch('indexed'))
+        @blog_url      = params.fetch('blogUrl')
+        @blog_name     = params.fetch('blogName')
+        @authority     = params.fetch('authority').to_i
+        @blog_rank     = params.fetch('blogRank').to_i
+        @tags          = params.fetch('tags', [])
       end
     end
   end
