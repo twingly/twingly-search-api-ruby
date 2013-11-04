@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://github.com/twingly/twingly-analytics-api-ruby"
   spec.summary       = "Ruby API client for Twingly Analytics"
   spec.description   = "Twingly Analytics is a product from Twingly AB"
+  spec.license       = 'MIT'
   spec.required_ruby_version = ">= 1.9.3"
 
   spec.files         = `git ls-files`.split($/)
