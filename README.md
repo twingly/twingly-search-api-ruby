@@ -11,7 +11,7 @@ This gem is still under active development, and will be subject to breaking chan
 Add to your application's [Gemfile](http://bundler.io/gemfile.html) and then run `bundle`
 
 ```Ruby
-gem 'twingly-analytics'
+gem 'twingly-analytics', github: 'twingly/twingly-analytics-api-ruby'
 ```
 
 ## Usage
