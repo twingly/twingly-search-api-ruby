@@ -1,13 +1,9 @@
-# Twingly Analytics API Ruby 
+# Twingly Analytics API Ruby
 
 [![Build Status](https://travis-ci.org/twingly/twingly-analytics-api-ruby.png?branch=master)](https://travis-ci.org/twingly/twingly-analytics-api-ruby)
 [![Code Climate](https://codeclimate.com/github/twingly/twingly-analytics-api-ruby.png)](https://codeclimate.com/github/twingly/twingly-analytics-api-ruby)
 
 A Ruby gem for Twingly's Analytics API. Twingly is a blog indexer that provides a searchable API called Twingly Analytics.
-
-## Development
-
-This gem is still under active development, and will be subject to breaking changes up to release 1.0.0.
 
 ## Installation
 
