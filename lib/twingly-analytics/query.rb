@@ -6,7 +6,7 @@ module Twingly
       attr_accessor :pattern, :language, :client
       attr_reader :start_time, :end_time
 
-      BASE_URL='http://api.twingly.com/analytics/Analytics.ashx'
+      BASE_URL='https://api.twingly.com/analytics/Analytics.ashx'
 
       def initialize(client)
         @client = client
