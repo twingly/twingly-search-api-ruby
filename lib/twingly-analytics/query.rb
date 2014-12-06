@@ -6,7 +6,7 @@ module Twingly
       attr_accessor :pattern, :language, :client
       attr_reader :start_time, :end_time
 
-      BASE_URL = 'http://api.twingly.com'
+      BASE_URL = 'https://api.twingly.com'
       ANALYTICS_PATH = '/analytics/Analytics.ashx'
 
       def initialize(client)
@@ -28,7 +28,6 @@ module Twingly
       def end_time=(time)
         @end_time = time.strftime("%F %T")
       end
-
 
       def url_parameters
         Faraday::Utils.build_query(request_parameters)

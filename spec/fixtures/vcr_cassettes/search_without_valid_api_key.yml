@@ -2,211 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.twingly.com/analytics/Analytics.ashx?key=api_key&searchpattern=spotify&documentlang&ts&tsTo&xmloutputversion=2
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      accept:
-      - '*/*'
-      user-agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      cache-control:
-      - private
-      content-type:
-      - text/xml; charset=utf-8
-      date:
-      - Tue, 29 Jan 2013 16:06:21 GMT
-      connection:
-      - close
-      content-length:
-      - '183'
-      set-cookie:
-      - SERVERID=web03; path=/
-    body:
-      encoding: US-ASCII
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><blogstream xmlns=\"http://www.twingly.com\">\r\n
-        \ <operationResult resultType=\"failure\">The API key does not exist.</operationResult>\r\n</blogstream>"
-    http_version: '1.1'
-  recorded_at: Tue, 29 Jan 2013 16:06:21 GMT
-- request:
-    method: get
-    uri: http://api.twingly.com/analytics/Analytics.ashx?key=api_key&searchpattern=spotify&documentlang&ts&tsTo&xmloutputversion=2
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      accept:
-      - '*/*'
-      user-agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      cache-control:
-      - private
-      content-type:
-      - text/xml; charset=utf-8
-      date:
-      - Tue, 29 Jan 2013 16:06:43 GMT
-      connection:
-      - close
-      content-length:
-      - '183'
-      set-cookie:
-      - SERVERID=web03; path=/
-    body:
-      encoding: US-ASCII
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><blogstream xmlns=\"http://www.twingly.com\">\r\n
-        \ <operationResult resultType=\"failure\">The API key does not exist.</operationResult>\r\n</blogstream>"
-    http_version: '1.1'
-  recorded_at: Tue, 29 Jan 2013 16:06:43 GMT
-- request:
-    method: get
-    uri: http://api.twingly.com/analytics/Analytics.ashx?key=api_key&searchpattern=spotify&documentlang&ts&tsTo&xmloutputversion=2
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      accept:
-      - '*/*'
-      user-agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      cache-control:
-      - private
-      content-type:
-      - text/xml; charset=utf-8
-      date:
-      - Tue, 29 Jan 2013 16:06:47 GMT
-      connection:
-      - close
-      content-length:
-      - '183'
-      set-cookie:
-      - SERVERID=web03; path=/
-    body:
-      encoding: US-ASCII
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><blogstream xmlns=\"http://www.twingly.com\">\r\n
-        \ <operationResult resultType=\"failure\">The API key does not exist.</operationResult>\r\n</blogstream>"
-    http_version: '1.1'
-  recorded_at: Tue, 29 Jan 2013 16:06:48 GMT
-- request:
-    method: get
-    uri: http://api.twingly.com/analytics/Analytics.ashx?key=api_key&searchpattern=spotify&documentlang&ts&tsTo&xmloutputversion=2
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      accept:
-      - '*/*'
-      user-agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      cache-control:
-      - private
-      content-type:
-      - text/xml; charset=utf-8
-      date:
-      - Tue, 29 Jan 2013 16:17:53 GMT
-      connection:
-      - close
-      content-length:
-      - '183'
-      set-cookie:
-      - SERVERID=web02; path=/
-    body:
-      encoding: US-ASCII
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><blogstream xmlns=\"http://www.twingly.com\">\r\n
-        \ <operationResult resultType=\"failure\">The API key does not exist.</operationResult>\r\n</blogstream>"
-    http_version: '1.1'
-  recorded_at: Tue, 29 Jan 2013 16:17:53 GMT
-- request:
-    method: get
-    uri: http://api.twingly.com/analytics/Analytics.ashx?key=api_key&searchpattern=spotify&documentlang&ts&tsTo&xmloutputversion=2
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      accept:
-      - '*/*'
-      user-agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      cache-control:
-      - private
-      content-type:
-      - text/xml; charset=utf-8
-      date:
-      - Tue, 29 Jan 2013 16:18:15 GMT
-      connection:
-      - close
-      content-length:
-      - '183'
-      set-cookie:
-      - SERVERID=web03; path=/
-    body:
-      encoding: US-ASCII
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><blogstream xmlns=\"http://www.twingly.com\">\r\n
-        \ <operationResult resultType=\"failure\">The API key does not exist.</operationResult>\r\n</blogstream>"
-    http_version: '1.1'
-  recorded_at: Tue, 29 Jan 2013 16:18:15 GMT
-- request:
-    method: get
-    uri: http://api.twingly.com/analytics/Analytics.ashx?key=wrong&searchpattern=spotify&documentlang&ts&tsTo&xmloutputversion=2
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      accept:
-      - '*/*'
-      user-agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      cache-control:
-      - private
-      content-type:
-      - text/xml; charset=utf-8
-      date:
-      - Wed, 30 Jan 2013 10:54:35 GMT
-      connection:
-      - close
-      content-length:
-      - '183'
-      set-cookie:
-      - SERVERID=web02; path=/
-    body:
-      encoding: US-ASCII
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><blogstream xmlns=\"http://www.twingly.com\">\r\n
-        \ <operationResult resultType=\"failure\">The API key does not exist.</operationResult>\r\n</blogstream>"
-    http_version: '1.1'
-  recorded_at: Wed, 30 Jan 2013 10:54:36 GMT
-- request:
-    method: get
-    uri: http://api.twingly.com/analytics/Analytics.ashx?documentlang&key=wrong&searchpattern=something&ts&tsTo&xmloutputversion=2
+    uri: https://api.twingly.com/analytics/Analytics.ashx?documentlang&key=wrong&searchpattern=something&ts&tsTo&xmloutputversion=2
     body:
       encoding: US-ASCII
       string: ''
@@ -214,7 +10,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
       Host:
@@ -224,22 +20,24 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - private
+      Server:
+      - nginx
+      Date:
+      - Thu, 30 Oct 2014 19:45:41 GMT
       Content-Type:
       - text/xml; charset=utf-8
-      Date:
-      - Fri, 25 Oct 2013 20:16:06 GMT
-      Connection:
-      - close
       Content-Length:
       - '183'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private
       Set-Cookie:
-      - SERVERID=web03; path=/
+      - SERVERID=web01; path=/
     body:
       encoding: UTF-8
       string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><blogstream xmlns=\"http://www.twingly.com\">\r\n
         \ <operationResult resultType=\"failure\">The API key does not exist.</operationResult>\r\n</blogstream>"
     http_version: 
-  recorded_at: Fri, 25 Oct 2013 20:16:08 GMT
+  recorded_at: Thu, 30 Oct 2014 19:45:41 GMT
 recorded_with: VCR 2.6.0

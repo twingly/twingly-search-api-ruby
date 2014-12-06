@@ -1,6 +1,9 @@
 # Twingly Analytics API Ruby
 
-A Ruby gem for Twingly's Analytics API. Twingly is a blog indexing that provides a searchable API called Twingly Analytics.
+[![Build Status](https://travis-ci.org/twingly/twingly-analytics-api-ruby.png?branch=master)](https://travis-ci.org/twingly/twingly-analytics-api-ruby)
+[![Code Climate](https://codeclimate.com/github/twingly/twingly-analytics-api-ruby.png)](https://codeclimate.com/github/twingly/twingly-analytics-api-ruby)
+
+A Ruby gem for Twingly's Analytics API. Twingly is a blog search service that provides a searchable API called [Twingly Analytics](http://developer.twingly.com/resources/analytics/).
 
 ## Development
 
@@ -28,12 +31,14 @@ result = query.execute
 result.posts # will include all returned posts
 ```
 
-The `twinlgy-analytics` gem talks to a commercial blog search API and requires an API key. Best practice is to set the `TWINGLY_ANALYTICS_KEY` environment variable to the obtained key. `Twingly::Analytics::Client` can be passed a key at initialization if you're setup does not allow environment variables.
+The `twinlgy-analytics` gem talks to a commercial blog search API and requires an API key. Best practice is to set the `TWINGLY_ANALYTICS_KEY` environment variable to the obtained key. `Twingly::Analytics::Client` can be passed a key at initialization if your setup does not allow environment variables.
+
+Too learn more about the capabilities of this API you should read the [Twingly Analytics API documentation](http://developer.twingly.com/resources/analytics/).
 
 ## Requirements
 
 * API key, contact sales@twingly.com to get one
-* Ruby 1.9, 2.0
+* Ruby 1.9, 2.0, 2.1
 
 ## License
 
