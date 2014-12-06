@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.twingly.com/analytics/Analytics.ashx?documentlang=sv&key=api_key&searchpattern=spotify%20page-size:10&ts&tsTo&xmloutputversion=2
+    uri: https://api.twingly.com/analytics/Analytics.ashx?documentlang=sv&key=api_key&searchpattern=spotify%20page-size:10&ts=&tsTo=&xmloutputversion=2
     body:
       encoding: US-ASCII
       string: ''
@@ -377,6 +377,6 @@ http_interactions:
         bG9nVXJsPg0KICA8YmxvZ05hbWU+PCFbQ0RBVEFbQmVsbGFyaWVjaGVuXV0+
         PC9ibG9nTmFtZT4NCiAgPGF1dGhvcml0eT40PC9hdXRob3JpdHk+DQogIDxi
         bG9nUmFuaz4xPC9ibG9nUmFuaz4NCjwvcG9zdD48L3R3aW5nbHlkYXRhPg==
-    http_version: 
+    http_version:
   recorded_at: Thu, 30 Oct 2014 19:45:41 GMT
 recorded_with: VCR 2.6.0

@@ -53,6 +53,7 @@ module Twingly
           faraday.request :url_encoded
           faraday.adapter Faraday.default_adapter
         end
+        connection.headers[:user_agent] = 'Ruby'
         connection.get(ANALYTICS_PATH, request_parameters)
       end
     end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.twingly.com/analytics/Analytics.ashx?documentlang&key=wrong&searchpattern=something&ts&tsTo&xmloutputversion=2
+    uri: https://api.twingly.com/analytics/Analytics.ashx?documentlang=&key=wrong&searchpattern=something&ts=&tsTo=&xmloutputversion=2
     body:
       encoding: US-ASCII
       string: ''
@@ -38,6 +38,6 @@ http_interactions:
       encoding: UTF-8
       string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><blogstream xmlns=\"http://www.twingly.com\">\r\n
         \ <operationResult resultType=\"failure\">The API key does not exist.</operationResult>\r\n</blogstream>"
-    http_version: 
+    http_version:
   recorded_at: Thu, 30 Oct 2014 19:45:41 GMT
 recorded_with: VCR 2.6.0
