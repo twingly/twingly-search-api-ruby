@@ -34,7 +34,7 @@ Too learn more about the capabilities of this API you should read the [Twingly A
 ## Requirements
 
 * API key, contact sales@twingly.com to get one
-* Ruby 1.9, 2.0, 2.1
+* Ruby 1.9, 2.0, 2.1, 2.2
 
 ## License
 
