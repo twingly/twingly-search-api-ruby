@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rspec/its'
 require 'uri'
 
 include Twingly::Analytics

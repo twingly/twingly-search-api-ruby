@@ -6,7 +6,7 @@ task :spec do
   require 'bundler/setup'
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:spec) do |t|
-    t.rspec_opts = %w(-fs -c)
+    t.rspec_opts = %w(-fd -c)
   end
 end
 

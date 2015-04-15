@@ -9,13 +9,13 @@ describe Client do
   end
 
   context 'with API key from ENV variable' do
-    before { Client.any_instance.stub(:env_api_key).and_return('api_key') }
+    before { allow_any_instance_of(Client).to receive(:env_api_key).and_return('api_key') }
     subject { Client.new }
     it { should be_a Client }
   end
 
   context 'without valid API key' do
-    before { Client.any_instance.stub(:env_api_key).and_return(nil) }
+    before { allow_any_instance_of(Client).to receive(:env_api_key).and_return(nil) }
     subject { Client.new }
     it { expect { subject }.to raise_error(RuntimeError, 'Missing API key') }
   end
