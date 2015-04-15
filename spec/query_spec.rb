@@ -6,7 +6,7 @@ include Twingly::Analytics
 describe Query do
 
   it "BASE_URL should be parsable" do
-    URI(Query::BASE_URL).to_s.should == Query::BASE_URL
+    expect(URI(Query::BASE_URL).to_s).to eq(Query::BASE_URL)
   end
 
   context "without client" do
@@ -18,7 +18,7 @@ describe Query do
 
   before(:each) do
     @client = double('client')
-    @client.stub(:api_key).and_return('api_key')
+    allow(@client).to receive(:api_key).and_return('api_key')
   end
 
   subject { Query.new(@client) }
@@ -34,7 +34,7 @@ describe Query do
     let(:query) { Query.new(@client) }
 
     context "with valid pattern" do
-      before { Query.any_instance.stub(:pattern).and_return('') }
+      before { allow_any_instance_of(Query).to receive(:pattern).and_return('') }
       subject { query.url }
       it { should include("xmloutputversion=2") }
     end
@@ -47,32 +47,32 @@ describe Query do
   end
 
   context "with valid pattern" do
-    before { Query.any_instance.stub(:pattern).and_return('') }
+    before { allow_any_instance_of(Query).to receive(:pattern).and_return('') }
     it "should add language" do
       subject.language = "en"
-      subject.request_parameters.should include(documentlang: 'en')
+      expect(subject.request_parameters).to include(documentlang: 'en')
     end
 
     it "should add start_time" do
       subject.start_time = Time.new(2012, 12, 28, 9, 01, 22)
-      subject.request_parameters.should include(ts: '2012-12-28 09:01:22')
+      expect(subject.request_parameters).to include(ts: '2012-12-28 09:01:22')
     end
 
     it "should add end_time" do
       subject.end_time = Time.new(2013, 12, 28, 9, 01, 22)
-      subject.request_parameters.should include(tsTo: '2013-12-28 09:01:22')
+      expect(subject.request_parameters).to include(tsTo: '2013-12-28 09:01:22')
     end
 
     it "should encode url paramters" do
       subject.end_time = Time.new(2013, 12, 28, 9, 01, 22)
-      subject.url_parameters.should include('tsTo=2013-12-28+09%3A01%3A22')
+      expect(subject.url_parameters).to include('tsTo=2013-12-28+09%3A01%3A22')
     end
   end
 
   describe "#pattern" do
     it "should add searchpattern" do
       subject.pattern = 'spotify'
-      subject.url_parameters.should include("searchpattern=spotify")
+      expect(subject.url_parameters).to include("searchpattern=spotify")
     end
   end
 
@@ -102,7 +102,7 @@ describe Query do
       it "should get posts when searching for spotify" do
         VCR.use_cassette('search_for_spotify_on_sv_blogs') do
           result = subject.execute
-          result.posts.should_not be_empty
+          expect(result.posts).not_to be_empty
         end
       end
     end

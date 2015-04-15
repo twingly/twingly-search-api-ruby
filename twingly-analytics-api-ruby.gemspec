@@ -21,7 +21,8 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "faraday",  ['>= 0.8', '< 0.10']
   spec.add_dependency "nokogiri", "~> 1.0"
-  spec.add_development_dependency "rspec", "~> 2.0"
+  spec.add_development_dependency "rspec", "~> 3"
+  spec.add_development_dependency "rspec-its", "~> 1"
   spec.add_development_dependency "vcr", "~> 2.6"
   spec.add_development_dependency "webmock", "~> 1.0"
   spec.add_development_dependency "rake"
