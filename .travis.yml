@@ -5,3 +5,11 @@ rvm:
   - 2.0.0
   - 2.1
   - 2.2
+deploy:
+  provider: rubygems
+  api_key:
+    secure: gR8UFxF1bGai0QXJBQAvgMHFd+7FUD5sCoeaBOdIQV9ecmXXO4s+blykKuEea55SNaxo6m+h9jaq6coklQjsixNnHeHfzdGFwAfaHJ4ugrREHxndXgImlqWmUvwli6Z4CIlkphMs1Iq7o91jJFPszuG66qApnF1jZQb3f9Hxy+s=
+  gem: twingly-analytics
+  on:
+    tags: true
+    repo: twingly/twingly-analytics-api-ruby
