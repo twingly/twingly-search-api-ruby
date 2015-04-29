@@ -8,7 +8,7 @@ rvm:
 deploy:
   provider: rubygems
   api_key:
-    secure: gR8UFxF1bGai0QXJBQAvgMHFd+7FUD5sCoeaBOdIQV9ecmXXO4s+blykKuEea55SNaxo6m+h9jaq6coklQjsixNnHeHfzdGFwAfaHJ4ugrREHxndXgImlqWmUvwli6Z4CIlkphMs1Iq7o91jJFPszuG66qApnF1jZQb3f9Hxy+s=
+    secure: "QxMWXTQ3/T+0IQZl3pk3hmdoX8FcXTXEhH7Jn7Ub1A1D5faa8VNnfYsWAPjP6+VRgVfKEjAsHNMyZQNTvudpPPC/2kAwwzPvStyS+y7KnRkjZ9acC7sYVVel6cZ2lcl+t8iHY+19NRBFBWpq/P0eCAcR/Ew0XXaLZnig5h/1mQo="
   gem: twingly-analytics
   gemspec: twingly-analytics-api-ruby.gemspec
   on:
