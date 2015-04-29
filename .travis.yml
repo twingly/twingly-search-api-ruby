@@ -13,4 +13,5 @@ deploy:
   gemspec: twingly-analytics-api-ruby.gemspec
   on:
     tags: true
+    rvm: 2.2
     repo: twingly/twingly-analytics-api-ruby
