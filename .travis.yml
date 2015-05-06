@@ -1,17 +1,28 @@
 language: ruby
 cache: bundler
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1
-  - 2.2
+- 1.9.3
+- 2.0.0
+- 2.1
+- 2.2
 deploy:
   provider: rubygems
   api_key:
-    secure: "QxMWXTQ3/T+0IQZl3pk3hmdoX8FcXTXEhH7Jn7Ub1A1D5faa8VNnfYsWAPjP6+VRgVfKEjAsHNMyZQNTvudpPPC/2kAwwzPvStyS+y7KnRkjZ9acC7sYVVel6cZ2lcl+t8iHY+19NRBFBWpq/P0eCAcR/Ew0XXaLZnig5h/1mQo="
+    secure: QxMWXTQ3/T+0IQZl3pk3hmdoX8FcXTXEhH7Jn7Ub1A1D5faa8VNnfYsWAPjP6+VRgVfKEjAsHNMyZQNTvudpPPC/2kAwwzPvStyS+y7KnRkjZ9acC7sYVVel6cZ2lcl+t8iHY+19NRBFBWpq/P0eCAcR/Ew0XXaLZnig5h/1mQo=
   gem: twingly-analytics
   gemspec: twingly-analytics-api-ruby.gemspec
   on:
     tags: true
     rvm: 2.2
     repo: twingly/twingly-analytics-api-ruby
+notifications:
+  email: false
+  hipchat:
+    on_success: never
+    on_failure: change
+    template:
+    - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}
+      (<a href="%{build_url}">Details</a>/<a href="%{compare_url}">Change view</a>)'
+    format: html
+    rooms:
+      secure: KU2mE9mcqvBczfiCTgTsgMmJPyW02AH/0Rzcli7oj3HVbiHGw8t5JlBQWYROF5TPht0kFhGkiwVPl6HUt/VAGxOIBsOp+/8MXR6aK5FkdIw6g8DMKlDjm9a2QijOT9rvat5bZ3l6hm3snojgkI3s9pLKmLq9l+KalAsPcevwKAQ=
