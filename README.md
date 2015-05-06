@@ -7,10 +7,16 @@ A Ruby gem for Twingly's Analytics API. Twingly is a blog search service that pr
 
 ## Installation
 
-Add to your application's [Gemfile](http://bundler.io/gemfile.html) and then run `bundle`
+Install via RubyGems
+
+```Shell
+gem install twingly-analytics
+```
+
+Or add to your application's [Gemfile](http://bundler.io/gemfile.html) and then run `bundle`
 
 ```Ruby
-gem 'twingly-analytics', github: 'twingly/twingly-analytics-api-ruby'
+gem 'twingly-analytics'
 ```
 
 ## Usage
