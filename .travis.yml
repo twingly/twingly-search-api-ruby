@@ -21,8 +21,7 @@ notifications:
     on_success: never
     on_failure: change
     template:
-    - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}
-      (<a href="%{build_url}">Details</a>/<a href="%{compare_url}">Change view</a>)'
+    - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message} (<a href="%{build_url}">Details</a>/<a href="%{compare_url}">Change view</a>)'
     format: html
     rooms:
       secure: KU2mE9mcqvBczfiCTgTsgMmJPyW02AH/0Rzcli7oj3HVbiHGw8t5JlBQWYROF5TPht0kFhGkiwVPl6HUt/VAGxOIBsOp+/8MXR6aK5FkdIw6g8DMKlDjm9a2QijOT9rvat5bZ3l6hm3snojgkI3s9pLKmLq9l+KalAsPcevwKAQ=
