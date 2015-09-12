@@ -8,6 +8,10 @@ module Twingly
         @posts ||= []
       end
 
+      def all_results_returned?
+        number_of_matches_returned.to_i == number_of_matches_total.to_i
+      end
+
       def inspect
         matches = "@posts, "
         matches << "@number_of_matches_returned=#{self.number_of_matches_returned}, "
