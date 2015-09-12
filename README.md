@@ -35,6 +35,8 @@ result.posts # will include all returned posts
 
 The `twinlgy-analytics` gem talks to a commercial blog search API and requires an API key. Best practice is to set the `TWINGLY_ANALYTICS_KEY` environment variable to the obtained key. `Twingly::Analytics::Client` can be passed a key at initialization if your setup does not allow environment variables.
 
+Example code can be found in [examples/](examples/).
+
 Too learn more about the capabilities of this API you should read the [Twingly Analytics API documentation](https://developer.twingly.com/resources/analytics/).
 
 ## Requirements
