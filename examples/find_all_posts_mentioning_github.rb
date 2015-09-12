@@ -1,29 +1,29 @@
-require 'set'
-require 'bundler'
 Bundler.require
 
-# Set environment variable TWINGLY_ANALYTICS_KEY
-client = Twingly::Analytics::Client.new
-
-finished   = nil
-start_time = Time.new(2013, 01, 01)
-blogs      = Set.new
-
-until finished
-  query = client.query
-  query.pattern    = "sort-order:asc sort:published github"
-  query.start_time = start_time
-  query.language   = 'sv'
-  result = query.execute
-
-  result.posts.each do |post|
-    blogs.add(post.blog_url)
+class AnalyticsPostStream
+  def initialize(keyword, language: nil)
+    # Set environment variable TWINGLY_ANALYTICS_KEY
+    client = Twingly::Analytics::Client.new
+    @query = client.query
+    @query.language = language
+    @query.pattern = "sort-order:asc sort:published #{keyword}"
   end
 
-  finished = start_time == result.posts.last.published
-  start_time = result.posts.last.published
+  def each
+    loop do
+      result = @query.execute
+      result.posts.each do |post|
+        yield post
+      end
+
+      break if result.all_results_returned?
+
+      @query.start_time = result.posts.last.published
+    end
+  end
 end
 
-blogs.each do |url|
-  puts url
+stream = AnalyticsPostStream.new("(github) AND (hipchat OR slack)")
+stream.each do |post|
+  puts post.url
 end
