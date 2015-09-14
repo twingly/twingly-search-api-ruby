@@ -3,8 +3,7 @@ require 'faraday'
 module Twingly
   module Analytics
     class Query
-      attr_accessor :pattern, :language, :client
-      attr_reader :start_time, :end_time
+      attr_accessor :pattern, :language, :client, :start_time, :end_time
 
       BASE_URL = 'https://api.twingly.com'
       ANALYTICS_PATH = '/analytics/Analytics.ashx'
@@ -21,14 +20,6 @@ module Twingly
         Parser.new.parse(get_response.body)
       end
 
-      def start_time=(time)
-        @start_time = time.strftime("%F %T")
-      end
-
-      def end_time=(time)
-        @end_time = time.strftime("%F %T")
-      end
-
       def url_parameters
         Faraday::Utils.build_query(request_parameters)
       end
@@ -40,20 +31,28 @@ module Twingly
           :key => client.api_key,
           :searchpattern => pattern,
           :documentlang => language,
-          :ts => start_time,
-          :tsTo => end_time,
+          :ts => ts,
+          :tsTo => ts_to,
           :xmloutputversion => 2
         }
       end
 
     private
 
+      def ts
+        start_time.to_time.strftime("%F %T") if start_time
+      end
+
+      def ts_to
+        end_time.to_time.strftime("%F %T") if end_time
+      end
+
       def get_response
         connection = Faraday.new(:url => BASE_URL) do |faraday|
           faraday.request :url_encoded
           faraday.adapter Faraday.default_adapter
         end
-        connection.headers[:user_agent] = 'Ruby'
+        connection.headers[:user_agent] = "Twingly Analytics Ruby Client/#{VERSION}"
         connection.get(ANALYTICS_PATH, request_parameters)
       end
     end
