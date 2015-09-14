@@ -44,6 +44,13 @@ Too learn more about the capabilities of this API you should read the [Twingly A
 * API key, contact sales@twingly.com to get one
 * Ruby 1.9, 2.0, 2.1, 2.2
 
+## Development and release
+
+* Bump version in `lib/twingly-analytics/version.rb`, follow [Semantic Versioning 2.0.0](http://semver.org/)
+* Create a git tag and push to GitHub
+* Build and release gem to https://rubygems.org/
+* Make sure the master branch has an up-to-date changelog. Generate with `rake changelog`. Set `CHANGELOG_GITHUB_TOKEN` to a personal access token to increase the API rate limit. (The changelog uses [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator/))
+
 ## License
 
 The MIT License (MIT)
