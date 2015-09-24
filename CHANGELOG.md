@@ -1,5 +1,17 @@
 # Change Log
 
+## [2.0.1](https://github.com/twingly/twingly-analytics-api-ruby/tree/2.0.1) (2015-09-24)
+[Full Changelog](https://github.com/twingly/twingly-analytics-api-ruby/compare/2.0.0...2.0.1)
+
+**Fixed bugs:**
+
+- Crash when pattern is empty string [\#17](https://github.com/twingly/twingly-analytics-api-ruby/issues/17)
+
+**Merged pull requests:**
+
+- Do not allow empty search pattern [\#18](https://github.com/twingly/twingly-analytics-api-ruby/pull/18) ([twingly-mob](https://github.com/twingly-mob))
+- Generate Changelog \(with instructions to update it\) [\#16](https://github.com/twingly/twingly-analytics-api-ruby/pull/16) ([jage](https://github.com/jage))
+
 ## [2.0.0](https://github.com/twingly/twingly-analytics-api-ruby/tree/2.0.0) (2015-09-14)
 [Full Changelog](https://github.com/twingly/twingly-analytics-api-ruby/compare/1.0.1...2.0.0)
 
