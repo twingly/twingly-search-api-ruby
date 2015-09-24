@@ -25,7 +25,7 @@ module Twingly
       end
 
       def request_parameters
-        fail("Missing pattern") unless pattern
+        fail("Missing pattern") if pattern.to_s.empty?
 
         {
           :key => client.api_key,
