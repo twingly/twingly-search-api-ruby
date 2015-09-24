@@ -11,6 +11,7 @@ describe Query do
 
   context "without client" do
     subject { Query.new }
+
     it "should not work" do
       expect { subject }.to raise_error(ArgumentError)
     end
@@ -34,8 +35,9 @@ describe Query do
     let(:query) { Query.new(@client) }
 
     context "with valid pattern" do
-      before { allow_any_instance_of(Query).to receive(:pattern).and_return("christmas") }
+      before { query.pattern = "christmas" }
       subject { query.url }
+
       it { should include("xmloutputversion=2") }
     end
 
@@ -46,7 +48,8 @@ describe Query do
     end
 
     context "with empty pattern" do
-      before { allow_any_instance_of(Query).to receive(:pattern).and_return("") }
+      before { query.pattern = "" }
+
       it "raises an error" do
         expect { query.url }.to raise_error(RuntimeError, "Missing pattern")
       end
@@ -54,7 +57,8 @@ describe Query do
   end
 
   context "with valid pattern" do
-    before { allow_any_instance_of(Query).to receive(:pattern).and_return("christmas") }
+    before { subject.pattern = "christmas" }
+
     it "should add language" do
       subject.language = "en"
       expect(subject.request_parameters).to include(documentlang: 'en')
@@ -77,8 +81,9 @@ describe Query do
   end
 
   describe "#pattern" do
+    before { subject.pattern = "spotify" }
+
     it "should add searchpattern" do
-      subject.pattern = 'spotify'
       expect(subject.url_parameters).to include("searchpattern=spotify")
     end
   end
