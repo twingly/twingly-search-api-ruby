@@ -46,10 +46,9 @@ Too learn more about the capabilities of this API you should read the [Twingly S
 
 ## Development and release
 
-* Bump version in `lib/twingly-analytics/version.rb`, follow [Semantic Versioning 2.0.0](http://semver.org/)
-* Create a git tag and push to GitHub
-* Build and release gem to https://rubygems.org/
-* Make sure the master branch has an up-to-date changelog. Generate with `rake changelog`. Set `CHANGELOG_GITHUB_TOKEN` to a personal access token to increase the API rate limit. (The changelog uses [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator/))
+1. Make sure the master branch has an up-to-date changelog. Generate with `rake changelog`. Set `CHANGELOG_GITHUB_TOKEN` to a personal access token to increase the API rate limit. (The changelog uses [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator/))
+1. Bump version in `lib/twingly-analytics/version.rb`, follow [Semantic Versioning 2.0.0](http://semver.org/)
+1. Build and release gem with `bundle exec rake release`. This will create a git tag for the version and push the `.gem` file to https://rubygems.org/.
 
 ## License
 
