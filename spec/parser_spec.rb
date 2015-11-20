@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-include Twingly::Analytics
+include Twingly::Search
 
 describe Parser do
   it { should respond_to(:parse) }

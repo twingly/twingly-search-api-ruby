@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rspec/its'
 require 'uri'
 
-include Twingly::Analytics
+include Twingly::Search
 
 describe Result do
   it { should respond_to :posts }

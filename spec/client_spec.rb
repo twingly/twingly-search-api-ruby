@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-include Twingly::Analytics
+include Twingly::Search
 
 describe Client do
   subject { Client.new('api_key') }

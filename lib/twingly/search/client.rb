@@ -1,5 +1,5 @@
 module Twingly
-  module Analytics
+  module Search
     class Client
       attr_accessor :api_key
 
@@ -12,7 +12,7 @@ module Twingly
       end
     private
       def env_api_key
-        ENV['TWINGLY_ANALYTICS_KEY']
+        ENV['TWINGLY_SEARCH_KEY']
       end
     end
   end

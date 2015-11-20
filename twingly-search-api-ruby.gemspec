@@ -1,29 +1,23 @@
 # encoding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'twingly-analytics/version'
+require 'twingly/search/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "twingly-analytics"
-  spec.version       = Twingly::Analytics::VERSION
+  spec.name          = "twingly-search"
+  spec.version       = Twingly::Search::VERSION
   spec.platform      = Gem::Platform::RUBY
-  spec.authors       = ["Johan Eckerström"]
-  spec.email         = ["johan.eckerstrom@twingly.com"]
-  spec.homepage      = "http://github.com/twingly/twingly-analytics-api-ruby"
-  spec.summary       = "Ruby API client for Twingly Analytics"
-  spec.description   = "Twingly Analytics is a product from Twingly AB"
+  spec.authors       = ["Twingly AB"]
+  spec.email         = ["support@twingly.com"]
+  spec.homepage      = "http://github.com/twingly/twingly-search-api-ruby"
+  spec.summary       = "Ruby API client for Twingly Search"
+  spec.description   = "Twingly Search is a product from Twingly AB"
   spec.license       = 'MIT'
   spec.required_ruby_version = ">= 1.9.3"
 
   spec.files         = `git ls-files`.split($/)
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
-
-  spec.post_install_message = <<-MESSAGE
-!    The 'twingly-analytics' gem has been deprecated and has been replaced by 'twingly-search'.
-!    See: https://rubygems.org/gems/twingly-search
-!    And: https://github.com/twingly/twingly-search-api-ruby
-MESSAGE
 
   spec.add_dependency "faraday",  ['>= 0.9.2', '< 0.10']
   spec.add_dependency "nokogiri", "~> 1.0"

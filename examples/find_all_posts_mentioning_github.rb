@@ -1,9 +1,9 @@
 Bundler.require
 
-class AnalyticsPostStream
+class SearchPostStream
   def initialize(keyword, language: nil)
-    # Set environment variable TWINGLY_ANALYTICS_KEY
-    client = Twingly::Analytics::Client.new
+    # Set environment variable TWINGLY_SEARCH_KEY
+    client = Twingly::Search::Client.new
     @query = client.query
     @query.language = language
     @query.pattern = "sort-order:asc sort:published #{keyword}"
@@ -23,7 +23,7 @@ class AnalyticsPostStream
   end
 end
 
-stream = AnalyticsPostStream.new("(github) AND (hipchat OR slack)")
+stream = SearchPostStream.new("(github) AND (hipchat OR slack)")
 stream.each do |post|
   puts post.url
 end

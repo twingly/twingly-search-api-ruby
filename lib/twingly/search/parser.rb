@@ -1,7 +1,7 @@
 require 'nokogiri'
 
 module Twingly
-  module Analytics
+  module Search
     class Parser
       def parse(document)
         result = Result.new

@@ -10,30 +10,30 @@ A Ruby gem for Twingly's Search API (previously known as Analytics API). Twingly
 Install via RubyGems
 
 ```Shell
-gem install twingly-analytics
+gem install twingly-search
 ```
 
 Or add to your application's [Gemfile](http://bundler.io/gemfile.html) and then run `bundle`
 
 ```Ruby
-gem 'twingly-analytics'
+gem 'twingly-search'
 ```
 
 ## Usage
 
 ```Ruby
-require 'twingly-analytics'
+require 'twingly/search'
 
-client = Twingly::Analytics::Client.new
+client = Twingly::Search::Client.new
 query = client.query
 query.pattern = 'github page-size:10'
 query.language = 'sv'
 result = query.execute
-=> #<Twingly::Analytics::Result:0x3ff7adcbe3d4 @posts, @number_of_matches_returned=10, @number_of_matches_total=3035221>
+=> #<Twingly::Search::Result:0x3ff7adcbe3d4 @posts, @number_of_matches_returned=10, @number_of_matches_total=3035221>
 result.posts # will include all returned posts
 ```
 
-The `twinlgy-analytics` gem talks to a commercial blog search API and requires an API key. Best practice is to set the `TWINGLY_ANALYTICS_KEY` environment variable to the obtained key. `Twingly::Analytics::Client` can be passed a key at initialization if your setup does not allow environment variables.
+The `twingly-search` gem talks to a commercial blog search API and requires an API key. Best practice is to set the `TWINGLY_SEARCH_KEY` environment variable to the obtained key. `Twingly::Search::Client` can be passed a key at initialization if your setup does not allow environment variables.
 
 Example code can be found in [examples/](examples/).
 
@@ -47,11 +47,11 @@ Too learn more about the capabilities of this API you should read the [Twingly S
 ## Development and release
 
 1. Make sure the master branch has an up-to-date changelog. Generate with `rake changelog`. Set `CHANGELOG_GITHUB_TOKEN` to a personal access token to increase the API rate limit. (The changelog uses [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator/))
-1. Bump version in `lib/twingly-analytics/version.rb`, follow [Semantic Versioning 2.0.0](http://semver.org/)
+1. Bump version in `lib/twingly/search/version.rb`, follow [Semantic Versioning 2.0.0](http://semver.org/)
 1. Build and release gem with `bundle exec rake release`. This will create a git tag for the version and push the `.gem` file to https://rubygems.org/.
 1. Update release information on the [releases page].
 
-[releases page]: https://github.com/twingly/twingly-analytics-api-ruby/releases
+[releases page]: https://github.com/twingly/twingly-search-api-ruby/releases
 
 ## License
 

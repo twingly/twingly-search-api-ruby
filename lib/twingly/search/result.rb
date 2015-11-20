@@ -1,5 +1,5 @@
 module Twingly
-  module Analytics
+  module Search
     class Result
       attr_accessor :number_of_matches_returned, :number_of_matches_total,
         :seconds_elapsed
