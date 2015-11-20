@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-include Twingly::Analytics
+include Twingly::Search
 
 describe Post do
   it { should respond_to :url }

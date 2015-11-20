@@ -9,12 +9,12 @@ deploy:
   provider: rubygems
   api_key:
     secure: QxMWXTQ3/T+0IQZl3pk3hmdoX8FcXTXEhH7Jn7Ub1A1D5faa8VNnfYsWAPjP6+VRgVfKEjAsHNMyZQNTvudpPPC/2kAwwzPvStyS+y7KnRkjZ9acC7sYVVel6cZ2lcl+t8iHY+19NRBFBWpq/P0eCAcR/Ew0XXaLZnig5h/1mQo=
-  gem: twingly-analytics
-  gemspec: twingly-analytics-api-ruby.gemspec
+  gem: twingly-search
+  gemspec: twingly-search-api-ruby.gemspec
   on:
     tags: true
     rvm: 2.2
-    repo: twingly/twingly-analytics-api-ruby
+    repo: twingly/twingly-search-api-ruby
 notifications:
   email: false
   hipchat:

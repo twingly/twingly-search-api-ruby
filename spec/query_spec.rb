@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'vcr_setup'
 
-include Twingly::Analytics
+include Twingly::Search
 
 describe Query do
 

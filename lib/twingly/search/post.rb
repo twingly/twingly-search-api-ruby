@@ -3,7 +3,7 @@
 require 'date'
 
 module Twingly
-  module Analytics
+  module Search
     class Post
       attr_reader :url, :title, :summary, :language_code, :indexed,
         :published, :blog_url, :blog_name, :authority, :blog_rank, :tags

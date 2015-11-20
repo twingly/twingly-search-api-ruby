@@ -1,19 +1,19 @@
 require 'faraday'
 
 module Twingly
-  module Analytics
+  module Search
     class Query
       attr_accessor :pattern, :language, :client, :start_time, :end_time
 
       BASE_URL = 'https://api.twingly.com'
-      ANALYTICS_PATH = '/analytics/Analytics.ashx'
+      SEARCH_PATH = '/analytics/Analytics.ashx'
 
       def initialize(client)
         @client = client
       end
 
       def url
-        "#{BASE_URL}#{ANALYTICS_PATH}?#{url_parameters}"
+        "#{BASE_URL}#{SEARCH_PATH}?#{url_parameters}"
       end
 
       def execute
@@ -52,8 +52,8 @@ module Twingly
           faraday.request :url_encoded
           faraday.adapter Faraday.default_adapter
         end
-        connection.headers[:user_agent] = "Twingly Analytics Ruby Client/#{VERSION}"
-        connection.get(ANALYTICS_PATH, request_parameters)
+        connection.headers[:user_agent] = "Twingly Search Ruby Client/#{VERSION}"
+        connection.get(SEARCH_PATH, request_parameters)
       end
     end
   end
