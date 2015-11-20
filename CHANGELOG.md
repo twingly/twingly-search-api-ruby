@@ -1,5 +1,25 @@
 # Change Log
 
+## [v3.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/v3.0.0) (2015-11-20)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/2.0.1...v3.0.0)
+
+**Implemented enhancements:**
+
+- Improve "Development and release" section in README [\#19](https://github.com/twingly/twingly-search-api-ruby/issues/19)
+
+**Merged pull requests:**
+
+- Rename analytics to search [\#24](https://github.com/twingly/twingly-search-api-ruby/pull/24) ([roback](https://github.com/roback))
+- Improve "Development and release" section in README [\#22](https://github.com/twingly/twingly-search-api-ruby/pull/22) ([roback](https://github.com/roback))
+- Rename analytics to search in readme [\#20](https://github.com/twingly/twingly-search-api-ruby/pull/20) ([roback](https://github.com/roback))
+
+## [v2.0.2](https://github.com/twingly/twingly-search-api-ruby/tree/v2.0.2) (2015-11-20)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v3.0.0...v2.0.2)
+
+**Merged pull requests:**
+
+- Show deprecation warnings for twingly-analytics [\#23](https://github.com/twingly/twingly-search-api-ruby/pull/23) ([roback](https://github.com/roback))
+
 ## [2.0.1](https://github.com/twingly/twingly-search-api-ruby/tree/2.0.1) (2015-09-24)
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/2.0.0...2.0.1)
 
