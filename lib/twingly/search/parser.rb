@@ -27,7 +27,7 @@ module Twingly
         post_params = {}
         element.element_children.each do |child|
           if child.name == 'tags'
-            post_params[child.name] = parse_tags(child) if child.name == 'tags'
+            post_params[child.name] = parse_tags(child)
           else
             post_params[child.name] = child.text
           end
