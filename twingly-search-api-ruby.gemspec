@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.name          = "twingly-search"
   spec.version       = Twingly::Search::VERSION
   spec.platform      = Gem::Platform::RUBY
-  spec.authors       = ["Johan Eckerström"]
-  spec.email         = ["johan.eckerstrom@twingly.com"]
+  spec.authors       = ["Twingly AB"]
+  spec.email         = ["support@twingly.com"]
   spec.homepage      = "http://github.com/twingly/twingly-search-api-ruby"
   spec.summary       = "Ruby API client for Twingly Search"
   spec.description   = "Twingly Search is a product from Twingly AB"
