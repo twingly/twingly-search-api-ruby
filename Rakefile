@@ -17,7 +17,9 @@ GitHubChangelogGenerator::RakeTask.new(:changelog) do |config|
 end
 
 desc "Synonym for spec"
-task :test => :spec
+task test: :spec
+
 desc "Synonym for spec"
-task :tests => :spec
-task :default => :spec
+task tests: :spec
+
+task default: :spec

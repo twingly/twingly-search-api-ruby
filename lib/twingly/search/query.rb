@@ -28,12 +28,12 @@ module Twingly
         fail("Missing pattern") if pattern.to_s.empty?
 
         {
-          :key => client.api_key,
-          :searchpattern => pattern,
-          :documentlang => language,
-          :ts => ts,
-          :tsTo => ts_to,
-          :xmloutputversion => 2
+          key: client.api_key,
+          searchpattern: pattern,
+          documentlang: language,
+          ts: ts,
+          tsTo: ts_to,
+          xmloutputversion: 2,
         }
       end
 
@@ -48,7 +48,7 @@ module Twingly
       end
 
       def get_response
-        connection = Faraday.new(:url => BASE_URL) do |faraday|
+        connection = Faraday.new(url: BASE_URL) do |faraday|
           faraday.request :url_encoded
           faraday.adapter Faraday.default_adapter
         end
