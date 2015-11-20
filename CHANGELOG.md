@@ -1,62 +1,62 @@
 # Change Log
 
-## [2.0.1](https://github.com/twingly/twingly-analytics-api-ruby/tree/2.0.1) (2015-09-24)
-[Full Changelog](https://github.com/twingly/twingly-analytics-api-ruby/compare/2.0.0...2.0.1)
+## [2.0.1](https://github.com/twingly/twingly-search-api-ruby/tree/2.0.1) (2015-09-24)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/2.0.0...2.0.1)
 
 **Fixed bugs:**
 
-- Crash when pattern is empty string [\#17](https://github.com/twingly/twingly-analytics-api-ruby/issues/17)
+- Crash when pattern is empty string [\#17](https://github.com/twingly/twingly-search-api-ruby/issues/17)
 
 **Merged pull requests:**
 
-- Do not allow empty search pattern [\#18](https://github.com/twingly/twingly-analytics-api-ruby/pull/18) ([twingly-mob](https://github.com/twingly-mob))
-- Generate Changelog \(with instructions to update it\) [\#16](https://github.com/twingly/twingly-analytics-api-ruby/pull/16) ([jage](https://github.com/jage))
+- Do not allow empty search pattern [\#18](https://github.com/twingly/twingly-search-api-ruby/pull/18) ([twingly-mob](https://github.com/twingly-mob))
+- Generate Changelog \(with instructions to update it\) [\#16](https://github.com/twingly/twingly-search-api-ruby/pull/16) ([jage](https://github.com/jage))
 
-## [2.0.0](https://github.com/twingly/twingly-analytics-api-ruby/tree/2.0.0) (2015-09-14)
-[Full Changelog](https://github.com/twingly/twingly-analytics-api-ruby/compare/1.0.1...2.0.0)
+## [2.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/2.0.0) (2015-09-14)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/1.0.1...2.0.0)
 
 **Implemented enhancements:**
 
-- Release gem to rubygems.org [\#10](https://github.com/twingly/twingly-analytics-api-ruby/issues/10)
+- Release gem to rubygems.org [\#10](https://github.com/twingly/twingly-search-api-ruby/issues/10)
 
 **Merged pull requests:**
 
-- Improve time pagination \(breaking compatibility for Query\#start\_time and Query\#end\_time\) [\#15](https://github.com/twingly/twingly-analytics-api-ruby/pull/15) ([jage](https://github.com/jage))
+- Improve time pagination \(breaking compatibility for Query\#start\_time and Query\#end\_time\) [\#15](https://github.com/twingly/twingly-search-api-ruby/pull/15) ([jage](https://github.com/jage))
 
-## [1.0.1](https://github.com/twingly/twingly-analytics-api-ruby/tree/1.0.1) (2015-04-29)
-[Full Changelog](https://github.com/twingly/twingly-analytics-api-ruby/compare/1.0.0...1.0.1)
+## [1.0.1](https://github.com/twingly/twingly-search-api-ruby/tree/1.0.1) (2015-04-29)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/1.0.0...1.0.1)
 
 **Fixed bugs:**
 
-- Support Ruby 2.2 [\#12](https://github.com/twingly/twingly-analytics-api-ruby/issues/12)
-- HTTPS broke compatibility with Ruby 1.9.3 [\#8](https://github.com/twingly/twingly-analytics-api-ruby/issues/8)
+- Support Ruby 2.2 [\#12](https://github.com/twingly/twingly-search-api-ruby/issues/12)
+- HTTPS broke compatibility with Ruby 1.9.3 [\#8](https://github.com/twingly/twingly-search-api-ruby/issues/8)
 
 **Closed issues:**
 
-- Use the rspec-its gem [\#11](https://github.com/twingly/twingly-analytics-api-ruby/issues/11)
+- Use the rspec-its gem [\#11](https://github.com/twingly/twingly-search-api-ruby/issues/11)
 
 **Merged pull requests:**
 
-- Fix deprecations [\#14](https://github.com/twingly/twingly-analytics-api-ruby/pull/14) ([walro](https://github.com/walro))
-- Support Ruby 2.2 [\#13](https://github.com/twingly/twingly-analytics-api-ruby/pull/13) ([dentarg](https://github.com/dentarg))
-- Use Faraday instead of Net::HTTP directly [\#9](https://github.com/twingly/twingly-analytics-api-ruby/pull/9) ([jage](https://github.com/jage))
+- Fix deprecations [\#14](https://github.com/twingly/twingly-search-api-ruby/pull/14) ([walro](https://github.com/walro))
+- Support Ruby 2.2 [\#13](https://github.com/twingly/twingly-search-api-ruby/pull/13) ([dentarg](https://github.com/dentarg))
+- Use Faraday instead of Net::HTTP directly [\#9](https://github.com/twingly/twingly-search-api-ruby/pull/9) ([jage](https://github.com/jage))
 
-## [1.0.0](https://github.com/twingly/twingly-analytics-api-ruby/tree/1.0.0) (2014-10-30)
+## [1.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/1.0.0) (2014-10-30)
 **Implemented enhancements:**
 
-- Use HTTPS for API access [\#7](https://github.com/twingly/twingly-analytics-api-ruby/issues/7)
-- Remove swedish comment [\#5](https://github.com/twingly/twingly-analytics-api-ruby/issues/5)
-- Rewrite history to remove huge vcr-cassettes [\#4](https://github.com/twingly/twingly-analytics-api-ruby/issues/4)
-- Remove humongous vcr cassettes [\#1](https://github.com/twingly/twingly-analytics-api-ruby/issues/1)
+- Use HTTPS for API access [\#7](https://github.com/twingly/twingly-search-api-ruby/issues/7)
+- Remove swedish comment [\#5](https://github.com/twingly/twingly-search-api-ruby/issues/5)
+- Rewrite history to remove huge vcr-cassettes [\#4](https://github.com/twingly/twingly-search-api-ruby/issues/4)
+- Remove humongous vcr cassettes [\#1](https://github.com/twingly/twingly-search-api-ruby/issues/1)
 
 **Closed issues:**
 
-- Add a LICENSE [\#6](https://github.com/twingly/twingly-analytics-api-ruby/issues/6)
-- Wrap lines at 72 characters [\#2](https://github.com/twingly/twingly-analytics-api-ruby/issues/2)
+- Add a LICENSE [\#6](https://github.com/twingly/twingly-search-api-ruby/issues/6)
+- Wrap lines at 72 characters [\#2](https://github.com/twingly/twingly-search-api-ruby/issues/2)
 
 **Merged pull requests:**
 
-- Refactor to improve readability [\#3](https://github.com/twingly/twingly-analytics-api-ruby/pull/3) ([jage](https://github.com/jage))
+- Refactor to improve readability [\#3](https://github.com/twingly/twingly-search-api-ruby/pull/3) ([jage](https://github.com/jage))
 
 
 
