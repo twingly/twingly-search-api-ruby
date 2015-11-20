@@ -37,7 +37,7 @@ module Twingly
         }
       end
 
-    private
+      private
 
       def ts
         start_time.to_time.strftime("%F %T") if start_time

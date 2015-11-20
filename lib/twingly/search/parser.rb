@@ -20,7 +20,9 @@ module Twingly
 
         result
       end
-    private
+
+      private
+
       def parse_post(element)
         post_params = {}
         element.element_children.each do |child|
