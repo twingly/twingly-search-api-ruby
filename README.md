@@ -9,19 +9,19 @@ A Ruby gem for Twingly's Search API (previously known as Analytics API). Twingly
 
 Install via RubyGems
 
-```Shell
+```shell
 gem install twingly-search
 ```
 
 Or add to your application's [Gemfile](http://bundler.io/gemfile.html) and then run `bundle`
 
-```Ruby
+```ruby
 gem 'twingly-search'
 ```
 
 ## Usage
 
-```Ruby
+```ruby
 require 'twingly/search'
 
 client = Twingly::Search::Client.new
