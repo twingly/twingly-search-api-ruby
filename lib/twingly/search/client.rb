@@ -10,7 +10,9 @@ module Twingly
       def query
         Query.new(self)
       end
-    private
+
+      private
+
       def env_api_key
         ENV['TWINGLY_SEARCH_KEY']
       end
