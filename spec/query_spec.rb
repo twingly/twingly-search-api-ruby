@@ -12,13 +12,14 @@ describe Query do
     end
   end
 
+  let(:client_double) { double("Client") }
+
   before(:each) do
-    @client = double("Client")
-    allow(@client).to receive(:api_key).and_return("api_key")
-    allow(@client).to receive(:endpoint_url).and_return("https://example.com")
+    allow(client_double).to receive(:api_key).and_return("api_key")
+    allow(client_double).to receive(:endpoint_url).and_return("https://example.com")
   end
 
-  subject { Query.new(@client) }
+  subject { Query.new(client_double) }
 
   it { should respond_to(:pattern) }
   it { should respond_to(:language) }
@@ -28,7 +29,7 @@ describe Query do
   it { should respond_to(:client) }
 
   describe "#url" do
-    let(:query) { Query.new(@client) }
+    let(:query) { Query.new(client_double) }
 
     context "with valid pattern" do
       before { query.pattern = "christmas" }
