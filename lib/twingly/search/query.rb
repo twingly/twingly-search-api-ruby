@@ -1,23 +1,20 @@
-require 'faraday'
+require "faraday"
 
 module Twingly
   module Search
     class Query
       attr_accessor :pattern, :language, :client, :start_time, :end_time
 
-      BASE_URL = 'https://api.twingly.com'
-      SEARCH_PATH = '/analytics/Analytics.ashx'
-
       def initialize(client)
         @client = client
       end
 
       def url
-        "#{BASE_URL}#{SEARCH_PATH}?#{url_parameters}"
+        "#{Client::BASE_URL}#{Client::SEARCH_PATH}?#{url_parameters}"
       end
 
       def execute
-        Parser.new.parse(get_response.body)
+        @client.execute_query(self)
       end
 
       def url_parameters
@@ -45,15 +42,6 @@ module Twingly
 
       def ts_to
         end_time.to_time.strftime("%F %T") if end_time
-      end
-
-      def get_response
-        connection = Faraday.new(url: BASE_URL) do |faraday|
-          faraday.request :url_encoded
-          faraday.adapter Faraday.default_adapter
-        end
-        connection.headers[:user_agent] = "Twingly Search Ruby Client/#{VERSION}"
-        connection.get(SEARCH_PATH, request_parameters)
       end
     end
   end

@@ -4,11 +4,6 @@ require 'vcr_setup'
 include Twingly::Search
 
 describe Query do
-
-  it "BASE_URL should be parsable" do
-    expect(URI(Query::BASE_URL).to_s).to eq(Query::BASE_URL)
-  end
-
   context "without client" do
     subject { Query.new }
 
@@ -89,17 +84,18 @@ describe Query do
   end
 
   describe "#execute" do
-    context "with invalid API key" do
-      subject {
-        query = Query.new(Client.new('wrong'))
+    context "when called" do
+      let(:client) { instance_double("Client", "api_key") }
+      subject do
+        query = Query.new(client)
         query.pattern = 'something'
         query
-      }
+      end
 
-      it "should raise error on invalid API key" do
-        VCR.use_cassette('search_without_valid_api_key') do
-          expect { subject.execute }.to raise_error(RuntimeError, "The API key does not exist.")
-        end
+      it "should send the query to the client" do
+        expect(client).to receive(:execute_query).with(subject)
+
+        subject.execute
       end
     end
 
