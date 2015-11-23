@@ -21,6 +21,10 @@ module Twingly
         Parser.new.parse(response_body)
       end
 
+      def endpoint_url
+        "#{BASE_URL}#{SEARCH_PATH}"
+      end
+
       private
 
       def env_api_key

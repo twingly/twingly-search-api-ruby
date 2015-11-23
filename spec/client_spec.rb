@@ -46,4 +46,15 @@ describe Client do
       end
     end
   end
+
+  describe "#endpoint_url" do
+    subject { Client.new("api_key").endpoint_url }
+    let(:expected) { "#{Client::BASE_URL}#{Client::SEARCH_PATH}" }
+
+    it { is_expected.to eq(expected) }
+
+    it "should be parsable" do
+      expect(URI(subject).to_s).to eq(expected)
+    end
+  end
 end

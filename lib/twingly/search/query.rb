@@ -10,7 +10,7 @@ module Twingly
       end
 
       def url
-        "#{Client::BASE_URL}#{Client::SEARCH_PATH}?#{url_parameters}"
+        "#{client.endpoint_url}?#{url_parameters}"
       end
 
       def execute

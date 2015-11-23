@@ -13,8 +13,9 @@ describe Query do
   end
 
   before(:each) do
-    @client = double('client')
-    allow(@client).to receive(:api_key).and_return('api_key')
+    @client = double("Client")
+    allow(@client).to receive(:api_key).and_return("api_key")
+    allow(@client).to receive(:endpoint_url).and_return("https://example.com")
   end
 
   subject { Query.new(@client) }
