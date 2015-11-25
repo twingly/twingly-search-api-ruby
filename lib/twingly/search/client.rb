@@ -3,13 +3,16 @@ require "faraday"
 module Twingly
   module Search
     class Client
-      attr_accessor :api_key
+      attr_accessor :api_key, :user_agent
 
       BASE_URL    = "https://api.twingly.com"
       SEARCH_PATH = "/analytics/Analytics.ashx"
 
-      def initialize(api_key = nil)
+      DEFAULT_USER_AGENT = "Twingly Search Ruby Client/#{VERSION}"
+
+      def initialize(api_key = nil, user_agent: DEFAULT_USER_AGENT)
         @api_key = api_key || env_api_key || fail("Missing API key")
+        @user_agent = user_agent
       end
 
       def query
@@ -36,7 +39,7 @@ module Twingly
           faraday.request :url_encoded
           faraday.adapter Faraday.default_adapter
         end
-        connection.headers[:user_agent] = "Twingly Search Ruby Client/#{VERSION}"
+        connection.headers[:user_agent] = user_agent
         connection.get(SEARCH_PATH, query.request_parameters)
       end
     end

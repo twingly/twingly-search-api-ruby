@@ -24,6 +24,15 @@ describe Client do
     it { expect { subject }.to raise_error(RuntimeError, 'Missing API key') }
   end
 
+  context "with optional :user_agent given" do
+    let(:user_agent) { "TwinglySearchTest/1.0" }
+    subject { Client.new('api_key', user_agent: user_agent) }
+
+    it "should use that user agent" do
+      expect(subject.user_agent).to eq(user_agent)
+    end
+  end
+
   describe '#query' do
     subject { Client.new('api_key').query }
     it { should be_a Query }
