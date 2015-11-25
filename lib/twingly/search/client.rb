@@ -11,7 +11,7 @@ module Twingly
       DEFAULT_USER_AGENT = "Twingly Search Ruby Client/#{VERSION}"
 
       def initialize(api_key = nil, options = {})
-        @api_key = api_key || env_api_key || fail("Missing API key")
+        @api_key = api_key || env_api_key || fail(MissingAPIKeyError)
         @user_agent = options.fetch(:user_agent) { DEFAULT_USER_AGENT }
       end
 
