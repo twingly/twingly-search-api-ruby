@@ -22,8 +22,8 @@ describe Parser do
       end
     end
 
-    context "with a wrong api key result" do
-      let(:document) { Fixture.get(:wrong_api_key) }
+    context "with an unauthorized api key result" do
+      let(:document) { Fixture.get(:unauthorized_api_key) }
 
       it "should raise AuthError" do
         expect { subject }.to raise_error(AuthError)
