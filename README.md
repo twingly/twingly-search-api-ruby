@@ -42,7 +42,9 @@ Too learn more about the capabilities of this API you should read the [Twingly S
 ## Requirements
 
 * API key, contact sales@twingly.com to get one
-* Ruby 1.9, 2.0, 2.1, 2.2
+* Ruby
+  * Ruby 1.9, 2.0, 2.1, 2.2
+  * JRuby >= 9.0.0.0
 
 ## Development and release
 
