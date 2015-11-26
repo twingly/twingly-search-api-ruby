@@ -4,11 +4,6 @@ require 'vcr_setup'
 include Twingly::Search
 
 describe Query do
-
-  it "BASE_URL should be parsable" do
-    expect(URI(Query::BASE_URL).to_s).to eq(Query::BASE_URL)
-  end
-
   context "without client" do
     subject { Query.new }
 
@@ -17,12 +12,13 @@ describe Query do
     end
   end
 
+  let(:client_double) { double("Client") }
+
   before(:each) do
-    @client = double('client')
-    allow(@client).to receive(:api_key).and_return('api_key')
+    allow(client_double).to receive(:api_key).and_return("api_key")
   end
 
-  subject { Query.new(@client) }
+  subject { Query.new(client_double) }
 
   it { should respond_to(:pattern) }
   it { should respond_to(:language) }
@@ -32,7 +28,12 @@ describe Query do
   it { should respond_to(:client) }
 
   describe "#url" do
-    let(:query) { Query.new(@client) }
+    before do
+      endpoint_url = "https://api.twingly.com/analytics/Analytics.ashx"
+      allow(client_double).to receive(:endpoint_url).and_return(endpoint_url)
+    end
+
+    let(:query) { Query.new(client_double) }
 
     context "with valid pattern" do
       before { query.pattern = "christmas" }
@@ -89,17 +90,18 @@ describe Query do
   end
 
   describe "#execute" do
-    context "with invalid API key" do
-      subject {
-        query = Query.new(Client.new('wrong'))
+    context "when called" do
+      let(:client) { instance_double("Client", "api_key") }
+      subject do
+        query = Query.new(client)
         query.pattern = 'something'
         query
-      }
+      end
 
-      it "should raise error on invalid API key" do
-        VCR.use_cassette('search_without_valid_api_key') do
-          expect { subject.execute }.to raise_error(RuntimeError, "The API key does not exist.")
-        end
+      it "should send the query to the client" do
+        expect(client).to receive(:execute_query).with(subject)
+
+        subject.execute
       end
     end
 
