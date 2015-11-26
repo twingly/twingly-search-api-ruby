@@ -23,7 +23,6 @@ describe Twingly::Search::Error do
     error_classes = [
       AuthError,
       ServerError,
-      MissingAPIKeyError,
       MissingPatternError,
     ]
 

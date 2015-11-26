@@ -21,7 +21,7 @@ describe Client do
   context 'without valid API key' do
     before { allow_any_instance_of(Client).to receive(:env_api_key).and_return(nil) }
     subject { Client.new }
-    it { expect { subject }.to raise_error(MissingAPIKeyError) }
+    it { expect { subject }.to raise_error(AuthError, "No API key has been provided.") }
   end
 
   context "with optional :user_agent given" do

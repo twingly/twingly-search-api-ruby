@@ -19,12 +19,6 @@ module Twingly
     class ServerError < Error
     end
 
-    class MissingAPIKeyError < Error
-      def initialize
-        super("No API key has been provided.")
-      end
-    end
-
     class MissingPatternError < Error
       def initialize
         super("Missing pattern")
