@@ -11,7 +11,7 @@ module Twingly
       DEFAULT_USER_AGENT = "Twingly Search Ruby Client/#{VERSION}"
 
       def initialize(api_key = nil, options = {})
-        @api_key = api_key || env_api_key || fail("Missing API key")
+        @api_key = api_key || env_api_key || api_key_missing
         @user_agent = options.fetch(:user_agent) { DEFAULT_USER_AGENT }
       end
 
@@ -41,6 +41,10 @@ module Twingly
         end
         connection.headers[:user_agent] = user_agent
         connection.get(SEARCH_PATH, query.request_parameters)
+      end
+
+      def api_key_missing
+        fail AuthError, "No API key has been provided."
       end
     end
   end

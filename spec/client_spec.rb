@@ -21,7 +21,7 @@ describe Client do
   context 'without valid API key' do
     before { allow_any_instance_of(Client).to receive(:env_api_key).and_return(nil) }
     subject { Client.new }
-    it { expect { subject }.to raise_error(RuntimeError, 'Missing API key') }
+    it { expect { subject }.to raise_error(AuthError, "No API key has been provided.") }
   end
 
   context "with optional :user_agent given" do
@@ -50,7 +50,7 @@ describe Client do
 
       it "should raise error on invalid API key" do
         VCR.use_cassette("search_without_valid_api_key") do
-          expect { subject.execute_query(query) }.to raise_error(RuntimeError, "The API key does not exist.")
+          expect { subject.execute_query(query) }.to raise_error(AuthError, "The API key does not exist.")
         end
       end
     end

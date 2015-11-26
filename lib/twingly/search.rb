@@ -1,3 +1,4 @@
+require 'twingly/search/error'
 require 'twingly/search/client'
 require 'twingly/search/query'
 require 'twingly/search/result'

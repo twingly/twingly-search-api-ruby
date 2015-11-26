@@ -22,7 +22,7 @@ module Twingly
       end
 
       def request_parameters
-        fail("Missing pattern") if pattern.to_s.empty?
+        fail MissingPatternError if pattern.to_s.empty?
 
         {
           key: client.api_key,
