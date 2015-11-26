@@ -16,7 +16,6 @@ describe Query do
 
   before(:each) do
     allow(client_double).to receive(:api_key).and_return("api_key")
-    allow(client_double).to receive(:endpoint_url).and_return("https://example.com")
   end
 
   subject { Query.new(client_double) }
@@ -29,6 +28,11 @@ describe Query do
   it { should respond_to(:client) }
 
   describe "#url" do
+    before do
+      endpoint_url = "https://api.twingly.com/analytics/Analytics.ashx"
+      allow(client_double).to receive(:endpoint_url).and_return(endpoint_url)
+    end
+
     let(:query) { Query.new(client_double) }
 
     context "with valid pattern" do
