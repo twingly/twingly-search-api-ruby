@@ -2,6 +2,7 @@ require "faraday"
 
 module Twingly
   module Search
+    # Twingly Search API client
     class Client
       attr_accessor :api_key, :user_agent
 
@@ -10,20 +11,39 @@ module Twingly
 
       DEFAULT_USER_AGENT = "Twingly Search Ruby Client/#{VERSION}"
 
+      # Creates a new Twingly Search API client
+      #
+      # @param api_key [optional, String] the API key provided by Twingly.
+      #   If nil, reads api_key from environment (TWINGLY_SEARCH_KEY).
+      # @param options [Hash]
+      # @option options [String] :user_agent the user agent to be used
+      #    for all requests
+      # @raise [AuthError] if an API key isn't set.
       def initialize(api_key = nil, options = {})
         @api_key = api_key || env_api_key || api_key_missing
         @user_agent = options.fetch(:user_agent) { DEFAULT_USER_AGENT }
       end
 
+      # Returns a new Query object connected to this client
+      #
+      # @return [Query]
       def query
         Query.new(self)
       end
 
+      # Executes the given Query and returns the result
+      #
+      # This method should not be called manually, as that is
+      # handled by {Query#execute}.
+      #
+      # @param query [Query] the query to be executed.
+      # @return [Result]
       def execute_query(query)
         response_body = get_response(query).body
         Parser.new.parse(response_body)
       end
 
+      # @return [String] the API endpoint URL
       def endpoint_url
         "#{BASE_URL}#{SEARCH_PATH}"
       end
