@@ -45,5 +45,13 @@ describe Parser do
         expect { subject }.to raise_error(ServerError)
       end
     end
+
+    context "with a undefined error result" do
+      let(:document) { Fixture.get(:non_xml) }
+
+      it "should raise ServerError" do
+        expect { subject }.to raise_error(ServerError, /503 Service Unavailable/)
+      end
+    end
   end
 end
