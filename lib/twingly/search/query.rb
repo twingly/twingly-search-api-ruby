@@ -19,6 +19,7 @@ module Twingly
       # @param client [Client] the client that this query should be connected to.
       def initialize(client)
         @client = client
+        yield self if block_given?
       end
 
       # @return [String] the request url for the query.

@@ -30,9 +30,10 @@ module Twingly
 
       # Returns a new Query object connected to this client
       #
+      # @yield [Query]
       # @return [Query]
-      def query
-        Query.new(self)
+      def query(&block)
+        Query.new(self, &block)
       end
 
       # Executes the given Query and returns the result

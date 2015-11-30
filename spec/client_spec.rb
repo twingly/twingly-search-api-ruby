@@ -68,6 +68,19 @@ describe Client do
   describe '#query' do
     subject { Client.new('api_key').query }
     it { should be_a Query }
+
+    context "with block" do
+      subject { Client.new("api_key") }
+
+      it "should yield the query" do
+        yielded_query = nil
+        query = subject.query do |q|
+          yielded_query = q
+        end
+
+        expect(yielded_query).to equal(query)
+      end
+    end
   end
 
   describe "#execute_query" do
