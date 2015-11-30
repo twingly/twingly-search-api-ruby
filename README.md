@@ -55,6 +55,16 @@ Too learn more about the capabilities of this API you should read the [Twingly S
 
 [releases page]: https://github.com/twingly/twingly-search-api-ruby/releases
 
+### Documentation
+
+This gem is documented using [YARD]. To start a local YARD server run:
+
+    bundle exec rake yard:server
+
+The YARD server reloads the documentation automatically so there is no need to restart it when making changes.
+
+[YARD]: http://yardoc.org/
+
 ## License
 
 The MIT License (MIT)

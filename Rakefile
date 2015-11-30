@@ -16,6 +16,22 @@ GitHubChangelogGenerator::RakeTask.new(:changelog) do |config|
   config.project = "twingly-search-api-ruby"
 end
 
+namespace :yard do
+  require "yard"
+  require "yard/rake/yardoc_task"
+
+  desc "Generate Yardoc documentation"
+  YARD::Rake::YardocTask.new(:generate)
+
+  desc "Start a Yard server"
+  task :server do
+    sh("yard", "server", "--reload")
+  end
+end
+
+desc "Synonym for yard:generate"
+task yard: "yard:generate"
+
 desc "Synonym for spec"
 task test: :spec
 
