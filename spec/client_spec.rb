@@ -4,32 +4,35 @@ include Twingly::Search
 
 describe Client do
   subject { Client.new('api_key') }
-  context 'with API key as arguments' do
-    it { should be_a Client }
-  end
 
-  it "BASE_URL should be parsable" do
-    expect(URI(Client::BASE_URL).to_s).to eq(Client::BASE_URL)
-  end
+  describe ".new" do
+    context 'with API key as arguments' do
+      it { should be_a Client }
+    end
 
-  context 'with API key from ENV variable' do
-    before { allow_any_instance_of(Client).to receive(:env_api_key).and_return('api_key') }
-    subject { Client.new }
-    it { should be_a Client }
-  end
+    it "BASE_URL should be parsable" do
+      expect(URI(Client::BASE_URL).to_s).to eq(Client::BASE_URL)
+    end
 
-  context 'without valid API key' do
-    before { allow_any_instance_of(Client).to receive(:env_api_key).and_return(nil) }
-    subject { Client.new }
-    it { expect { subject }.to raise_error(AuthError, "No API key has been provided.") }
-  end
+    context 'with API key from ENV variable' do
+      before { allow_any_instance_of(Client).to receive(:env_api_key).and_return('api_key') }
+      subject { Client.new }
+      it { should be_a Client }
+    end
 
-  context "with optional :user_agent given" do
-    let(:user_agent) { "TwinglySearchTest/1.0" }
-    subject { Client.new('api_key', user_agent: user_agent) }
+    context 'without valid API key' do
+      before { allow_any_instance_of(Client).to receive(:env_api_key).and_return(nil) }
+      subject { Client.new }
+      it { expect { subject }.to raise_error(AuthError, "No API key has been provided.") }
+    end
 
-    it "should use that user agent" do
-      expect(subject.user_agent).to eq(user_agent)
+    context "with optional :user_agent given" do
+      let(:user_agent) { "TwinglySearchTest/1.0" }
+      subject { Client.new('api_key', user_agent: user_agent) }
+
+      it "should use that user agent" do
+        expect(subject.user_agent).to eq(user_agent)
+      end
     end
   end
 
