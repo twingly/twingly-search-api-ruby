@@ -17,6 +17,12 @@ module Twingly
         data_node = nokogiri.at_xpath('/twinglydata')
         handle_non_xml_document(nokogiri) unless data_node
 
+        create_result(data_node)
+      end
+
+      private
+
+      def create_result(data_node)
         result = Result.new
         result.number_of_matches_returned = data_node.attribute('numberOfMatchesReturned').value.to_i
         result.number_of_matches_total    = data_node.attribute('numberOfMatchesTotal').value.to_i
@@ -28,8 +34,6 @@ module Twingly
 
         result
       end
-
-      private
 
       def parse_post(element)
         post_params = {}
