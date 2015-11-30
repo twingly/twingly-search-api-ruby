@@ -7,7 +7,7 @@ module Twingly
       #
       # @param [String] document containing an API response XML.
       # @raise [Error] which error depends on the API response (see {Error.from_api_response_message}).
-      # @return [Result] containing the result for this.
+      # @return [Result] containing the result.
       def parse(document)
         nokogiri = Nokogiri::XML(document)
 

@@ -19,7 +19,7 @@ module Twingly
     #   See https://developer.twingly.com/resources/search/#authority
     # @attr_reader [Integer] blog_rank the rank of the blog, based on authority and language.
     #   See https://developer.twingly.com/resources/search/#authority
-    # @attr_reader [Integer] tags
+    # @attr_reader [Array] tags
     class Post
       attr_reader :url, :title, :summary, :language_code, :indexed,
         :published, :blog_url, :blog_name, :authority, :blog_rank, :tags

@@ -18,7 +18,7 @@ module Twingly
       # @param options [Hash]
       # @option options [String] :user_agent the user agent to be used
       #    for all requests
-      # @raise [AuthError] if an API key isn't set.
+      # @raise [AuthError] if an API key is not set.
       def initialize(api_key = nil, options = {})
         @api_key = api_key || env_api_key || api_key_missing
         @user_agent = options.fetch(:user_agent) { DEFAULT_USER_AGENT }
