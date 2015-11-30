@@ -20,8 +20,12 @@ module Twingly
       #    for all requests
       # @raise [AuthError] if an API key is not set.
       def initialize(api_key = nil, options = {})
-        @api_key = api_key || env_api_key || api_key_missing
+        @api_key    = api_key
         @user_agent = options.fetch(:user_agent) { DEFAULT_USER_AGENT }
+
+        yield self if block_given?
+
+        @api_key ||= env_api_key || api_key_missing
       end
 
       # Returns a new Query object connected to this client

@@ -34,6 +34,35 @@ describe Client do
         expect(subject.user_agent).to eq(user_agent)
       end
     end
+
+    context "with block" do
+      it "should yield self" do
+        yielded_client = nil
+        client = Client.new("api_key") do |c|
+          yielded_client = c
+        end
+
+        expect(yielded_client).to equal(client)
+      end
+
+      context "when api key gets set in block" do
+        before { allow_any_instance_of(Client).to receive(:env_api_key).and_return(nil) }
+        let(:api_key) { "api_key_from_block" }
+        subject do
+          Client.new do |client|
+            client.api_key = api_key
+          end
+        end
+
+        it "should not raise an AuthError" do
+          expect { subject }.not_to raise_exception
+        end
+
+        it "should use that api key" do
+          expect(subject.api_key).to eq(api_key)
+        end
+      end
+    end
   end
 
   describe '#query' do
