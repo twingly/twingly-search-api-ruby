@@ -28,7 +28,7 @@ module Twingly
 
       # Executes the query and returns the result.
       #
-      # @raise [MissingPatternError] if {#pattern} is empty.
+      # @raise [QueryError] if {#pattern} is empty.
       # @return [Result] the result for this query.
       def execute
         @client.execute_query(self)
@@ -40,10 +40,10 @@ module Twingly
         Faraday::Utils.build_query(request_parameters)
       end
 
-      # @raise [MissingPatternError] if {#pattern} is empty.
+      # @raise [QueryError] if {#pattern} is empty.
       # @return [Hash] the request parameters.
       def request_parameters
-        fail MissingPatternError if pattern.to_s.empty?
+        fail QueryError, "Missing pattern" if pattern.to_s.empty?
 
         {
           key: client.api_key,

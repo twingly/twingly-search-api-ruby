@@ -23,7 +23,7 @@ describe Twingly::Search::Error do
     error_classes = [
       AuthError,
       ServerError,
-      MissingPatternError,
+      QueryError,
     ]
 
     error_classes.each do |error_class|

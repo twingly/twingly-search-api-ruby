@@ -21,10 +21,7 @@ module Twingly
     class ServerError < Error
     end
 
-    class MissingPatternError < Error
-      def initialize
-        super("Missing pattern")
-      end
+    class QueryError < Error
     end
   end
 end
