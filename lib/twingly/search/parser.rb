@@ -14,19 +14,26 @@ module Twingly
         failure = nokogiri.at_xpath('//name:blogstream/name:operationResult[@resultType="failure"]', name: 'http://www.twingly.com')
         handle_failure(failure) if failure
 
-        result = Result.new
-        result.number_of_matches_returned = nokogiri.at_xpath('/twinglydata/@numberOfMatchesReturned').value.to_i
-        result.number_of_matches_total = nokogiri.at_xpath('/twinglydata/@numberOfMatchesTotal').value.to_i
-        result.seconds_elapsed = nokogiri.at_xpath('/twinglydata/@secondsElapsed').value.to_f
+        data_node = nokogiri.at_xpath('/twinglydata')
+        handle_non_xml_document(nokogiri) unless data_node
 
-        nokogiri.xpath('//post').each do |post|
+        create_result(data_node)
+      end
+
+      private
+
+      def create_result(data_node)
+        result = Result.new
+        result.number_of_matches_returned = data_node.attribute('numberOfMatchesReturned').value.to_i
+        result.number_of_matches_total    = data_node.attribute('numberOfMatchesTotal').value.to_i
+        result.seconds_elapsed            = data_node.attribute('secondsElapsed').value.to_f
+
+        data_node.xpath('//post').each do |post|
           result.posts << parse_post(post)
         end
 
         result
       end
-
-      private
 
       def parse_post(element)
         post_params = {}
@@ -50,6 +57,11 @@ module Twingly
 
       def handle_failure(failure)
         fail Error.from_api_response_message(failure.text)
+      end
+
+      def handle_non_xml_document(document)
+        response_text = document.search('//text()').map(&:text)
+        fail ServerError, response_text
       end
     end
   end
