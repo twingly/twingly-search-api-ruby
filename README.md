@@ -16,21 +16,21 @@ gem install twingly-search
 Or add to your application's [Gemfile](http://bundler.io/gemfile.html) and then run `bundle`
 
 ```ruby
-gem 'twingly-search'
+gem "twingly-search"
 ```
 
 ## Usage
 
 ```ruby
-require 'twingly/search'
+require "twingly/search"
 
 client = Twingly::Search::Client.new do |client|
   client.user_agent = "MyCompany/1.0"
 end
 
 query = client.query do |query|
-  query.pattern  = 'github page-size:10'
-  query.language = 'sv'
+  query.pattern  = "github page-size:10"
+  query.language = "sv"
 end
 
 result = query.execute
@@ -42,11 +42,11 @@ The `twingly-search` gem talks to a commercial blog search API and requires an A
 
 Example code can be found in [examples/](examples/).
 
-Too learn more about the capabilities of this API you should read the [Twingly Search API documentation](https://developer.twingly.com/resources/search/).
+To learn more about the capabilities of the API, please read the [Twingly Search API documentation](https://developer.twingly.com/resources/search/).
 
 ## Requirements
 
-* API key, contact sales@twingly.com to get one
+* API key, contact sales@twingly.com via [twingly.com](http://www.twingly.com/try-for-free/) to get one
 * Ruby
   * Ruby 1.9, 2.0, 2.1, 2.2
   * JRuby 9000
