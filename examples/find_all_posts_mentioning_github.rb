@@ -18,7 +18,7 @@ class SearchPostStream
   # @see https://developer.twingly.com/resources/search/#pagination
   def each
     loop do
-      result = @query.execute
+      result = execute_with_retry
       result.posts.each do |post|
         yield post
       end
@@ -26,6 +26,14 @@ class SearchPostStream
       break if result.all_results_returned?
 
       @query.start_time = result.posts.last.published
+    end
+  end
+
+  private
+
+  def execute_with_retry
+    Retryable.retryable(on: Twingly::Search::ServerError) do
+      @query.execute
     end
   end
 end
