@@ -4,11 +4,15 @@ class SearchPostStream
   def initialize(keyword, language: nil)
     # Set environment variable TWINGLY_SEARCH_KEY
     client = Twingly::Search::Client.new
-    @query = client.query
-    @query.language = language
-    @query.pattern = "sort-order:asc sort:published #{keyword}"
+    @query = client.query do |query|
+      query.language = language
+      query.pattern  = "sort-order:asc sort:published #{keyword}"
+    end
   end
 
+  # Run block for each blog post returned from api.
+  # Uses a sliding time-based window to get all results.
+  # @see https://developer.twingly.com/resources/search/#pagination
   def each
     loop do
       result = @query.execute
