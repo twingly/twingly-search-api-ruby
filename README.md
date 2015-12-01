@@ -24,10 +24,15 @@ gem 'twingly-search'
 ```ruby
 require 'twingly/search'
 
-client = Twingly::Search::Client.new
-query = client.query
-query.pattern = 'github page-size:10'
-query.language = 'sv'
+client = Twingly::Search::Client.new do |client|
+  client.user_agent = "MyCompany/1.0"
+end
+
+query = client.query do |query|
+  query.pattern  = 'github page-size:10'
+  query.language = 'sv'
+end
+
 result = query.execute
 => #<Twingly::Search::Result:0x3ff7adcbe3d4 @posts, @number_of_matches_returned=10, @number_of_matches_total=3035221>
 result.posts # will include all returned posts

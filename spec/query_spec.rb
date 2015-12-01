@@ -4,14 +4,6 @@ require 'vcr_setup'
 include Twingly::Search
 
 describe Query do
-  context "without client" do
-    subject { Query.new }
-
-    it "should not work" do
-      expect { subject }.to raise_error(ArgumentError)
-    end
-  end
-
   let(:client_double) { double("Client") }
 
   before(:each) do
@@ -26,6 +18,27 @@ describe Query do
   it { should respond_to(:end_time) }
   it { should respond_to(:execute) }
   it { should respond_to(:client) }
+
+  describe ".new" do
+    context "without client" do
+      subject { Query.new }
+
+      it "should not work" do
+        expect { subject }.to raise_error(ArgumentError)
+      end
+    end
+
+    context "with block" do
+      it "should yield self" do
+        yielded_query = nil
+        query = Query.new(client_double) do |q|
+          yielded_query = q
+        end
+
+        expect(yielded_query).to equal(query)
+      end
+    end
+  end
 
   describe "#url" do
     before do
