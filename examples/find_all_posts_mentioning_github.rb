@@ -3,7 +3,10 @@ Bundler.require
 class SearchPostStream
   def initialize(keyword, language: nil)
     # Set environment variable TWINGLY_SEARCH_KEY
-    client = Twingly::Search::Client.new
+    client = Twingly::Search::Client.new do |client|
+      client.user_agent = "MyCompany/1.0" # Set optional user agent
+    end
+
     @query = client.query do |query|
       query.language = language
       query.pattern  = "sort-order:asc sort:published #{keyword}"

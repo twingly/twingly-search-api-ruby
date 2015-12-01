@@ -24,7 +24,10 @@ gem 'twingly-search'
 ```ruby
 require 'twingly/search'
 
-client = Twingly::Search::Client.new
+client = Twingly::Search::Client.new do |client|
+  client.user_agent = "MyCompany/1.0"
+end
+
 query = client.query do |query|
   query.pattern  = 'github page-size:10'
   query.language = 'sv'
