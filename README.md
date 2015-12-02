@@ -40,9 +40,12 @@ result.posts # will include all returned posts
 
 The `twingly-search` gem talks to a commercial blog search API and requires an API key. Best practice is to set the `TWINGLY_SEARCH_KEY` environment variable to the obtained key. `Twingly::Search::Client` can be passed a key at initialization if your setup does not allow environment variables.
 
-Example code can be found in [examples/](examples/).
+To learn more about the features of this gem, read the [gem documentation] or check out the example code that can be found in [examples/](examples/).
 
-To learn more about the capabilities of the API, please read the [Twingly Search API documentation](https://developer.twingly.com/resources/search/).
+To learn more about the capabilities of the API, please read the [Twingly Search API documentation].
+
+[gem documentation]: http://www.rubydoc.info/github/twingly/twingly-search-api-ruby
+[Twingly Search API documentation]: https://developer.twingly.com/resources/search/
 
 ## Requirements
 
