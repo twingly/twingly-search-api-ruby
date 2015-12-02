@@ -1,16 +1,25 @@
 # Change Log
 
-## [Unreleased](https://github.com/twingly/twingly-search-api-ruby/tree/HEAD)
+## [v4.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/v4.0.0)
 
-[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v3.0.0...HEAD)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v3.0.0...v4.0.0)
 
 **Implemented enhancements:**
 
 - Add JRuby 9000 to supported Ruby versions [\#27](https://github.com/twingly/twingly-search-api-ruby/issues/27)
 - Rename analytics to search [\#21](https://github.com/twingly/twingly-search-api-ruby/issues/21)
 
+**Fixed bugs:**
+
+- Handle non-XML responses from server [\#31](https://github.com/twingly/twingly-search-api-ruby/issues/31)
+- Changelog is not generated correctly [\#25](https://github.com/twingly/twingly-search-api-ruby/issues/25)
+
 **Merged pull requests:**
 
+- Example script: Retry on server error [\#35](https://github.com/twingly/twingly-search-api-ruby/pull/35) ([jage](https://github.com/jage))
+- Yield self [\#34](https://github.com/twingly/twingly-search-api-ruby/pull/34) ([roback](https://github.com/roback))
+- Handle non-XML responses from server [\#33](https://github.com/twingly/twingly-search-api-ruby/pull/33) ([roback](https://github.com/roback))
+- Add YARD documentation comments [\#32](https://github.com/twingly/twingly-search-api-ruby/pull/32) ([roback](https://github.com/roback))
 - Test with JRuby 9000 on travis [\#30](https://github.com/twingly/twingly-search-api-ruby/pull/30) ([roback](https://github.com/roback))
 - Handle exceptions [\#29](https://github.com/twingly/twingly-search-api-ruby/pull/29) ([roback](https://github.com/roback))
 - Let client handle api call [\#28](https://github.com/twingly/twingly-search-api-ruby/pull/28) ([roback](https://github.com/roback))
