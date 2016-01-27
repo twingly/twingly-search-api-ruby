@@ -104,15 +104,14 @@ describe Query do
 
   describe "#execute" do
     context "when called" do
-      let(:client) { instance_double("Client", "api_key") }
       subject do
-        query = described_class.new(client)
+        query = described_class.new(client_double)
         query.pattern = 'something'
         query
       end
 
       it "should send the query to the client" do
-        expect(client).to receive(:execute_query).with(subject)
+        expect(client_double).to receive(:execute_query).with(subject)
 
         subject.execute
       end
