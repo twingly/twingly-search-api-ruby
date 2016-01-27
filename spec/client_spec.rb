@@ -85,7 +85,8 @@ describe Client do
 
   describe "#execute_query" do
     context "with invalid API key" do
-      subject { described_class.new("wrong") }
+      let(:invalid_api_key) { "wrong" }
+      subject { described_class.new(invalid_api_key) }
 
       let(:query) do
         query = subject.query
