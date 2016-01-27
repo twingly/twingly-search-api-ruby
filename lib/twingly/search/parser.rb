@@ -28,7 +28,7 @@ module Twingly
         result.number_of_matches_total    = data_node.attribute('numberOfMatchesTotal').value.to_i
         result.seconds_elapsed            = data_node.attribute('secondsElapsed').value.to_f
 
-        data_node.xpath('//post').each do |post|
+        data_node.xpath('//post[@contentType="blog"]').each do |post|
           result.posts << parse_post(post)
         end
 
