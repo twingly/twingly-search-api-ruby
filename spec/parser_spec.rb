@@ -16,11 +16,10 @@ describe Parser do
     end
 
     context "with a valid result containing non-blogs" do
-      subject { described_class.new.parse(document).posts }
       let(:fixture) { :valid_non_blog }
 
-      it "should not return the non-blog entries" do
-        expect(subject.size).to eq(1)
+      it "should exclude the non-blog entries" do
+        expect(subject.posts.size).to eq(1)
       end
     end
 
