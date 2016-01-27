@@ -23,7 +23,7 @@ describe Query do
     context "without client" do
       subject { described_class.new }
 
-      it "should not work" do
+      it "raises an error" do
         expect { subject }.to raise_error(ArgumentError)
       end
     end
