@@ -10,7 +10,7 @@ describe Query do
     allow(client_double).to receive(:api_key).and_return("api_key")
   end
 
-  subject { Query.new(client_double) }
+  subject { described_class.new(client_double) }
 
   it { should respond_to(:pattern) }
   it { should respond_to(:language) }
@@ -21,7 +21,7 @@ describe Query do
 
   describe ".new" do
     context "without client" do
-      subject { Query.new }
+      subject { described_class.new }
 
       it "should not work" do
         expect { subject }.to raise_error(ArgumentError)
@@ -31,7 +31,7 @@ describe Query do
     context "with block" do
       it "should yield self" do
         yielded_query = nil
-        query = Query.new(client_double) do |q|
+        query = described_class.new(client_double) do |q|
           yielded_query = q
         end
 
@@ -46,7 +46,7 @@ describe Query do
       allow(client_double).to receive(:endpoint_url).and_return(endpoint_url)
     end
 
-    let(:query) { Query.new(client_double) }
+    let(:query) { described_class.new(client_double) }
 
     context "with valid pattern" do
       before { query.pattern = "christmas" }
@@ -106,7 +106,7 @@ describe Query do
     context "when called" do
       let(:client) { instance_double("Client", "api_key") }
       subject do
-        query = Query.new(client)
+        query = described_class.new(client)
         query.pattern = 'something'
         query
       end
@@ -120,7 +120,7 @@ describe Query do
 
     context "when searching for spotify" do
       subject {
-        query = Query.new(Client.new('api_key'))
+        query = described_class.new(Client.new('api_key'))
         query.pattern = 'spotify page-size:10'
         query.language = 'sv'
         query

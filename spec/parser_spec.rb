@@ -6,7 +6,7 @@ describe Parser do
   it { should respond_to(:parse) }
 
   describe "#parse" do
-    subject { Parser.new.parse(document) }
+    subject { described_class.new.parse(document) }
 
     context "with a valid result" do
       let(:document) { Fixture.get(:valid) }

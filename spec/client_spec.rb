@@ -3,32 +3,32 @@ require 'spec_helper'
 include Twingly::Search
 
 describe Client do
-  subject { Client.new('api_key') }
+  subject { described_class.new('api_key') }
 
   describe ".new" do
     context 'with API key as arguments' do
-      it { should be_a Client }
+      it { should be_a Twingly::Search::Client }
     end
 
     it "BASE_URL should be parsable" do
-      expect(URI(Client::BASE_URL).to_s).to eq(Client::BASE_URL)
+      expect(URI(described_class::BASE_URL).to_s).to eq(described_class::BASE_URL)
     end
 
     context 'with API key from ENV variable' do
-      before { allow_any_instance_of(Client).to receive(:env_api_key).and_return('api_key') }
-      subject { Client.new }
-      it { should be_a Client }
+      before { allow_any_instance_of(described_class).to receive(:env_api_key).and_return('api_key') }
+      subject { described_class.new }
+      it { should be_a described_class }
     end
 
     context 'without valid API key' do
-      before { allow_any_instance_of(Client).to receive(:env_api_key).and_return(nil) }
-      subject { Client.new }
+      before { allow_any_instance_of(described_class).to receive(:env_api_key).and_return(nil) }
+      subject { described_class.new }
       it { expect { subject }.to raise_error(AuthError, "No API key has been provided.") }
     end
 
     context "with optional :user_agent given" do
       let(:user_agent) { "TwinglySearchTest/1.0" }
-      subject { Client.new('api_key', user_agent: user_agent) }
+      subject { described_class.new('api_key', user_agent: user_agent) }
 
       it "should use that user agent" do
         expect(subject.user_agent).to eq(user_agent)
@@ -38,7 +38,7 @@ describe Client do
     context "with block" do
       it "should yield self" do
         yielded_client = nil
-        client = Client.new("api_key") do |c|
+        client = described_class.new("api_key") do |c|
           yielded_client = c
         end
 
@@ -46,10 +46,10 @@ describe Client do
       end
 
       context "when api key gets set in block" do
-        before { allow_any_instance_of(Client).to receive(:env_api_key).and_return(nil) }
+        before { allow_any_instance_of(described_class).to receive(:env_api_key).and_return(nil) }
         let(:api_key) { "api_key_from_block" }
         subject do
-          Client.new do |client|
+          described_class.new do |client|
             client.api_key = api_key
           end
         end
@@ -66,11 +66,11 @@ describe Client do
   end
 
   describe '#query' do
-    subject { Client.new('api_key').query }
+    subject { described_class.new('api_key').query }
     it { should be_a Query }
 
     context "with block" do
-      subject { Client.new("api_key") }
+      subject { described_class.new("api_key") }
 
       it "should yield the query" do
         yielded_query = nil
@@ -85,7 +85,7 @@ describe Client do
 
   describe "#execute_query" do
     context "with invalid API key" do
-      subject { Client.new("wrong") }
+      subject { described_class.new("wrong") }
 
       let(:query) do
         query = subject.query
@@ -102,8 +102,8 @@ describe Client do
   end
 
   describe "#endpoint_url" do
-    subject { Client.new("api_key").endpoint_url }
-    let(:expected) { "#{Client::BASE_URL}#{Client::SEARCH_PATH}" }
+    subject { described_class.new("api_key").endpoint_url }
+    let(:expected) { "#{described_class::BASE_URL}#{described_class::SEARCH_PATH}" }
 
     it { is_expected.to eq(expected) }
 
