@@ -38,7 +38,6 @@ describe Client do
       end
 
       context "when api key gets set in block" do
-        before { allow_any_instance_of(described_class).to receive(:env_api_key).and_return(nil) }
         let(:api_key) { "api_key_from_block" }
         subject do
           described_class.new do |client|
