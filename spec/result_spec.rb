@@ -13,5 +13,6 @@ describe Result do
 
   context "before query has populated responses" do
     its(:posts) { should be_empty }
+    its(:all_results_returned?) { should be_truthy }
   end
 end
