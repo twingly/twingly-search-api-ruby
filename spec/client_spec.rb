@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 include Twingly::Search
 
@@ -66,7 +66,7 @@ describe Client do
     end
   end
 
-  describe '#query' do
+  describe "#query" do
     subject { described_class.new(valid_api_key).query }
     it { should be_a Query }
 
