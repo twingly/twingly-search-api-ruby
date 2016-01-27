@@ -4,7 +4,7 @@ require 'vcr_setup'
 include Twingly::Search
 
 describe Query do
-  let(:client_double) { double("Client") }
+  let(:client_double) { instance_double("Client") }
 
   before(:each) do
     allow(client_double).to receive(:api_key).and_return("api_key")
