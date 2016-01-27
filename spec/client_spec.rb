@@ -10,10 +10,6 @@ describe Client do
       it { should be_a Twingly::Search::Client }
     end
 
-    it "BASE_URL should be parsable" do
-      expect(URI(described_class::BASE_URL).to_s).to eq(described_class::BASE_URL)
-    end
-
     context 'with API key from ENV variable' do
       before { allow_any_instance_of(described_class).to receive(:env_api_key).and_return('api_key') }
       subject { described_class.new }
