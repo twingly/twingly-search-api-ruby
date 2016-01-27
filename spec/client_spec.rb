@@ -3,15 +3,16 @@ require 'spec_helper'
 include Twingly::Search
 
 describe Client do
-  subject { described_class.new('api_key') }
+  let(:valid_api_key) { "api_key" }
 
   describe ".new" do
     context 'with API key as arguments' do
+      subject { described_class.new(valid_api_key) }
       it { should be_a Twingly::Search::Client }
     end
 
     context 'with API key from ENV variable' do
-      before { allow_any_instance_of(described_class).to receive(:env_api_key).and_return('api_key') }
+      before { allow_any_instance_of(described_class).to receive(:env_api_key).and_return(valid_api_key) }
       subject { described_class.new }
       it { should be_a described_class }
     end
@@ -24,7 +25,7 @@ describe Client do
 
     context "with optional :user_agent given" do
       let(:user_agent) { "TwinglySearchTest/1.0" }
-      subject { described_class.new('api_key', user_agent: user_agent) }
+      subject { described_class.new(valid_api_key, user_agent: user_agent) }
 
       it "should use that user agent" do
         expect(subject.user_agent).to eq(user_agent)
@@ -34,7 +35,7 @@ describe Client do
     context "with block" do
       it "should yield self" do
         yielded_client = nil
-        client = described_class.new("api_key") do |c|
+        client = described_class.new(valid_api_key) do |c|
           yielded_client = c
         end
 
@@ -62,11 +63,11 @@ describe Client do
   end
 
   describe '#query' do
-    subject { described_class.new('api_key').query }
+    subject { described_class.new(valid_api_key).query }
     it { should be_a Query }
 
     context "with block" do
-      subject { described_class.new("api_key") }
+      subject { described_class.new(valid_api_key) }
 
       it "should yield the query" do
         yielded_query = nil
@@ -98,7 +99,7 @@ describe Client do
   end
 
   describe "#endpoint_url" do
-    subject { described_class.new("api_key").endpoint_url }
+    subject { described_class.new(valid_api_key).endpoint_url }
     let(:expected) { "#{described_class::BASE_URL}#{described_class::SEARCH_PATH}" }
 
     it { is_expected.to eq(expected) }
