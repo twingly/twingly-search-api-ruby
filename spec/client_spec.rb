@@ -6,30 +6,25 @@ describe Client do
   let(:valid_api_key) { "api_key" }
 
   describe ".new" do
-    context 'with API key as arguments' do
+    context "with API key as argument" do
       subject { described_class.new(valid_api_key) }
+
       it { should be_a Twingly::Search::Client }
     end
 
-    context 'with API key from ENV variable' do
-      before { allow_any_instance_of(described_class).to receive(:env_api_key).and_return(valid_api_key) }
-      subject { described_class.new }
-      it { should be_a described_class }
-    end
+    context "without API key as argument" do
+      before { expect_any_instance_of(described_class).to receive(:env_api_key).and_return(valid_api_key) }
 
-    context 'without valid API key' do
-      before { allow_any_instance_of(described_class).to receive(:env_api_key).and_return(nil) }
-      subject { described_class.new }
-      it { expect { subject }.to raise_error(AuthError, "No API key has been provided.") }
-    end
-
-    context "with optional :user_agent given" do
-      let(:user_agent) { "TwinglySearchTest/1.0" }
-      subject { described_class.new(valid_api_key, user_agent: user_agent) }
-
-      it "should use that user agent" do
-        expect(subject.user_agent).to eq(user_agent)
+      it "should be read from the environment" do
+        described_class.new
       end
+    end
+
+    context "with no API key at all" do
+      before { expect_any_instance_of(described_class).to receive(:env_api_key).and_return(nil) }
+      subject { described_class.new }
+
+      it { expect { subject }.to raise_error(AuthError, "No API key has been provided.") }
     end
 
     context "with block" do
@@ -58,6 +53,15 @@ describe Client do
         it "should use that api key" do
           expect(subject.api_key).to eq(api_key)
         end
+      end
+    end
+
+    context "with optional :user_agent given" do
+      let(:user_agent) { "TwinglySearchTest/1.0" }
+      subject { described_class.new(valid_api_key, user_agent: user_agent) }
+
+      it "should use that user agent" do
+        expect(subject.user_agent).to eq(user_agent)
       end
     end
   end
