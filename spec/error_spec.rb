@@ -15,7 +15,7 @@ describe Twingly::Search::Error do
     context "when given a server error message" do
       let(:server_response_message) { "An error occured." }
 
-      it { is_expected.to be_an(ServerError) }
+      it { is_expected.to be_a(ServerError) }
     end
   end
 
