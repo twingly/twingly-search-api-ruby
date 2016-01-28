@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.platform      = Gem::Platform::RUBY
   spec.authors       = ["Twingly AB"]
   spec.email         = ["support@twingly.com"]
-  spec.homepage      = "http://github.com/twingly/twingly-search-api-ruby"
+  spec.homepage      = "https://github.com/twingly/twingly-search-api-ruby"
   spec.summary       = "Ruby API client for Twingly Search"
   spec.description   = "Twingly Search is a product from Twingly AB"
   spec.license       = 'MIT'

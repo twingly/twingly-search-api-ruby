@@ -49,7 +49,7 @@ To learn more about the capabilities of the API, please read the [Twingly Search
 
 ## Requirements
 
-* API key, contact sales@twingly.com via [twingly.com](http://www.twingly.com/try-for-free/) to get one
+* API key, contact sales@twingly.com via [twingly.com](https://www.twingly.com/try-for-free/) to get one
 * Ruby
   * Ruby 1.9, 2.0, 2.1, 2.2
   * JRuby 9000
