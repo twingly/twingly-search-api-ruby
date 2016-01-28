@@ -56,12 +56,13 @@ To learn more about the capabilities of the API, please read the [Twingly Search
 
 ## Development and release
 
-1. Bump version in `lib/twingly/search/version.rb`, follow [Semantic Versioning 2.0.0](http://semver.org/)
-1. Build and release gem with `bundle exec rake release`. This will create a git tag for the version and push the `.gem` file to https://rubygems.org/.
-1. Make sure the master branch has an up-to-date changelog. Generate with `bundle exec rake changelog`. Set `CHANGELOG_GITHUB_TOKEN` to a personal access token to increase the API rate limit. (The changelog uses [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator/))
-1. Update release information on the [releases page].
+1. Bump the version in `lib/twingly/search/version.rb`, follow [Semantic Versioning 2.0.0](http://semver.org/). No need to push as this will be taken care of automatically in the next step.
+1. Build and the release gem with `bundle exec rake release`. This will create a git tag for the version and push the `.gem` file to [RubyGems.org].
+1. Generate a changelog with `bundle exec rake changelog`. Set `CHANGELOG_GITHUB_TOKEN` to a personal access token to increase the API rate limit. (The changelog uses [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator/))
+1. Update release information on the [releases page]. This is done manually.
 
 [releases page]: https://github.com/twingly/twingly-search-api-ruby/releases
+[RubyGems.org]: https://rubygems.org/
 
 ### Documentation
 
