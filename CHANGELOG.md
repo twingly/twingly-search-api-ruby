@@ -1,7 +1,14 @@
 # Change Log
 
-## [v4.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/v4.0.0)
+## [v4.0.1](https://github.com/twingly/twingly-search-api-ruby/tree/v4.0.1) (2016-01-28)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v4.0.0...v4.0.1)
 
+**Merged pull requests:**
+
+- Improve tests [\#38](https://github.com/twingly/twingly-search-api-ruby/pull/38) ([roback](https://github.com/roback))
+- Take contenttype into account [\#37](https://github.com/twingly/twingly-search-api-ruby/pull/37) ([walro](https://github.com/walro))
+
+## [v4.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/v4.0.0) (2015-12-02)
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v3.0.0...v4.0.0)
 
 **Implemented enhancements:**
