@@ -51,7 +51,7 @@ To learn more about the capabilities of the API, please read the [Twingly Search
 
 * API key, contact sales@twingly.com via [twingly.com](https://www.twingly.com/try-for-free/) to get one
 * Ruby
-  * Ruby 1.9, 2.0, 2.1, 2.2
+  * Ruby 1.9, 2.0, 2.1, 2.2, 2.3
   * JRuby 9000
 
 ## Development and release
