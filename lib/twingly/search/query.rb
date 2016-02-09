@@ -8,13 +8,18 @@ module Twingly
     # @attr [String] pattern the search query.
     # @attr [String] language which language to restrict the query to.
     # @attr [Client] client the client that this query is connected to.
-    # @attr_reader [Time] start_time search for posts published after
-    #   this time (inclusive).
-    # @attr_reader [Time] end_time search for posts published before
-    #   this time (inclusive).
     class Query
       attr_accessor :pattern, :language, :client
-      attr_reader   :start_time, :end_time
+
+      # @return [Time] the time that was set with {#start_time=}, converted to UTC.
+      def start_time
+        @start_time
+      end
+
+      # @return [Time] the time that was set with {#end_time=}, converted to UTC.
+      def end_time
+        @end_time
+      end
 
       # No need to call this method manually, instead use {Client#query}.
       #
