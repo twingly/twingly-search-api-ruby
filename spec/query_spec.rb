@@ -70,6 +70,60 @@ describe Query do
     end
   end
 
+  describe "#start_time=" do
+    before do
+      subject.pattern    = "semla"
+      subject.start_time = time
+    end
+
+    context "when given time in UTC" do
+      let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+00:00") }
+
+      it "should not change timezone" do
+        expect(subject.request_parameters).to include(ts: "2016-02-09 09:01:22")
+      end
+    end
+
+    context "when given time not in UTC" do
+      let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+05:00") }
+
+      it "should convert to UTC" do
+        expect(subject.request_parameters).to include(ts: "2016-02-09 04:01:22")
+      end
+
+      it "should not modify the given time object" do
+        expect(subject.start_time).not_to equal(time)
+      end
+    end
+  end
+
+  describe "#end_time=" do
+    before do
+      subject.pattern  = "semla"
+      subject.end_time = time
+    end
+
+    context "when given time in UTC" do
+      let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+00:00") }
+
+      it "should not change timezone" do
+        expect(subject.request_parameters).to include(tsTo: "2016-02-09 09:01:22")
+      end
+    end
+
+    context "when given time not in UTC" do
+      let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+05:00") }
+
+      it "should convert to UTC" do
+        expect(subject.request_parameters).to include(tsTo: "2016-02-09 04:01:22")
+      end
+
+      it "should not modify the given time object" do
+        expect(subject.end_time).not_to equal(time)
+      end
+    end
+  end
+
   context "with valid pattern" do
     before { subject.pattern = "christmas" }
 
@@ -78,18 +132,8 @@ describe Query do
       expect(subject.request_parameters).to include(documentlang: 'en')
     end
 
-    it "should add start_time" do
-      subject.start_time = Time.new(2012, 12, 28, 9, 01, 22)
-      expect(subject.request_parameters).to include(ts: '2012-12-28 09:01:22')
-    end
-
-    it "should add end_time" do
-      subject.end_time = Time.new(2013, 12, 28, 9, 01, 22)
-      expect(subject.request_parameters).to include(tsTo: '2013-12-28 09:01:22')
-    end
-
     it "should encode url paramters" do
-      subject.end_time = Time.new(2013, 12, 28, 9, 01, 22)
+      subject.end_time = Time.new(2013, 12, 28, 9, 01, 22, "+00:00")
       expect(subject.url_parameters).to include('tsTo=2013-12-28+09%3A01%3A22')
     end
   end

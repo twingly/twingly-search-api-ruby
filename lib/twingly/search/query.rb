@@ -7,12 +7,13 @@ module Twingly
     # @attr [String] pattern the search query.
     # @attr [String] language which language to restrict the query to.
     # @attr [Client] client the client that this query is connected to.
-    # @attr [Time, #to_time] start_time search for posts published after
+    # @attr_reader [Time] start_time search for posts published after
     #   this time (inclusive).
-    # @attr [Time, #to_time] end_time search for posts published before
+    # @attr_reader [Time] end_time search for posts published before
     #   this time (inclusive).
     class Query
-      attr_accessor :pattern, :language, :client, :start_time, :end_time
+      attr_accessor :pattern, :language, :client
+      attr_reader   :start_time, :end_time
 
       # No need to call this method manually, instead use {Client#query}.
       #
@@ -56,14 +57,30 @@ module Twingly
         }
       end
 
+      # Search for posts published after this time (inclusive).
+      #
+      # @param [Time, #to_time] time an instance of the Time class
+      #   or an object responding to #to_time.
+      def start_time=(time)
+        @start_time = time.to_time.utc
+      end
+
+      # Search for posts published before this time (inclusive).
+      #
+      # @param [Time, #to_time] time an instance of the Time class
+      #   or an object responding to #to_time.
+      def end_time=(time)
+        @end_time = time.to_time.utc
+      end
+
       private
 
       def ts
-        start_time.to_time.strftime("%F %T") if start_time
+        start_time.strftime("%F %T") if start_time
       end
 
       def ts_to
-        end_time.to_time.strftime("%F %T") if end_time
+        end_time.strftime("%F %T") if end_time
       end
     end
   end
