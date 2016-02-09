@@ -1,4 +1,5 @@
 require "faraday"
+require "time"
 
 module Twingly
   module Search
