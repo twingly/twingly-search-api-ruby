@@ -77,7 +77,7 @@ describe Query do
     end
 
     context "when given time in UTC" do
-      let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+00:00") }
+      let(:time) { Time.parse("2016-02-09 09:01:22 UTC") }
 
       it "should not change timezone" do
         expect(subject.start_time.utc?).to be(true)
@@ -86,7 +86,7 @@ describe Query do
     end
 
     context "when given time not in UTC" do
-      let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+05:00") }
+      let(:time) { Time.parse("2016-02-09 09:01:22 +05:00") }
 
       it "should convert to UTC" do
         expect(subject.start_time.utc?).to be(true)
@@ -106,7 +106,7 @@ describe Query do
     end
 
     context "when given time in UTC" do
-      let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+00:00") }
+      let(:time) { Time.parse("2016-02-09 09:01:22 UTC") }
 
       it "should not change timezone" do
         expect(subject.end_time.utc?).to be(true)
@@ -115,7 +115,7 @@ describe Query do
     end
 
     context "when given time not in UTC" do
-      let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+05:00") }
+      let(:time) { Time.parse("2016-02-09 09:01:22 +05:00") }
 
       it "should convert to UTC" do
         expect(subject.end_time.utc?).to be(true)
@@ -137,7 +137,7 @@ describe Query do
     end
 
     it "should encode url paramters" do
-      subject.end_time = Time.new(2013, 12, 28, 9, 01, 22, "+00:00")
+      subject.end_time = Time.parse("2013-12-28 09:01:22 UTC")
       expect(subject.url_parameters).to include('tsTo=2013-12-28+09%3A01%3A22')
     end
   end
