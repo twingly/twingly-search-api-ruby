@@ -80,6 +80,7 @@ describe Query do
       let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+00:00") }
 
       it "should not change timezone" do
+        expect(subject.start_time.utc?).to be(true)
         expect(subject.request_parameters).to include(ts: "2016-02-09 09:01:22")
       end
     end
@@ -88,6 +89,7 @@ describe Query do
       let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+05:00") }
 
       it "should convert to UTC" do
+        expect(subject.start_time.utc?).to be(true)
         expect(subject.request_parameters).to include(ts: "2016-02-09 04:01:22")
       end
 
@@ -107,6 +109,7 @@ describe Query do
       let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+00:00") }
 
       it "should not change timezone" do
+        expect(subject.end_time.utc?).to be(true)
         expect(subject.request_parameters).to include(tsTo: "2016-02-09 09:01:22")
       end
     end
@@ -115,6 +118,7 @@ describe Query do
       let(:time) { Time.new(2016, 2, 9, 9, 01, 22, "+05:00") }
 
       it "should convert to UTC" do
+        expect(subject.end_time.utc?).to be(true)
         expect(subject.request_parameters).to include(tsTo: "2016-02-09 04:01:22")
       end
 
