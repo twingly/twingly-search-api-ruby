@@ -5,7 +5,7 @@ module Twingly
     # Twingly Search API query
     #
     # @attr [String] pattern the search query.
-    # @attr [String] language which language to restrict the query to.
+    # @attr [String] language language to restrict the query to.
     # @attr [Client] client the client that this query is connected to.
     # @attr [Time, #to_time] start_time search for posts published after
     #   this time (inclusive).

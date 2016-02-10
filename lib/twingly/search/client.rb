@@ -14,7 +14,7 @@ module Twingly
       # Creates a new Twingly Search API client
       #
       # @param api_key [optional, String] the API key provided by Twingly.
-      #   If nil, reads api_key from environment (TWINGLY_SEARCH_KEY).
+      #   If nil, reads key from environment (TWINGLY_SEARCH_KEY).
       # @param options [Hash]
       # @option options [String] :user_agent the user agent to be used
       #    for all requests
