@@ -6,7 +6,7 @@ module Twingly
     # Twingly Search API query
     #
     # @attr [String] pattern the search query.
-    # @attr [String] language which language to restrict the query to.
+    # @attr [String] language language to restrict the query to.
     # @attr [Client] client the client that this query is connected to.
     class Query
       attr_accessor :pattern, :language, :client
