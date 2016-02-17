@@ -73,28 +73,45 @@ describe Query do
   describe "#start_time=" do
     before do
       subject.pattern    = "semla"
-      subject.start_time = time
     end
 
     context "when given time in UTC" do
+      before do
+        subject.start_time = time
+      end
+
       let(:time) { Time.parse("2016-02-09 09:01:22 UTC") }
 
       it "should not change timezone" do
-        expect(subject.start_time.utc?).to be(true)
         expect(subject.request_parameters).to include(ts: "2016-02-09 09:01:22")
+      end
+
+      it "should not modify the given time object" do
+        expect(subject.start_time).to equal(time)
       end
     end
 
     context "when given time not in UTC" do
+      before do
+        subject.start_time = time
+      end
+
       let(:time) { Time.parse("2016-02-09 09:01:22 +05:00") }
 
       it "should convert to UTC" do
-        expect(subject.start_time.utc?).to be(true)
         expect(subject.request_parameters).to include(ts: "2016-02-09 04:01:22")
       end
 
       it "should not modify the given time object" do
-        expect(subject.start_time).not_to equal(time)
+        expect(subject.start_time).to equal(time)
+      end
+    end
+
+    context "when given non-time object" do
+      let(:time) { "2013-12-28+09%3A01%3A22" }
+
+      it "should raise exception" do
+        expect { subject.start_time = time }.to raise_error(QueryError, "Not a Time object")
       end
     end
   end
@@ -102,28 +119,45 @@ describe Query do
   describe "#end_time=" do
     before do
       subject.pattern  = "semla"
-      subject.end_time = time
     end
 
     context "when given time in UTC" do
+      before do
+        subject.end_time = time
+      end
+
       let(:time) { Time.parse("2016-02-09 09:01:22 UTC") }
 
       it "should not change timezone" do
-        expect(subject.end_time.utc?).to be(true)
         expect(subject.request_parameters).to include(tsTo: "2016-02-09 09:01:22")
+      end
+
+      it "should not modify the given time object" do
+        expect(subject.end_time).to equal(time)
       end
     end
 
     context "when given time not in UTC" do
+      before do
+        subject.end_time = time
+      end
+
       let(:time) { Time.parse("2016-02-09 09:01:22 +05:00") }
 
       it "should convert to UTC" do
-        expect(subject.end_time.utc?).to be(true)
         expect(subject.request_parameters).to include(tsTo: "2016-02-09 04:01:22")
       end
 
       it "should not modify the given time object" do
-        expect(subject.end_time).not_to equal(time)
+        expect(subject.end_time).to equal(time)
+      end
+    end
+
+    context "when given non-time object" do
+      let(:time) { "2013-12-28+09%3A01%3A22" }
+
+      it "should raise exception" do
+        expect { subject.end_time = time }.to raise_error(QueryError, "Not a Time object")
       end
     end
   end

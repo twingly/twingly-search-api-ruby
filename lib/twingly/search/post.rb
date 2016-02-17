@@ -32,8 +32,8 @@ module Twingly
         @title         = params.fetch('title')
         @summary       = params.fetch('summary')
         @language_code = params.fetch('languageCode')
-        @published     = DateTime.parse(params.fetch('published'))
-        @indexed       = DateTime.parse(params.fetch('indexed'))
+        @published     = Time.parse(params.fetch('published'))
+        @indexed       = Time.parse(params.fetch('indexed'))
         @blog_url      = params.fetch('blogUrl')
         @blog_name     = params.fetch('blogName')
         @authority     = params.fetch('authority').to_i

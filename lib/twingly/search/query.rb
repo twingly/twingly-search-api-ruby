@@ -11,12 +11,12 @@ module Twingly
     class Query
       attr_accessor :pattern, :language, :client
 
-      # @return [Time] the time that was set with {#start_time=}, converted to UTC.
+      # @return [Time] the time that was set with {#start_time=}.
       def start_time
         @start_time
       end
 
-      # @return [Time] the time that was set with {#end_time=}, converted to UTC.
+      # @return [Time] the time that was set with {#end_time=}.
       def end_time
         @end_time
       end
@@ -68,7 +68,9 @@ module Twingly
       # @param [Time, #to_time] time an instance of the Time class
       #   or an object responding to #to_time.
       def start_time=(time)
-        @start_time = time.to_time.utc
+        fail QueryError, "Not a Time object" unless time.respond_to?(:to_time)
+
+        @start_time = time
       end
 
       # Search for posts published before this time (inclusive).
@@ -76,17 +78,19 @@ module Twingly
       # @param [Time, #to_time] time an instance of the Time class
       #   or an object responding to #to_time.
       def end_time=(time)
-        @end_time = time.to_time.utc
+        fail QueryError, "Not a Time object" unless time.respond_to?(:to_time)
+
+        @end_time = time
       end
 
       private
 
       def ts
-        start_time.strftime("%F %T") if start_time
+        start_time.to_time.utc.strftime("%F %T") if start_time
       end
 
       def ts_to
-        end_time.strftime("%F %T") if end_time
+        end_time.to_time.utc.strftime("%F %T") if end_time
       end
     end
   end

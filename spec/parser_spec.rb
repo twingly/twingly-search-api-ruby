@@ -47,12 +47,12 @@ describe Parser do
 
         describe "#published" do
           subject { post.published }
-          it { is_expected.to eq(DateTime.parse("2014-09-02 06:53:26Z")) }
+          it { is_expected.to eq(Time.parse("2014-09-02 06:53:26Z")) }
         end
 
         describe "#indexed" do
           subject { post.indexed }
-          it { is_expected.to eq(DateTime.parse("2014-09-02 09:00:53Z")) }
+          it { is_expected.to eq(Time.parse("2014-09-02 09:00:53Z")) }
         end
 
         describe "#blog_url" do
@@ -106,12 +106,12 @@ Swedish House Mafia gör succé i USA") }
 
         describe "#published" do
           subject { post.published }
-          it { is_expected.to eq(DateTime.parse("2013-01-29 15:21:56Z")) }
+          it { is_expected.to eq(Time.parse("2013-01-29 15:21:56Z")) }
         end
 
         describe "#indexed" do
           subject { post.indexed }
-          it { is_expected.to eq(DateTime.parse("2013-01-29 15:22:52Z")) }
+          it { is_expected.to eq(Time.parse("2013-01-29 15:22:52Z")) }
         end
 
         describe "#blog_url" do
@@ -160,12 +160,12 @@ Swedish House Mafia gör succé i USA") }
 
         describe "#published" do
           subject { post.published }
-          it { is_expected.to eq(DateTime.parse("2013-01-29 15:12:29Z")) }
+          it { is_expected.to eq(Time.parse("2013-01-29 15:12:29Z")) }
         end
 
         describe "#indexed" do
           subject { post.indexed }
-          it { is_expected.to eq(DateTime.parse("2013-01-29 15:14:37Z")) }
+          it { is_expected.to eq(Time.parse("2013-01-29 15:14:37Z")) }
         end
 
         describe "#blog_url" do
