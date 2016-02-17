@@ -9,7 +9,17 @@ module Twingly
     # @attr [String] language language to restrict the query to.
     # @attr [Client] client the client that this query is connected to.
     class Query
-      attr_accessor :pattern, :language, :client, :start_time, :end_time
+      attr_accessor :pattern, :language, :client
+
+      # @return [Time] the time that was set with {#start_time=}.
+      def start_time
+        @start_time
+      end
+
+      # @return [Time] the time that was set with {#end_time=}.
+      def end_time
+        @end_time
+      end
 
       # No need to call this method manually, instead use {Client#query}.
       #
@@ -51,6 +61,26 @@ module Twingly
           tsTo: ts_to,
           xmloutputversion: 2,
         }
+      end
+
+      # Search for posts published after this time (inclusive).
+      #
+      # @param [Time, #to_time] time an instance of the Time class
+      #   or an object responding to #to_time.
+      def start_time=(time)
+        fail QueryError, "Not a Time object" unless time.respond_to?(:to_time)
+
+        @start_time = time
+      end
+
+      # Search for posts published before this time (inclusive).
+      #
+      # @param [Time, #to_time] time an instance of the Time class
+      #   or an object responding to #to_time.
+      def end_time=(time)
+        fail QueryError, "Not a Time object" unless time.respond_to?(:to_time)
+
+        @end_time = time
       end
 
       private
