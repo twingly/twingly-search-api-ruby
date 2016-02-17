@@ -1,5 +1,26 @@
 # Change Log
 
+## [v5.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/v5.0.0) (2016-02-17)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v4.0.1...v5.0.0)
+
+**Implemented enhancements:**
+
+- Use Time all the time [\#50](https://github.com/twingly/twingly-search-api-ruby/issues/50)
+
+**Fixed bugs:**
+
+- Missing require "time" [\#44](https://github.com/twingly/twingly-search-api-ruby/issues/44)
+- Query\#start\_time and \#end\_time should be converted to UTC [\#43](https://github.com/twingly/twingly-search-api-ruby/issues/43)
+
+**Merged pull requests:**
+
+- Improve time handling [\#51](https://github.com/twingly/twingly-search-api-ruby/pull/51) ([dentarg](https://github.com/dentarg))
+- Improve parser specs [\#49](https://github.com/twingly/twingly-search-api-ruby/pull/49) ([dentarg](https://github.com/dentarg))
+- Sync documentation with PHP changes [\#47](https://github.com/twingly/twingly-search-api-ruby/pull/47) ([walro](https://github.com/walro))
+- Automatically convert Query\#start\_time and \#end\_time to UTC [\#46](https://github.com/twingly/twingly-search-api-ruby/pull/46) ([roback](https://github.com/roback))
+- Use require\_relative [\#45](https://github.com/twingly/twingly-search-api-ruby/pull/45) ([dentarg](https://github.com/dentarg))
+- Test Ruby 2.3 on Travis CI [\#42](https://github.com/twingly/twingly-search-api-ruby/pull/42) ([walro](https://github.com/walro))
+
 ## [v4.0.1](https://github.com/twingly/twingly-search-api-ruby/tree/v4.0.1) (2016-01-28)
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v4.0.0...v4.0.1)
 
