@@ -23,7 +23,7 @@ describe Parser do
       let(:fixture) { :minimal_valid }
 
       describe "#posts[0]" do
-        let(:post) { result.posts[0] }
+        subject(:post) { result.posts[0] }
 
         describe "#url" do
           subject { post.url }
@@ -77,7 +77,7 @@ describe Parser do
       end
 
       describe "#posts[1]" do
-        let(:post) { result.posts[1] }
+        subject(:post) { result.posts[1] }
 
         describe "#url" do
           subject { post.url }
@@ -136,7 +136,7 @@ Swedish House Mafia gör succé i USA") }
       end
 
       describe "#posts[2]" do
-        let(:post) { result.posts[2] }
+        subject(:post) { result.posts[2] }
 
         describe "#url" do
           subject { post.url }
