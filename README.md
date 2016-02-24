@@ -47,6 +47,16 @@ To learn more about the capabilities of the API, please read the [Twingly Search
 [gem documentation]: http://www.rubydoc.info/github/twingly/twingly-search-api-ruby
 [Twingly Search API documentation]: https://developer.twingly.com/resources/search/
 
+## Tests
+
+Make sure you have all the dependencies
+
+    bundle
+
+Run the tests
+
+    bundle exec rake
+
 ## Requirements
 
 * API key, contact sales@twingly.com via [twingly.com](https://www.twingly.com/try-for-free/) to get one
