@@ -80,30 +80,41 @@ describe Query do
         subject.start_time = time
       end
 
-      let(:time) { Time.parse("2016-02-09 09:01:22 UTC") }
+      let(:timestamp) { "2016-02-09 09:01:22 UTC" }
+      let(:time) { Time.parse(timestamp) }
 
       it "should not change timezone" do
         expect(subject.request_parameters).to include(ts: "2016-02-09 09:01:22")
       end
 
       it "should not modify the given time object" do
-        expect(subject.start_time).to equal(time)
+        expect(subject.start_time.to_s).to eq(timestamp)
       end
     end
 
     context "when given time not in UTC" do
       before do
+        @TZ = ENV["TZ"]
+        # set timezone matching the timestamp, needed for Ruby versions before 2.2
+        # see https://github.com/twingly/twingly-search-api-ruby/pull/52
+        ENV["TZ"] = "Etc/GMT-5"
+
         subject.start_time = time
       end
 
-      let(:time) { Time.parse("2016-02-09 09:01:22 +05:00") }
+      after do
+        ENV["TZ"] = @TZ
+      end
+
+      let(:timestamp) { "2016-02-09 09:01:22 +0500" }
+      let(:time) { Time.parse(timestamp) }
 
       it "should convert to UTC" do
         expect(subject.request_parameters).to include(ts: "2016-02-09 04:01:22")
       end
 
       it "should not modify the given time object" do
-        expect(subject.start_time).to equal(time)
+        expect(subject.start_time.to_s).to eq(timestamp)
       end
     end
 
@@ -126,30 +137,41 @@ describe Query do
         subject.end_time = time
       end
 
-      let(:time) { Time.parse("2016-02-09 09:01:22 UTC") }
+      let(:timestamp) { "2016-02-09 09:01:22 UTC" }
+      let(:time) { Time.parse(timestamp) }
 
       it "should not change timezone" do
         expect(subject.request_parameters).to include(tsTo: "2016-02-09 09:01:22")
       end
 
       it "should not modify the given time object" do
-        expect(subject.end_time).to equal(time)
+        expect(subject.end_time.to_s).to eq(timestamp)
       end
     end
 
     context "when given time not in UTC" do
       before do
+        @TZ = ENV["TZ"]
+        # set timezone matching the timestamp, needed for Ruby versions before 2.2
+        # see https://github.com/twingly/twingly-search-api-ruby/pull/52
+        ENV["TZ"] = "Etc/GMT-5"
+
         subject.end_time = time
       end
 
-      let(:time) { Time.parse("2016-02-09 09:01:22 +05:00") }
+      after do
+        ENV["TZ"] = @TZ
+      end
+
+      let(:timestamp) { "2016-02-09 09:01:22 +0500" }
+      let(:time) { Time.parse(timestamp) }
 
       it "should convert to UTC" do
         expect(subject.request_parameters).to include(tsTo: "2016-02-09 04:01:22")
       end
 
       it "should not modify the given time object" do
-        expect(subject.end_time).to equal(time)
+        expect(subject.end_time.to_s).to eq(timestamp)
       end
     end
 
