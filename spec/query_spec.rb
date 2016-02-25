@@ -118,11 +118,21 @@ describe Query do
       end
     end
 
-    context "when given non-time object" do
+    context "when given non-time object (except nil)" do
       let(:time) { "2013-12-28+09%3A01%3A22" }
 
       it "should raise exception" do
         expect { subject.start_time = time }.to raise_error(QueryError, "Not a Time object")
+      end
+    end
+
+    context "when given nil" do
+      before do
+        subject.start_time = nil
+      end
+
+      it "should assign" do
+        expect(subject.start_time).to eq(nil)
       end
     end
   end
@@ -175,11 +185,21 @@ describe Query do
       end
     end
 
-    context "when given non-time object" do
+    context "when given non-time object (except nil)" do
       let(:time) { "2013-12-28+09%3A01%3A22" }
 
       it "should raise exception" do
         expect { subject.end_time = time }.to raise_error(QueryError, "Not a Time object")
+      end
+    end
+
+    context "when given nil" do
+      before do
+        subject.start_time = nil
+      end
+
+      it "should assign" do
+        expect(subject.start_time).to eq(nil)
       end
     end
   end

@@ -68,7 +68,7 @@ module Twingly
       # @param [Time, #to_time] time an instance of the Time class
       #   or an object responding to #to_time.
       def start_time=(time)
-        fail QueryError, "Not a Time object" unless time.respond_to?(:to_time)
+        assert_valid_time(time)
 
         @start_time = time
       end
@@ -78,12 +78,18 @@ module Twingly
       # @param [Time, #to_time] time an instance of the Time class
       #   or an object responding to #to_time.
       def end_time=(time)
-        fail QueryError, "Not a Time object" unless time.respond_to?(:to_time)
+        assert_valid_time(time)
 
         @end_time = time
       end
 
       private
+
+      def assert_valid_time(time)
+        return if time.nil?
+
+        fail QueryError, "Not a Time object" unless time.respond_to?(:to_time)
+      end
 
       def ts
         start_time.to_time.utc.strftime("%F %T") if start_time
