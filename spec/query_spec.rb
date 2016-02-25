@@ -94,11 +94,16 @@ describe Query do
 
     context "when given time not in UTC" do
       before do
+        @TZ = ENV["TZ"]
         # set timezone matching the timestamp, needed for Ruby versions before 2.2
         # see https://github.com/twingly/twingly-search-api-ruby/pull/52
         ENV["TZ"] = "Etc/GMT-5"
 
         subject.start_time = time
+      end
+
+      after do
+        ENV["TZ"] = @TZ
       end
 
       let(:timestamp) { "2016-02-09 09:01:22 +0500" }
@@ -146,11 +151,16 @@ describe Query do
 
     context "when given time not in UTC" do
       before do
+        @TZ = ENV["TZ"]
         # set timezone matching the timestamp, needed for Ruby versions before 2.2
         # see https://github.com/twingly/twingly-search-api-ruby/pull/52
         ENV["TZ"] = "Etc/GMT-5"
 
         subject.end_time = time
+      end
+
+      after do
+        ENV["TZ"] = @TZ
       end
 
       let(:timestamp) { "2016-02-09 09:01:22 +0500" }
