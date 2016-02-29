@@ -67,6 +67,7 @@ module Twingly
       #
       # @param [Time, #to_time] time an instance of the Time class
       #   or an object responding to #to_time.
+      # @raise [QueryError] if the object cannot be converted to a Time object.
       def start_time=(time)
         assert_valid_time(time)
 
@@ -77,6 +78,7 @@ module Twingly
       #
       # @param [Time, #to_time] time an instance of the Time class
       #   or an object responding to #to_time.
+      # @raise [QueryError] if the object cannot be converted to a Time object.
       def end_time=(time)
         assert_valid_time(time)
 
