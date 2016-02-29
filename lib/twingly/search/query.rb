@@ -37,6 +37,8 @@ module Twingly
       # Executes the query and returns the result.
       #
       # @raise [QueryError] if {#pattern} is empty.
+      # @raise [AuthError] if the API couldn't authenticate you. Make sure your API key is correct.
+      # @raise [ServerError] if the query could not be executed due to a server error.
       # @return [Result] the result for this query.
       def execute
         @client.execute_query(self)
