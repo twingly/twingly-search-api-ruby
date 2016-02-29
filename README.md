@@ -47,7 +47,16 @@ To learn more about the capabilities of the API, please read the [Twingly Search
 [gem documentation]: http://www.rubydoc.info/github/twingly/twingly-search-api-ruby
 [Twingly Search API documentation]: https://developer.twingly.com/resources/search/
 
-## Tests
+## Requirements
+
+* API key, contact sales@twingly.com via [twingly.com](https://www.twingly.com/try-for-free/) to get one
+* Ruby
+  * Ruby 1.9, 2.0, 2.1, 2.2, 2.3
+  * JRuby 9000
+
+## Development
+
+### Tests
 
 Make sure you have all the dependencies
 
@@ -57,14 +66,7 @@ Run the tests
 
     bundle exec rake
 
-## Requirements
-
-* API key, contact sales@twingly.com via [twingly.com](https://www.twingly.com/try-for-free/) to get one
-* Ruby
-  * Ruby 1.9, 2.0, 2.1, 2.2, 2.3
-  * JRuby 9000
-
-## Development and release
+### Release
 
 1. Make a commit bumping the version in `lib/twingly/search/version.rb`, follow [Semantic Versioning 2.0.0](http://semver.org/). No need to push as this will be taken care of automatically in the next step.
 1. Build and the release gem with `bundle exec rake release`. This will create a git tag for the version and push the `.gem` file to [RubyGems.org].
