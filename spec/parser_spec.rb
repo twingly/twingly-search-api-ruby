@@ -198,6 +198,16 @@ Swedish House Mafia gör succé i USA") }
       end
     end
 
+    context "with a valid empty result" do
+      let(:fixture) { :valid_empty }
+
+      it "should return an empty result" do
+        expect(subject.posts.size).to eq(0)
+        expect(subject.number_of_matches_total).to eq(0)
+        expect(subject.number_of_matches_returned).to eq(0)
+      end
+    end
+
     context "with a nonexistent api key result" do
       let(:fixture) { :nonexistent_api_key }
 
