@@ -72,7 +72,7 @@ describe Query do
 
   describe "#start_time=" do
     before do
-      subject.pattern    = "semla"
+      subject.pattern = "semla"
     end
 
     context "when given time in UTC" do
