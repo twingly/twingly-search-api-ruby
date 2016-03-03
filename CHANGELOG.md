@@ -1,5 +1,21 @@
 # Change Log
 
+## [v5.0.1](https://github.com/twingly/twingly-search-api-ruby/tree/v5.0.1) (2016-03-03)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.0.0...v5.0.1)
+
+**Fixed bugs:**
+
+- Not possible to remove start\_time from query [\#53](https://github.com/twingly/twingly-search-api-ruby/issues/53)
+
+**Closed issues:**
+
+- New release [\#48](https://github.com/twingly/twingly-search-api-ruby/issues/48)
+
+**Merged pull requests:**
+
+- Be able to remove start/end time from Query [\#54](https://github.com/twingly/twingly-search-api-ruby/pull/54) ([dentarg](https://github.com/dentarg))
+- Actually test what we intend to test [\#52](https://github.com/twingly/twingly-search-api-ruby/pull/52) ([dentarg](https://github.com/dentarg))
+
 ## [v5.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/v5.0.0) (2016-02-17)
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v4.0.1...v5.0.0)
 
