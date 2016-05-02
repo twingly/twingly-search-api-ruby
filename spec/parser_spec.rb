@@ -22,6 +22,21 @@ describe Parser do
     context "with a minimal valid result" do
       let(:fixture) { :minimal_valid }
 
+      describe "#number_of_matches_returned" do
+        subject { result.number_of_matches_returned }
+        it { is_expected.to eq(3) }
+      end
+
+      describe "#number_of_matches_total" do
+        subject { result.number_of_matches_total }
+        it { is_expected.to eq(3) }
+      end
+
+      describe "#seconds_elapsed" do
+        subject { result.seconds_elapsed }
+        it { is_expected.to eq(0.148) }
+      end
+
       describe "#posts[0]" do
         subject(:post) { result.posts[0] }
 
