@@ -10,12 +10,6 @@ task :spec do
   end
 end
 
-require "github_changelog_generator/task"
-GitHubChangelogGenerator::RakeTask.new(:changelog) do |config|
-  config.user = "twingly"
-  config.project = "twingly-search-api-ruby"
-end
-
 namespace :yard do
   require "yard"
   require "yard/rake/yardoc_task"
