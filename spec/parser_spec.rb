@@ -205,6 +205,46 @@ Swedish House Mafia gör succé i USA") }
       end
     end
 
+    context "with a valid result containing outlinks" do
+      let(:fixture) { :valid_outlinks }
+
+      describe "#posts[0]" do
+        subject(:post) { result.posts[0] }
+        let(:expected_outlinks) do
+          %w[
+            http://softpir.ucoz.com/go?http://turbobit.net/4j7k3jn5jj6w.html
+            http://softpir.ucoz.com/go?http://uploadboy.me/dt7qllm4af3a.htm
+            http://softpir.ucoz.com/go?http://katfile.com/1g6l3x1oe738.htm
+            http://softpir.ucoz.com/go?http://www.file-upload.cc/7nfufe4nznw0
+            http://softpir.ucoz.com/news/2016-12-23-28176
+          ]
+        end
+
+        describe "#outlinks" do
+          subject { post.outlinks }
+          it { is_expected.to eq(expected_outlinks) }
+        end
+      end
+
+      describe "#posts[1]" do
+        subject(:post) { result.posts[1] }
+
+        describe "#outlinks" do
+          subject { post.outlinks }
+          it { is_expected.to eq(["http://www.dlvr.it/My4X64"]) }
+        end
+      end
+
+      describe "#posts[2]" do
+        subject(:post) { result.posts[2] }
+
+        describe "#outlinks" do
+          subject { post.outlinks }
+          it { is_expected.to eq([]) }
+        end
+      end
+    end
+
     context "with a valid result containing non-blogs" do
       let(:fixture) { :valid_non_blog }
 
