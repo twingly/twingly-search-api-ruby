@@ -14,4 +14,5 @@ describe Post do
   it { should respond_to :authority }
   it { should respond_to :blog_rank }
   it { should respond_to :tags }
+  it { should respond_to :outlinks }
 end

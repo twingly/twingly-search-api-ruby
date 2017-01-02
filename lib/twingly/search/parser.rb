@@ -40,6 +40,8 @@ module Twingly
         element.element_children.each do |child|
           if child.name == 'tags'
             post_params[child.name] = parse_tags(child)
+          elsif child.name == 'outLinks'
+            post_params[child.name] = parse_outlinks(child)
           else
             post_params[child.name] = child.text
           end
@@ -50,6 +52,12 @@ module Twingly
       end
 
       def parse_tags(element)
+        element.element_children.map do |child|
+          child.text
+        end
+      end
+
+      def parse_outlinks(element)
         element.element_children.map do |child|
           child.text
         end
