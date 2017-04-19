@@ -3,9 +3,9 @@
 require 'spec_helper'
 require 'time'
 
-include Twingly::LiveFeed
+include Twingly
 
-describe Parser do
+describe LiveFeed::Parser do
   it { should respond_to(:parse) }
 
   describe "#parse" do
@@ -16,7 +16,7 @@ describe Parser do
     context "with a valid result" do
       let(:fixture) { :valid }
 
-      it { is_expected.to be_a Result }
+      it { is_expected.to be_a LiveFeed::Result }
 
       describe "#ts" do
         subject { result.ts }
@@ -281,7 +281,7 @@ Swedish House Mafia gör succé i USA") }
       let(:fixture) { :unauthorized_api_key }
 
       it "should raise AuthError" do
-        expect { subject }.to raise_error(AuthError)
+        expect { subject }.to raise_error(LiveFeed::AuthError)
       end
     end
 
@@ -289,7 +289,7 @@ Swedish House Mafia gör succé i USA") }
       let(:fixture) { :empty_api_key }
 
       it "should raise AuthError" do
-        expect { subject }.to raise_error(QueryError)
+        expect { subject }.to raise_error(LiveFeed::QueryError)
       end
     end
 
@@ -297,7 +297,7 @@ Swedish House Mafia gör succé i USA") }
       let(:fixture) { :not_found }
 
       it "should raise QueryError" do
-        expect { subject }.to raise_error(QueryError)
+        expect { subject }.to raise_error(LiveFeed::QueryError)
       end
     end
 
@@ -305,7 +305,7 @@ Swedish House Mafia gör succé i USA") }
       let(:fixture) { :service_unavailable }
 
       it "should raise ServerError" do
-        expect { subject }.to raise_error(ServerError)
+        expect { subject }.to raise_error(LiveFeed::ServerError)
       end
     end
 
@@ -313,7 +313,7 @@ Swedish House Mafia gör succé i USA") }
       let(:fixture) { :non_xml }
 
       it "should raise ServerError" do
-        expect { subject }.to raise_error(ServerError, /This should never happen/)
+        expect { subject }.to raise_error(LiveFeed::ServerError, /This should never happen/)
       end
     end
   end
