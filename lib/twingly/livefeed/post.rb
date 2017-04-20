@@ -33,7 +33,7 @@ module Twingly
     # @attr_reader [] authority the blog's authority/influence
     #   See https://developer.twingly.com/resources/ranking/#authority
     class Post
-      attr_reader :id, :author, :url, :title, :text, :language_code,
+      attr_reader :id, :author, :url, :title, :text, :location_code,
         :language_code, :coordinates, :links, :tags, :images, :indexed,
         :published, :reindexed, :inlinks_count, :blog_id, :blog_name,
         :blog_url, :blog_rank, :authority

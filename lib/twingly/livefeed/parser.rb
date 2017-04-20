@@ -44,12 +44,16 @@ module Twingly
       def parse_post(element)
         post_params = {}
         element.element_children.each do |child|
-          if %w(tags links images).include?(child.name)
-            post_params[child.name] = parse_array(child)
-          else
-            post_params[child.name] = child.text
-          end
+          post_params[child.name] =
+            if %w(tags links images).include?(child.name)
+              parse_array(child)
+            elsif child.name == "coordinates"
+              parse_coordinates(child)
+            else
+              child.text
+            end
         end
+
         post = Post.new
         post.set_values(post_params)
         post
