@@ -333,9 +333,13 @@ describe LiveFeed::Parser do
 
     context "with a non XML response" do
       let(:fixture) { :non_xml }
+      let(:expected_exception_message) do
+        /Failed to parse response: "<html>.*/
+      end
 
       it "should raise ServerError" do
-        expect { subject }.to raise_error(LiveFeed::ServerError, /This should never happen/)
+        expect { subject }
+          .to raise_error(LiveFeed::ServerError, expected_exception_message)
       end
     end
   end

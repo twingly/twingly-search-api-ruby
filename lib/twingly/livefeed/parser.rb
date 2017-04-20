@@ -15,7 +15,7 @@ module Twingly
         handle_failure(failure) if failure
 
         data_node = nokogiri.at_xpath('/twinglydata')
-        handle_non_xml_document(nokogiri) unless data_node
+        handle_non_xml_document(document) unless data_node
 
         create_result(data_node)
       end
@@ -83,9 +83,7 @@ module Twingly
       end
 
       def handle_non_xml_document(document)
-        response_text = document.search('//text()').map(&:text)
-
-        fail ServerError, response_text
+        fail ServerError, "Failed to parse response: \"#{document}\""
       end
 
       def parse_time(time)
