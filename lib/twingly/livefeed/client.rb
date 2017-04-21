@@ -103,7 +103,7 @@ module Twingly
       def request_parameters
         {
           apikey:    api_key,
-          timestamp: timestamp.to_time.strftime(TIMESTAMP_FORMAT),
+          timestamp: timestamp.to_time.utc.strftime(TIMESTAMP_FORMAT),
           maxPosts:  max_posts,
         }
       end

@@ -89,7 +89,7 @@ describe LiveFeed::Client do
     end
 
     context "with a valid timestamp" do
-      let(:timestamp) { Time.parse("2017-04-20 00:00:00") }
+      let(:timestamp) { Time.parse("2017-04-19T22:00:00 UTC") }
 
       subject do
         VCR.use_cassette("livefeed_valid_request") do
@@ -103,6 +103,8 @@ describe LiveFeed::Client do
         timestamp_before = client.timestamp
         subject
         timestamp_after = client.timestamp
+
+        p subject
 
         expect(timestamp_after).to be > timestamp_before
       end
@@ -122,7 +124,7 @@ describe LiveFeed::Client do
 
   describe "#get_result" do
     context "with a valid timestamp" do
-      let(:timestamp) { Time.parse("2017-04-20 00:00:00") }
+      let(:timestamp) { Time.parse("2017-04-19T22:00:00 UTC") }
 
       subject do
         VCR.use_cassette("livefeed_valid_request") do

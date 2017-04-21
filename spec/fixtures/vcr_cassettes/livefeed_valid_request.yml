@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.twingly.com/blog/livefeed/api/v5/getdata?apikey=api_key&maxPosts=3&timestamp=2017-04-20T00:00:00.000%2B0200
+    uri: https://api.twingly.com/blog/livefeed/api/v5/getdata?apikey=api_key&maxPosts=3&timestamp=2017-04-19T22:00:00.000%2B0000
     body:
       encoding: US-ASCII
       string: ''
@@ -162,6 +162,6 @@ http_interactions:
         cDovL3RpZ2dlcnN3b3JkLmJsb2dzcG90LmNvbTwvYmxvZ1VybD48YmxvZ1Jh
         bms+MjwvYmxvZ1Jhbms+PGF1dGhvcml0eT4xMjwvYXV0aG9yaXR5PjwvcG9z
         dD48L3R3aW5nbHlkYXRhPg==
-    http_version: 
+    http_version:
   recorded_at: Fri, 21 Apr 2017 13:00:32 GMT
 recorded_with: VCR 2.9.3
