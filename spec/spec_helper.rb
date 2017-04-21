@@ -2,6 +2,7 @@ require File.dirname(__FILE__) + '/../lib/twingly/search'
 require File.dirname(__FILE__) + '/../lib/twingly/livefeed'
 
 require 'vcr_setup'
+require 'rspec/its'
 
 ENV["TWINGLY_SEARCH_KEY"] ||= "api_key"
 
