@@ -45,9 +45,10 @@ module Twingly
         post_params = {}
         element.element_children.each do |child|
           post_params[child.name] =
-            if %w(tags links images).include?(child.name)
+            case child.name
+            when *%w(tags links images)
               parse_array(child)
-            elsif child.name == "coordinates"
+            when "coordinates"
               parse_coordinates(child)
             else
               child.text
