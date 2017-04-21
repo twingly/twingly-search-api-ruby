@@ -26,12 +26,18 @@ module Twingly
       #
       # @param api_key [String] the API key provided by Twingly.
       #   If nil, reads key from environment (TWINGLY_SEARCH_KEY).
+      # @param options [Hash]
+      # @option options [String] :user_agent the user agent to be used
+      #    for all requests
+      # @option options [String] :max_posts the maximum number of posts that can
+      #    be returned for each request
+      # @option options [String] :timestamp the timestamp to start the client at
       # @raise [AuthError] if an API key is not set
-      def initialize(api_key = nil)
+      def initialize(api_key = nil, options = {})
         @api_key    = api_key
-        @user_agent = DEFAULT_USER_AGENT
-        @max_posts  = DEFAULT_MAX_POSTS
-        @timestamp  = Time.now
+        @user_agent = options.fetch(:user_agent) { DEFAULT_USER_AGENT }
+        @max_posts  = options.fetch(:max_posts)  { DEFAULT_MAX_POSTS }
+        @timestamp  = options.fetch(:timestamp)  { Time.now }
 
         yield self if block_given?
 
@@ -105,7 +111,7 @@ module Twingly
       private
 
       def update_timestamp(result)
-        timestamp = (result.last_post + ONE_MILLISECOND_IN_SECONDS)
+        @timestamp = (result.last_post + ONE_MILLISECOND_IN_SECONDS)
       end
 
       def get_and_parse_result
