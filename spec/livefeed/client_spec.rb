@@ -103,8 +103,6 @@ module Twingly::LiveFeed
           subject
           timestamp_after = client.timestamp
 
-          p subject
-
           expect(timestamp_after).to be > timestamp_before
         end
       end
