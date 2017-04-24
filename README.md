@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/twingly/twingly-search-api-ruby.png?branch=master)](https://travis-ci.org/twingly/twingly-search-api-ruby)
 [![Code Climate](https://codeclimate.com/github/twingly/twingly-search-api-ruby/badges/gpa.svg)](https://codeclimate.com/github/twingly/twingly-search-api-ruby)
 
-A Ruby gem for Twingly's Blog Search API (previously known as Analytics API) and Blog LiveFeed API. Twingly is a blog search service that provides a searchable API known as [Twingly Search API](https://developer.twingly.com/resources/search/) and a blog data firehose called [LiveFeed API](https://developer.twingly.com/resources/livefeed/).
+A Ruby gem for Twingly's Blog Search API (previously known as Analytics API) and Blog LiveFeed API. Twingly is a blog search service that provides a searchable API known as [Twingly Blog Search API][Blog Search API documentation] and a blog data firehose called [Twingly Blog LiveFeed API][Blog LiveFeed API documentation].
 
 ## Installation
 
@@ -25,11 +25,11 @@ The `twingly-search` gem talks to a commercial API and requires an API key. Best
 
 To learn more about the features of this gem, read the [gem documentation] or check out the example code that can be found in [examples/](examples/).
 
-To learn more about the capabilities of Twingly's APIs, please read the [Search API documentation] and [LiveFeed API documentation].
+To learn more about the capabilities of Twingly's APIs, please read the [Blog Search API documentation] and [Blog LiveFeed API documentation].
 
 [gem documentation]: http://www.rubydoc.info/github/twingly/twingly-search-api-ruby
-[Twingly Search API documentation]: https://developer.twingly.com/resources/search/
-[LiveFeed API documentation]: https://developer.twingly.com/resources/livefeed/
+[Blog Search API documentation]: https://developer.twingly.com/resources/search/
+[Blog LiveFeed API documentation]: https://developer.twingly.com/resources/livefeed/
 
 ### Blog Search API
 
