@@ -13,7 +13,7 @@ loop do
   result = client.next_result
 
   result.posts.each do |post|
-    puts "#{post.indexed} - #{post.url}"
+    puts "#{post.indexed_at} - #{post.url}"
   end
 
   # You're faster than Twingly! Take a break and wait for
