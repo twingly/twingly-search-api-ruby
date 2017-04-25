@@ -9,6 +9,7 @@ module Twingly::LiveFeed
     it { should respond_to :max_number_of_posts }
     it { should respond_to :first_post }
     it { should respond_to :last_post }
+    it { should respond_to :next_timestamp }
 
     context "before query has populated responses" do
       its(:posts) { should be_empty }

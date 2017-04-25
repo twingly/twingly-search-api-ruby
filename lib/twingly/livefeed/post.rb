@@ -21,9 +21,9 @@ module Twingly
     # @attr_reader [Array] links all links from the blog post to other resources
     # @attr_reader [Array] tags the post tags/categories
     # @attr_reader [Array] images image URLs from the post (currently not populated)
-    # @attr_reader [Time] indexed the time, in UTC, when the post was indexed by Twingly
-    # @attr_reader [Time] published the time, in UTC, when the post was published
-    # @attr_reader [Time] reindexed timestamp when the post last was changed in our database/index
+    # @attr_reader [Time] indexed_at the time, in UTC, when the post was indexed by Twingly
+    # @attr_reader [Time] published_at the time, in UTC, when the post was published
+    # @attr_reader [Time] reindexed_at timestamp when the post last was changed in our database/index
     # @attr_reader [String] inlinks_count number of links to this post that was found in other blog posts
     # @attr_reader [String] blog_id the blog ID (Twingly internal identification)
     # @attr_reader [String] blog_name the name of the blog
@@ -34,8 +34,8 @@ module Twingly
     #   See https://developer.twingly.com/resources/ranking/#authority
     class Post
       attr_reader :id, :author, :url, :title, :text, :location_code,
-        :language_code, :coordinates, :links, :tags, :images, :indexed,
-        :published, :reindexed, :inlinks_count, :blog_id, :blog_name,
+        :language_code, :coordinates, :links, :tags, :images, :indexed_at,
+        :published_at, :reindexed_at, :inlinks_count, :blog_id, :blog_name,
         :blog_url, :blog_rank, :authority
 
       # Sets all instance variables for the {Post}, given a Hash.
@@ -53,9 +53,9 @@ module Twingly
         @links         = params.fetch('links', [])
         @tags          = params.fetch('tags', [])
         @images        = params.fetch('images', [])
-        @indexed       = Time.parse(params.fetch('indexed'))
-        @published     = Time.parse(params.fetch('published'))
-        @reindexed     = Time.parse(params.fetch('reindexed'))
+        @indexed_at    = Time.parse(params.fetch('indexedAt'))
+        @published_at  = Time.parse(params.fetch('publishedAt'))
+        @reindexed_at  = Time.parse(params.fetch('reindexedAt'))
         @inlinks_count = params.fetch('inlinksCount').to_i
         @blog_id       = params.fetch('blogId')
         @blog_name     = params.fetch('blogName')

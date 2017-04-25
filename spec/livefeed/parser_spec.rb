@@ -116,19 +116,19 @@ module Twingly::LiveFeed
             it { is_expected.to be_empty }
           end
 
-          describe "#indexed" do
-            subject { post.indexed }
-            it { is_expected.to eq(Time.parse("2017-04-10 22:00:24Z")) }
+          describe "#indexed_at" do
+            subject { post.indexed_at }
+            it { is_expected.to eq(Time.parse("2017-04-10T22:00:24Z")) }
           end
 
-          describe "#published" do
-            subject { post.published }
-            it { is_expected.to eq(Time.parse("2017-04-10 19:11:11Z")) }
+          describe "#published_at" do
+            subject { post.published_at }
+            it { is_expected.to eq(Time.parse("2017-04-10T19:11:11Z")) }
           end
 
-          describe "#reindexed" do
-            subject { post.reindexed }
-            it { is_expected.to eq(Time.parse("2017-04-10 22:00:24Z")) }
+          describe "#reindexed_at" do
+            subject { post.reindexed_at }
+            it { is_expected.to eq(Time.parse("2017-04-10T22:00:24Z")) }
           end
 
           describe "#inlinks_count" do
@@ -227,19 +227,19 @@ module Twingly::LiveFeed
             it { is_expected.to be_empty }
           end
 
-          describe "#indexed" do
-            subject { post.indexed }
-            it { is_expected.to eq(Time.parse("2017-04-10 22:00:28Z")) }
+          describe "#indexed_at" do
+            subject { post.indexed_at }
+            it { is_expected.to eq(Time.parse("2017-04-10T22:00:28Z")) }
           end
 
-          describe "#published" do
-            subject { post.published }
-            it { is_expected.to eq(Time.parse("2017-04-09 22:31:34Z")) }
+          describe "#published_at" do
+            subject { post.published_at }
+            it { is_expected.to eq(Time.parse("2017-04-09T22:31:34Z")) }
           end
 
-          describe "#reindexed" do
-            subject { post.reindexed }
-            it { is_expected.to eq(Time.parse("2017-04-10 22:00:28Z")) }
+          describe "#reindexed_at" do
+            subject { post.reindexed_at }
+            it { is_expected.to eq(Time.parse("2017-04-10T22:00:28Z")) }
           end
 
           describe "#inlinks_count" do
@@ -295,6 +295,11 @@ module Twingly::LiveFeed
         describe "#last_post" do
           subject { result.last_post }
           it { is_expected.to eq(nil) }
+        end
+
+        describe "#next_timestamp" do
+          subject { result.next_timestamp }
+          it { is_expected.to eq(Time.parse("2017-04-25T22:00:00Z")) }
         end
       end
 

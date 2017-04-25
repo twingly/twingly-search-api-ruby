@@ -13,9 +13,9 @@ module Twingly::LiveFeed
     it { should respond_to :links }
     it { should respond_to :tags }
     it { should respond_to :images }
-    it { should respond_to :indexed }
-    it { should respond_to :published }
-    it { should respond_to :reindexed }
+    it { should respond_to :indexed_at }
+    it { should respond_to :published_at }
+    it { should respond_to :reindexed_at }
     it { should respond_to :inlinks_count }
     it { should respond_to :blog_id }
     it { should respond_to :blog_name }

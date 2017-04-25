@@ -119,37 +119,6 @@ module Twingly::LiveFeed
       end
     end
 
-    describe "#get_result" do
-      context "with a valid timestamp" do
-        let(:timestamp) { Time.parse("2017-04-19T22:00:00 UTC") }
-
-        subject do
-          VCR.use_cassette("livefeed_valid_request") do
-            client.get_result(timestamp: timestamp)
-          end
-        end
-
-        it { is_expected.to be_a(Result) }
-
-        it "should set the timestamp to the given one" do
-          subject
-
-          expect(client.timestamp).to eq(timestamp)
-        end
-      end
-
-      context "with an invalid timestamp" do
-        let(:timestamp) { "not a timestamp" }
-
-        subject { client.get_result(timestamp: timestamp) }
-
-        it "should raise an error" do
-          expect{ subject }
-            .to raise_error(QueryError, /Not a Time object/)
-        end
-      end
-    end
-
     describe "#endpoint_url" do
       subject { described_class.new(valid_api_key).endpoint_url }
       let(:expected_url) do

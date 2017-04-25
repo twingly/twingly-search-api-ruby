@@ -26,8 +26,9 @@ module Twingly
         result = Result.new
         result.ts                  = parse_time(data_node.attribute('ts').value)
         result.from                = parse_time(data_node.attribute('from').value)
-        result.number_of_posts     = data_node.attribute('noOfPosts').value.to_i
+        result.number_of_posts     = data_node.attribute('numberOfPosts').value.to_i
         result.max_number_of_posts = data_node.attribute('maxNumberOfPosts').value.to_i
+        result.next_timestamp      = parse_time(data_node.attribute('nextTimestamp').value)
 
         unless result.number_of_posts.zero?
           result.first_post = parse_time(data_node.attribute('firstPost').value)

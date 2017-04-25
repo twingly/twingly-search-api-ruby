@@ -20,8 +20,6 @@ module Twingly
       DEFAULT_MAX_POSTS  = 1000
       TIMESTAMP_FORMAT   = "%Y-%m-%dT%H:%M:%S.%3N%z"
 
-      ONE_MILLISECOND_IN_SECONDS = 0.001
-
       # Creates a new Twingly Search API client
       #
       # @param api_key [String] the API key provided by Twingly.
@@ -46,8 +44,9 @@ module Twingly
 
       # Get the next result from the API and updates the next timestamp
       #
-      # Sends a request to the API, updates the timestamp that should be used
-      # for the next request and then returns the result.
+      # Sends a request to the API using the timestamp set with {#timestamp},
+      # updates the timestamp that should be used in the next request and
+      # then returns the result.
       #
       # @raise [QueryError] if the timestamp is invalid.
       # @raise [AuthError] if the API couldn't authenticate you. Make sure your API key is correct.
@@ -57,30 +56,8 @@ module Twingly
         assert_valid_time(timestamp)
 
         get_and_parse_result.tap do |result|
-          update_timestamp(result) unless result.number_of_posts.zero?
+          update_timestamp(result.next_timestamp)
         end
-      end
-
-      # Sets {#timestamp} to the given value and gets the next result from the API
-      #
-      # Unlike {#next_result}, you need to calculate the next timestamp
-      # yourself by adding 1 millisecond to {Result#last_post} when using this method.
-      #
-      # @see Result#last_post
-      #
-      # @param [Time, #to_time] timestamp an instance of the Time class
-      #   or an object responding to #to_time.
-      #
-      # @raise [QueryError] if the timestamp is invalid.
-      # @raise [AuthError] if the API couldn't authenticate you. Make sure your API key is correct.
-      # @raise [ServerError] if the query could not be executed due to a server error.
-      # @return [Result] the result for this request.
-      def get_result(timestamp: @timestamp)
-        assert_valid_time(timestamp)
-
-        @timestamp = timestamp
-
-        get_and_parse_result
       end
 
       # @return [String] the request url for the next request.
@@ -110,8 +87,8 @@ module Twingly
 
       private
 
-      def update_timestamp(result)
-        @timestamp = (result.last_post + ONE_MILLISECOND_IN_SECONDS)
+      def update_timestamp(timestamp)
+        @timestamp = timestamp
       end
 
       def get_and_parse_result
