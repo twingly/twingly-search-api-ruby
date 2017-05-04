@@ -26,9 +26,9 @@ module Twingly
     # @attr_reader [String] blog_id the blog ID (Twingly internal identification)
     # @attr_reader [String] blog_name the name of the blog
     # @attr_reader [String] blog_url the blog URL
-    # @attr_reader [Integer] blog_rank the rank of the blog, based on authority and language
+    # @attr_reader [Integer] blog_rank the rank of the blog, based on authority and language.
     #   See https://developer.twingly.com/resources/ranking/#blogrank
-    # @attr_reader [] authority the blog's authority/influence
+    # @attr_reader [Integer] authority the blog's authority/influence.
     #   See https://developer.twingly.com/resources/ranking/#authority
     class Post
       attr_reader :id, :author, :url, :title, :text, :location_code,
