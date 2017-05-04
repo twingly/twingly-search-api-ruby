@@ -25,7 +25,7 @@ class SearchPostStream
 
       break if result.all_results_returned?
 
-      @query.start_time = result.posts.last.published
+      @query.start_time = result.posts.last.published_at
     end
   end
 
