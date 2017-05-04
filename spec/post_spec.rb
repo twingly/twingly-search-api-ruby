@@ -23,4 +23,14 @@ describe Post do
   it { should respond_to :blog_url }
   it { should respond_to :blog_rank }
   it { should respond_to :authority }
+
+  deprecated_methods = %i(summary indexed published)
+  deprecated_methods.each do |method_name|
+    describe "##{method_name}" do
+      it do
+        expect { subject.public_send(method_name) }
+          .to output(/deprecated/).to_stderr
+      end
+    end
+  end
 end

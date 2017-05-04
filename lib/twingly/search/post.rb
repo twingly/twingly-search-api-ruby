@@ -62,6 +62,24 @@ module Twingly
         @blog_rank     = params.fetch('blogRank').to_i
         @authority     = params.fetch('authority').to_i
       end
+
+      # @deprecated Please use {#text} instead
+      def summary
+        warn "[DEPRECATION] `summary` is deprecated. Please use `text` instead."
+        text
+      end
+
+      # @deprecated Please use {#indexed_at} instead
+      def indexed
+        warn "[DEPRECATION] `indexed` is deprecated. Please use `indexed_at` instead."
+        indexed_at
+      end
+
+      # @deprecated Please use {#published_at} instead
+      def published
+        warn "[DEPRECATION] `published` is deprecated. Please use `published_at` instead."
+        published_at
+      end
     end
   end
 end
