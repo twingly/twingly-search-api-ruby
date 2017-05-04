@@ -12,9 +12,9 @@ module Twingly
     class Client
       attr_accessor :api_key, :user_agent, :max_posts, :timestamp
 
-      BASE_URL         = "https://api.twingly.com"
-      LIVEFEED_VERSION = "v5"
-      LIVEFEED_PATH    = "/blog/livefeed/api/#{LIVEFEED_VERSION}/getdata"
+      BASE_URL             = "https://api.twingly.com"
+      LIVEFEED_API_VERSION = "v5"
+      LIVEFEED_PATH        = "/blog/livefeed/api/#{LIVEFEED_API_VERSION}/getdata"
 
       DEFAULT_USER_AGENT = "Twingly LiveFeed Ruby Client/#{VERSION}"
       DEFAULT_MAX_POSTS  = 1000
