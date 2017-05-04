@@ -11,7 +11,7 @@ module Twingly
     # @attr_reader [String] text the blog post text
     # @attr_reader [String] language_code ISO two letter language code for the
     #   language that the post was written in
-    # @attr_reader [String] location_code ISO two letter language code for the
+    # @attr_reader [String] location_code ISO two letter country code for the
     #   location of the blog
     # @attr_reader [Hash] coordinates a hash containing :latitude and :longitude
     #   from the post RSS
