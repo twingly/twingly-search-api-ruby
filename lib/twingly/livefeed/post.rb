@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-require 'date'
-
 module Twingly
   module LiveFeed
 
