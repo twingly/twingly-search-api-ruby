@@ -3,17 +3,37 @@ require "spec_helper"
 describe Twingly::Search::Error do
   it { is_expected.to be_a(StandardError) }
 
-  describe ".from_api_response_message" do
-    subject { described_class.from_api_response_message(server_response_message) }
+  let(:message) { "This is the error message!" }
 
-    context "when given message containing 'API key'" do
-      let(:server_response_message) { "... API key ..." }
+  describe ".from_api_response" do
+    subject { described_class.from_api_response(code, message) }
 
-      it { is_expected.to be_an(AuthError) }
+    context "when given code 401" do
+      let(:code) { 401 }
+
+      it { is_expected.to be_a(AuthError) }
     end
 
-    context "when given a server error message" do
-      let(:server_response_message) { "An error occured." }
+    context "when given code 402" do
+      let(:code) { 402 }
+
+      it { is_expected.to be_a(AuthError) }
+    end
+
+    context "when given code 400" do
+      let(:code) { 400 }
+
+      it { is_expected.to be_a(QueryError) }
+    end
+
+    context "when given code 404" do
+      let(:code) { 404 }
+
+      it { is_expected.to be_a(QueryError) }
+    end
+
+    context "when given another code" do
+      let(:code) { 500 }
 
       it { is_expected.to be_a(ServerError) }
     end

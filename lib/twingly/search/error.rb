@@ -1,17 +1,18 @@
 module Twingly
   module Search
     class Error < StandardError
-      # @param [String] message API response error message.
-      # @return [Error] an instance of {AuthError} or {ServerError}.
-      def self.from_api_response_message(message)
+      def self.from_api_response(code, message)
         error =
-          if message =~ /API key/
+          case code.to_s
+          when /^400/, /^404/
+            QueryError
+          when /^401/, /^402/
             AuthError
           else
             ServerError
           end
 
-        error.new(message)
+        error.new("#{message} (code: #{code})")
       end
     end
 

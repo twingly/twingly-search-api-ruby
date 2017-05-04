@@ -8,8 +8,8 @@ class SearchPostStream
     end
 
     @query = client.query do |query|
-      query.language = language
-      query.pattern  = "sort-order:asc sort:published #{keyword}"
+      query.language     = language
+      query.search_query = "sort-order:asc sort:published #{keyword}"
     end
   end
 

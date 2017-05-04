@@ -41,8 +41,8 @@ client = Twingly::Search::Client.new do |client|
 end
 
 query = client.query do |query|
-  query.pattern  = "github page-size:10"
-  query.language = "sv"
+  query.search_query  = "github page-size:10"
+  query.language      = "sv"
 end
 
 result = query.execute

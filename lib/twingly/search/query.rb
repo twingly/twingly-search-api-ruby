@@ -5,11 +5,23 @@ module Twingly
   module Search
     # Twingly Search API query
     #
-    # @attr [String] pattern the search query.
+    # @attr [String] search_query the search query.
     # @attr [String] language language to restrict the query to.
     # @attr [Client] client the client that this query is connected to.
     class Query
-      attr_accessor :pattern, :language, :client
+      attr_accessor :search_query, :language, :client
+
+      # @deprecated Please use {#search_query} instead
+      def pattern
+        warn "[DEPRECATION] `pattern` is deprecated. Please use `search_query` instead."
+        @search_query
+      end
+
+      # @deprecated Please use {#search_query=} instead
+      def pattern=(search_query)
+        warn "[DEPRECATION] `pattern=` is deprecated. Please use `search_query=` instead."
+        @search_query = search_query
+      end
 
       # @return [Time] the time that was set with {#start_time=}.
       def start_time
@@ -36,7 +48,7 @@ module Twingly
 
       # Executes the query and returns the result.
       #
-      # @raise [QueryError] if {#pattern} is empty.
+      # @raise [QueryError] if {#search_query} is empty.
       # @raise [AuthError] if the API couldn't authenticate you. Make sure your API key is correct.
       # @raise [ServerError] if the query could not be executed due to a server error.
       # @return [Result] the result for this query.
@@ -50,18 +62,21 @@ module Twingly
         Faraday::Utils.build_query(request_parameters)
       end
 
-      # @raise [QueryError] if {#pattern} is empty.
+      # @raise [QueryError] if {#search_query} is empty.
       # @return [Hash] the request parameters.
       def request_parameters
-        fail QueryError, "Missing pattern" if pattern.to_s.empty?
+        full_search_query = search_query.to_s.dup
+        full_search_query << " lang:#{language}"                   if language
+        full_search_query << " start-date:#{formatted_start_date}" if start_time
+        full_search_query << " end-date:#{formatted_end_date}"     if end_time
+
+        if full_search_query.to_s.empty?
+          fail QueryError, "Search query cannot be empty"
+        end
 
         {
-          key: client.api_key,
-          searchpattern: pattern,
-          documentlang: language,
-          ts: ts,
-          tsTo: ts_to,
-          xmloutputversion: 2,
+          apikey: client.api_key,
+          q: full_search_query
         }
       end
 
@@ -95,12 +110,16 @@ module Twingly
         fail QueryError, "Not a Time object" unless time.respond_to?(:to_time)
       end
 
-      def ts
-        start_time.to_time.utc.strftime("%F %T") if start_time
+      def formatted_start_date
+        format_timestamp_for_query(start_time) if start_time
       end
 
-      def ts_to
-        end_time.to_time.utc.strftime("%F %T") if end_time
+      def formatted_end_date
+        format_timestamp_for_query(end_time) if end_time
+      end
+
+      def format_timestamp_for_query(timestamp)
+        timestamp.to_time.utc.strftime("%FT%T")
       end
     end
   end
