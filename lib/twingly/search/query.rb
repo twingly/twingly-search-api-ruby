@@ -6,10 +6,9 @@ module Twingly
     # Twingly Search API query
     #
     # @attr [String] search_query the search query.
-    # @attr [String] language language to restrict the query to.
     # @attr [Client] client the client that this query is connected to.
     class Query
-      attr_accessor :search_query, :language, :client
+      attr_accessor :search_query, :client
 
       # @deprecated Please use {#search_query} instead
       def pattern
@@ -21,6 +20,18 @@ module Twingly
       def pattern=(search_query)
         warn "[DEPRECATION] `pattern=` is deprecated. Please use `search_query=` instead."
         @search_query = search_query
+      end
+
+      # @deprecated Please use {#search_query} instead
+      def language
+        warn "[DEPRECATION] `language` is deprecated. Please use `search_query` instead."
+        @language
+      end
+
+      # @deprecated Please use {#search_query=} instead
+      def language=(language_code)
+        warn "[DEPRECATION] `language=` is deprecated. Please use `search_query=` instead."
+        @language = language_code
       end
 
       # @return [Time] the time that was set with {#start_time=}.
@@ -66,7 +77,7 @@ module Twingly
       # @return [Hash] the request parameters.
       def request_parameters
         full_search_query = search_query.to_s.dup
-        full_search_query << " lang:#{language}"                   if language
+        full_search_query << " lang:#{@language}" unless @language.to_s.empty?
         full_search_query << " start-date:#{formatted_start_date}" if start_time
         full_search_query << " end-date:#{formatted_end_date}"     if end_time
 

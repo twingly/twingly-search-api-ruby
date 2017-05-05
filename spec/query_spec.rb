@@ -23,6 +23,16 @@ describe Query do
     it { expect { subject.pattern = "test" }.to output(/deprecated/).to_stderr }
   end
 
+  describe "#language" do
+    it { expect { subject.language }.to output(/deprecated/).to_stderr }
+    it { expect { subject.language = "en" }.to output(/deprecated/).to_stderr }
+
+    it "should be included in the search query" do
+      subject.language = "no"
+      expect(subject.request_parameters.fetch(:q)).to include("lang:no")
+    end
+  end
+
   describe ".new" do
     context "without client" do
       subject { described_class.new }
