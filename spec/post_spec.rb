@@ -24,7 +24,7 @@ describe Post do
   it { should respond_to :blog_rank }
   it { should respond_to :authority }
 
-  deprecated_methods = %i(summary indexed published)
+  deprecated_methods = %i(summary indexed published outlinks)
   deprecated_methods.each do |method_name|
     describe "##{method_name}" do
       it do

@@ -78,6 +78,12 @@ module Twingly
         warn "[DEPRECATION] `published` is deprecated. Please use `published_at` instead."
         published_at
       end
+
+      # @deprecated Please use {#links} instead
+      def outlinks
+        warn "[DEPRECATION] `outlinks` is deprecated. Please use `links` instead."
+        links
+      end
     end
   end
 end
