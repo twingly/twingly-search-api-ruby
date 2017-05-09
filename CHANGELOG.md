@@ -1,5 +1,21 @@
 # Change Log
 
+## [v5.1.0](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.0) (2017-05-09)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.0.1...v5.1.0)
+
+**Fixed bugs:**
+
+- Ruby 1.9.3 and Ruby 2.0.0 can't use nokogiri \>= 1.7.0 \(build failures\) [\#61](https://github.com/twingly/twingly-search-api-ruby/issues/61)
+- rack-2.0.1 requires ruby version \>= 2.2.2, which is incompatible with the current version [\#58](https://github.com/twingly/twingly-search-api-ruby/issues/58)
+
+**Merged pull requests:**
+
+- Update Search client to Search API v3 [\#65](https://github.com/twingly/twingly-search-api-ruby/pull/65) ([roback](https://github.com/roback))
+- Add LiveFeed v5 client [\#64](https://github.com/twingly/twingly-search-api-ruby/pull/64) ([roback](https://github.com/roback))
+- Drop support for old Ruby versions \(1.9.3 and 2.0.0\) [\#62](https://github.com/twingly/twingly-search-api-ruby/pull/62) ([dentarg](https://github.com/dentarg))
+- Add support for post outlinks [\#60](https://github.com/twingly/twingly-search-api-ruby/pull/60) ([dentarg](https://github.com/dentarg))
+- Use any rake 11 version [\#59](https://github.com/twingly/twingly-search-api-ruby/pull/59) ([dentarg](https://github.com/dentarg))
+
 ## [v5.0.1](https://github.com/twingly/twingly-search-api-ruby/tree/v5.0.1) (2016-03-03)
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.0.0...v5.0.1)
 
