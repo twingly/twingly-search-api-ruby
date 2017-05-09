@@ -8,8 +8,8 @@ class SearchPostStream
     end
 
     @query = client.query do |query|
-      query.language = language
-      query.pattern  = "sort-order:asc sort:published #{keyword}"
+      query.language     = language
+      query.search_query = "sort-order:asc sort:published #{keyword}"
     end
   end
 
@@ -25,7 +25,7 @@ class SearchPostStream
 
       break if result.all_results_returned?
 
-      @query.start_time = result.posts.last.published
+      @query.start_time = result.posts.last.published_at
     end
   end
 

@@ -2,40 +2,41 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.twingly.com/analytics/Analytics.ashx?documentlang&key=wrong&searchpattern=something&ts&tsTo&xmloutputversion=2
+    uri: https://api.twingly.com/blog/search/api/v3/search?apikey=wrong&q=something
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Twingly Analytics Ruby Client/2.0.1
+      - Twingly Search Ruby Client/5.0.1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Server:
       - nginx
       Date:
-      - Tue, 03 Nov 2015 09:29:04 GMT
+      - Thu, 04 May 2017 07:14:00 GMT
       Content-Type:
-      - text/xml; charset=utf-8
+      - application/xml; charset=utf-8
       Content-Length:
-      - '183'
+      - '97'
       Connection:
       - keep-alive
       Cache-Control:
-      - private
-      Set-Cookie:
-      - SERVERID=web01; path=/
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
     body:
       encoding: UTF-8
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><blogstream xmlns=\"http://www.twingly.com\">\r\n
-        \ <operationResult resultType=\"failure\">The API key does not exist.</operationResult>\r\n</blogstream>"
-    http_version: 
-  recorded_at: Tue, 03 Nov 2015 09:29:04 GMT
+      string: <?xml version="1.0" encoding="utf-8"?><error code="40101"><message>Unauthorized</message></error>
+    http_version:
+  recorded_at: Thu, 04 May 2017 07:14:00 GMT
 recorded_with: VCR 2.9.3

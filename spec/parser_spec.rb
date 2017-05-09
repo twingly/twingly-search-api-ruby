@@ -14,13 +14,9 @@ describe Parser do
     subject        { result }
 
     context "with a valid result" do
-      let(:fixture) { :valid }
+      let(:fixture) { :minimal_valid }
 
       it { is_expected.to be_a Result }
-    end
-
-    context "with a minimal valid result" do
-      let(:fixture) { :minimal_valid }
 
       describe "#number_of_matches_returned" do
         subject { result.number_of_matches_returned }
@@ -29,89 +25,52 @@ describe Parser do
 
       describe "#number_of_matches_total" do
         subject { result.number_of_matches_total }
-        it { is_expected.to eq(3) }
+        it { is_expected.to eq(3122050) }
       end
 
       describe "#seconds_elapsed" do
         subject { result.seconds_elapsed }
-        it { is_expected.to eq(0.148) }
+        it { is_expected.to eq(0.369) }
       end
 
-      describe "#posts[0]" do
-        subject(:post) { result.posts[0] }
+      describe "#posts" do
+        subject { result.posts }
+
+        it { is_expected.to all(be_a(Post)) }
+
+        describe "#count" do
+          subject { result.posts.count }
+
+          it { is_expected.to eq(3) }
+        end
+      end
+
+      describe "#posts.first" do
+        subject(:post) { result.posts.first }
+
+        describe "#id" do
+          subject { post.id }
+          it { is_expected.to eq("16405819479794412880") }
+        end
+
+        describe "#author" do
+          subject { post.author }
+          it { is_expected.to eq("klivinihemligheten") }
+        end
 
         describe "#url" do
           subject { post.url }
-          it { is_expected.to eq("http://oppogner.blogg.no/1409602010_bare_m_ha.html") }
+          it { is_expected.to eq("http://nouw.com/klivinihemligheten/planering---men-dalig-30016048") }
         end
 
         describe "#title" do
           subject { post.title }
-          it { is_expected.to eq("Bare MÅ ha!") }
+          it { is_expected.to eq("Planering - men dålig") }
         end
 
-        describe "#summary" do
-          subject { post.summary }
-          it { is_expected.to eq("Ja, velkommen til høsten ...") }
-        end
-
-        describe "#language_code" do
-          subject { post.language_code }
-          it { is_expected.to eq("no") }
-        end
-
-        describe "#published" do
-          subject { post.published }
-          it { is_expected.to eq(Time.parse("2014-09-02 06:53:26Z")) }
-        end
-
-        describe "#indexed" do
-          subject { post.indexed }
-          it { is_expected.to eq(Time.parse("2014-09-02 09:00:53Z")) }
-        end
-
-        describe "#blog_url" do
-          subject { post.blog_url }
-          it { is_expected.to eq("http://oppogner.blogg.no/") }
-        end
-
-        describe "#authority" do
-          subject { post.authority }
-          it { is_expected.to eq(1) }
-        end
-
-        describe "#blog_rank" do
-          subject { post.blog_rank }
-          it { is_expected.to eq(1) }
-        end
-
-        describe "#tags" do
-          subject { post.tags }
-          it { is_expected.to eq(["Blogg"]) }
-        end
-      end
-
-      describe "#posts[1]" do
-        subject(:post) { result.posts[1] }
-
-        describe "#url" do
-          subject { post.url }
-          it { is_expected.to eq("http://www.skvallernytt.se/hardtraning-da-galler-swedish-house-mafia") }
-        end
-
-        describe "#title" do
-          subject { post.title }
-          it { is_expected.to eq("Hårdträning – då gäller Swedish House Mafia") }
-        end
-
-        describe "#summary" do
-          subject { post.summary }
-          it { is_expected.to eq("Träning. Och Swedish House Mafia. Det verkar vara ett lyckat koncept. \"Don't you worry child\" och \"Greyhound\" är nämligen de två mest spelade träningslåtarna under januari 2013 på Spotify.
-
-Relaterade inlägg:
-Swedish House Mafia – ny låt!
-Ny knivattack på Swedish House Mafia-konsert
-Swedish House Mafia gör succé i USA") }
+        describe "#text" do
+          subject { post.text }
+          it { is_expected.to start_with("Det vart en förmiddag på boxen med en brud som jag ") }
         end
 
         describe "#language_code" do
@@ -119,78 +78,73 @@ Swedish House Mafia gör succé i USA") }
           it { is_expected.to eq("sv") }
         end
 
-        describe "#published" do
-          subject { post.published }
-          it { is_expected.to eq(Time.parse("2013-01-29 15:21:56Z")) }
+        describe "#location_code" do
+          subject { post.location_code }
+          it { is_expected.to eq("se") }
         end
 
-        describe "#indexed" do
-          subject { post.indexed }
-          it { is_expected.to eq(Time.parse("2013-01-29 15:22:52Z")) }
+        describe "#coordinates" do
+          subject { post.coordinates }
+          it { is_expected.to eq({}) }
         end
 
-        describe "#blog_url" do
-          subject { post.blog_url }
-          it { is_expected.to eq("http://www.skvallernytt.se/") }
-        end
-
-        describe "#authority" do
-          subject { post.authority }
-          it { is_expected.to eq(38) }
-        end
-
-        describe "#blog_rank" do
-          subject { post.blog_rank }
-          it { is_expected.to eq(4) }
+        describe "#links" do
+          subject { post.links }
+          it { is_expected.to be_empty }
         end
 
         describe "#tags" do
           subject { post.tags }
-          it { is_expected.to eq(["Okategoriserat", "Träning", "greyhound", "koncept", "mafia"]) }
-        end
-      end
+          let(:expected_tags) do
+            [
+              "Ätas & drickas",
+              "Universitet & studentlivet",
+              "Träning",
+              "To to list",
+            ]
+          end
 
-      describe "#posts[2]" do
-        subject(:post) { result.posts[2] }
-
-        describe "#url" do
-          subject { post.url }
-          it { is_expected.to eq("http://didriksinspesielleverden.blogg.no/1359472349_justin_bieber.html") }
-        end
-
-        describe "#title" do
-          subject { post.title }
-          it { is_expected.to eq("Justin Bieber") }
+          it { is_expected.to eq(expected_tags) }
         end
 
-        describe "#summary" do
-          subject { post.summary }
-          it { is_expected.to eq("OMG! Justin Bieber Believe acoustic albumet er nå ute på spotify. Han er helt super. Love him. Personlig liker jeg best beauty and a beat og as long as you love me, kommenter gjerne hva dere synes! <3 #sus YOLO") }
+        describe "#images" do
+          subject { post.images }
+          it { is_expected.to be_empty }
         end
 
-        describe "#language_code" do
-          subject { post.language_code }
-          it { is_expected.to eq("no") }
+        describe "#indexed_at" do
+          subject { post.indexed_at }
+          it { is_expected.to eq(Time.parse("2017-05-04T06:51:23Z")) }
         end
 
-        describe "#published" do
-          subject { post.published }
-          it { is_expected.to eq(Time.parse("2013-01-29 15:12:29Z")) }
+        describe "#published_at" do
+          subject { post.published_at }
+          it { is_expected.to eq(Time.parse("2017-05-04T06:50:59Z")) }
         end
 
-        describe "#indexed" do
-          subject { post.indexed }
-          it { is_expected.to eq(Time.parse("2013-01-29 15:14:37Z")) }
+        describe "#reindexed_at" do
+          subject { post.reindexed_at }
+          it { is_expected.to eq(Time.parse("2017-05-04T08:51:23Z")) }
+        end
+
+        describe "#inlinks_count" do
+          subject { post.inlinks_count }
+          it { is_expected.to eq(0) }
+        end
+
+        describe "#blog_id" do
+          subject { post.blog_id }
+          it { is_expected.to eq("5312283800049632348") }
+        end
+
+        describe "#blog_name" do
+          subject { post.blog_name }
+          it { is_expected.to eq("Love life like a student") }
         end
 
         describe "#blog_url" do
           subject { post.blog_url }
-          it { is_expected.to eq("http://didriksinspesielleverden.blogg.no/") }
-        end
-
-        describe "#authority" do
-          subject { post.authority }
-          it { is_expected.to eq(0) }
+          it { is_expected.to eq("http://nouw.com/klivinihemligheten") }
         end
 
         describe "#blog_rank" do
@@ -198,58 +152,134 @@ Swedish House Mafia gör succé i USA") }
           it { is_expected.to eq(1) }
         end
 
+        describe "#authority" do
+          subject { post.authority }
+          it { is_expected.to eq(0) }
+        end
+      end
+
+      describe "#posts.last" do
+        subject(:post) { result.posts.last }
+
+        describe "#id" do
+          subject { post.id }
+          it { is_expected.to eq("2770252465384762934") }
+        end
+
+        describe "#author" do
+          subject { post.author }
+          it { is_expected.to eq("maartiinasvardag") }
+        end
+
+        describe "#url" do
+          subject { post.url }
+          it { is_expected.to eq("http://nouw.com/maartiinasvardag/god-formiddag-30016041") }
+        end
+
+        describe "#title" do
+          subject { post.title }
+          it { is_expected.to eq("God förmiddag! ☀️") }
+        end
+
+        describe "#text" do
+          subject { post.text }
+          it { is_expected.to start_with("Hmm.... Vad ska man börja ??  Jag vet inte riktigt vad min gnista ") }
+        end
+
+        describe "#language_code" do
+          subject { post.language_code }
+          it { is_expected.to eq("sv") }
+        end
+
+        describe "#location_code" do
+          subject { post.location_code }
+          it { is_expected.to eq("se") }
+        end
+
+        describe "#coordinates" do
+          subject { post.coordinates }
+          it { is_expected.to eq({}) }
+        end
+
+        describe "#links" do
+          subject { post.links }
+          it { is_expected.to be_empty }
+        end
+
         describe "#tags" do
           subject { post.tags }
-          it { is_expected.to eq([]) }
+          it { is_expected.to be_empty }
+        end
+
+        describe "#images" do
+          subject { post.images }
+          it { is_expected.to be_empty }
+        end
+
+        describe "#indexed_at" do
+          subject { post.indexed_at }
+          it { is_expected.to eq(Time.parse("2017-05-04T06:50:07Z")) }
+        end
+
+        describe "#published_at" do
+          subject { post.published_at }
+          it { is_expected.to eq(Time.parse("2017-05-04T06:49:50Z")) }
+        end
+
+        describe "#reindexed_at" do
+          subject { post.reindexed_at }
+          it { is_expected.to eq(Time.parse("0001-01-01T00:00:00Z")) }
+        end
+
+        describe "#inlinks_count" do
+          subject { post.inlinks_count }
+          it { is_expected.to eq(0) }
+        end
+
+        describe "#blog_id" do
+          subject { post.blog_id }
+          it { is_expected.to eq("1578135310841173675") }
+        end
+
+        describe "#blog_name" do
+          subject { post.blog_name }
+          it { is_expected.to eq("maartiinasvardag blogg") }
+        end
+
+        describe "#blog_url" do
+          subject { post.blog_url }
+          it { is_expected.to eq("http://nouw.com/maartiinasvardag") }
+        end
+
+        describe "#blog_rank" do
+          subject { post.blog_rank }
+          it { is_expected.to eq(1) }
+        end
+
+        describe "#authority" do
+          subject { post.authority }
+          it { is_expected.to eq(0) }
         end
       end
     end
 
-    context "with a valid result containing outlinks" do
-      let(:fixture) { :valid_outlinks }
+    context "with a valid result containing links" do
+      let(:fixture) { :valid_links }
 
-      describe "#posts[0]" do
-        subject(:post) { result.posts[0] }
-        let(:expected_outlinks) do
+      describe "#posts.first" do
+        subject(:post) { result.posts.first }
+        let(:expected_links) do
           %w[
-            http://softpir.ucoz.com/go?http://turbobit.net/4j7k3jn5jj6w.html
-            http://softpir.ucoz.com/go?http://uploadboy.me/dt7qllm4af3a.htm
-            http://softpir.ucoz.com/go?http://katfile.com/1g6l3x1oe738.htm
-            http://softpir.ucoz.com/go?http://www.file-upload.cc/7nfufe4nznw0
-            http://softpir.ucoz.com/news/2016-12-23-28176
+            https://1.bp.blogspot.com/-4uNjjiNQiug/WKguo1sBxwI/AAAAAAAAqKE/_eR7cY8Ft3cd2fYCx-2yXK8AwSHE_A2GgCLcB/s1600/aaea427ee3eaaf8f47d650f48fdf1242.jpg
+            http://www.irsn.fr/EN/newsroom/News/Pages/20170213_Detection-of-radioactive-iodine-at-trace-levels-in-Europe-in-January-2017.aspx
+            https://www.t.co/2P4IDmovzH
+            https://www.twitter.com/Strat2Intel/status/832710701730844672
           ]
         end
 
-        describe "#outlinks" do
-          subject { post.outlinks }
-          it { is_expected.to eq(expected_outlinks) }
+        describe "#links" do
+          its(:links) { should eq(expected_links) }
         end
-      end
-
-      describe "#posts[1]" do
-        subject(:post) { result.posts[1] }
-
-        describe "#outlinks" do
-          subject { post.outlinks }
-          it { is_expected.to eq(["http://www.dlvr.it/My4X64"]) }
-        end
-      end
-
-      describe "#posts[2]" do
-        subject(:post) { result.posts[2] }
-
-        describe "#outlinks" do
-          subject { post.outlinks }
-          it { is_expected.to eq([]) }
-        end
-      end
-    end
-
-    context "with a valid result containing non-blogs" do
-      let(:fixture) { :valid_non_blog }
-
-      it "should exclude the non-blog entries" do
-        expect(subject.posts.size).to eq(1)
       end
     end
 
@@ -263,11 +293,23 @@ Swedish House Mafia gör succé i USA") }
       end
     end
 
+    context "with an complete result" do
+      let(:fixture) { :valid_empty }
+
+      it { is_expected.not_to be_incomplete }
+    end
+
+    context "with an incomplete result" do
+      let(:fixture) { :incomplete }
+
+      it { is_expected.to be_incomplete }
+    end
+
     context "with a nonexistent api key result" do
       let(:fixture) { :nonexistent_api_key }
 
       it "should raise AuthError" do
-        expect { subject }.to raise_error(AuthError)
+        expect { subject }.to raise_error(QueryError)
       end
     end
 

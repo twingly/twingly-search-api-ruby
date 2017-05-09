@@ -6,8 +6,9 @@ module Twingly
     class Client
       attr_accessor :api_key, :user_agent
 
-      BASE_URL    = "https://api.twingly.com"
-      SEARCH_PATH = "/analytics/Analytics.ashx"
+      BASE_URL           = "https://api.twingly.com"
+      SEARCH_API_VERSION = "v3"
+      SEARCH_PATH        = "/blog/search/api/#{SEARCH_API_VERSION}/search"
 
       DEFAULT_USER_AGENT = "Twingly Search Ruby Client/#{VERSION}"
 

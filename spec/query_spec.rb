@@ -9,14 +9,29 @@ describe Query do
     allow(client_double).to receive(:api_key).and_return("api_key")
   end
 
-  subject { described_class.new(client_double) }
+  subject(:query) { described_class.new(client_double) }
 
-  it { should respond_to(:pattern) }
+  it { should respond_to(:search_query) }
   it { should respond_to(:language) }
   it { should respond_to(:start_time) }
   it { should respond_to(:end_time) }
   it { should respond_to(:execute) }
   it { should respond_to(:client) }
+
+  describe "#pattern" do
+    it { expect { subject.pattern }.to output(/deprecated/).to_stderr }
+    it { expect { subject.pattern = "test" }.to output(/deprecated/).to_stderr }
+  end
+
+  describe "#language" do
+    it { expect { subject.language }.to output(/deprecated/).to_stderr }
+    it { expect { subject.language = "en" }.to output(/deprecated/).to_stderr }
+
+    it "should be included in the search query" do
+      subject.language = "no"
+      expect(subject.request_parameters.fetch(:q)).to include("lang:no")
+    end
+  end
 
   describe ".new" do
     context "without client" do
@@ -41,49 +56,42 @@ describe Query do
 
   describe "#url" do
     before do
-      endpoint_url = "https://api.twingly.com/analytics/Analytics.ashx"
+      endpoint_url = "https://api.twingly.com/blog/search/api/v3/search"
       allow(client_double).to receive(:endpoint_url).and_return(endpoint_url)
     end
 
     let(:query) { described_class.new(client_double) }
 
-    context "with valid pattern" do
-      before { query.pattern = "christmas" }
-      subject { query.url }
-
-      it { should include("xmloutputversion=2") }
-    end
-
-    context "without valid pattern" do
+    context "without valid search query" do
       it "raises an error" do
-        expect { query.url }.to raise_error(QueryError, "Missing pattern")
+        expect { query.url }.to raise_error(QueryError, /query cannot be empty/)
       end
     end
 
-    context "with empty pattern" do
-      before { query.pattern = "" }
+    context "with empty search query" do
+      before { query.search_query = "" }
 
       it "raises an error" do
-        expect { query.url }.to raise_error(QueryError, "Missing pattern")
+        expect { query.url }.to raise_error(QueryError, /query cannot be empty/)
       end
     end
   end
 
   describe "#start_time=" do
     before do
-      subject.pattern = "semla"
+      query.search_query = "semla"
     end
 
     context "when given time in UTC" do
       before do
-        subject.start_time = time
+        query.start_time = time
       end
 
       let(:timestamp) { "2016-02-09 09:01:22 UTC" }
       let(:time) { Time.parse(timestamp) }
 
       it "should not change timezone" do
-        expect(subject.request_parameters).to include(ts: "2016-02-09 09:01:22")
+        expect(subject.request_parameters.fetch(:q)).to include("2016-02-09T09:01:22")
       end
 
       it "should not modify the given time object" do
@@ -109,7 +117,7 @@ describe Query do
       let(:time) { Time.parse(timestamp) }
 
       it "should convert to UTC" do
-        expect(subject.request_parameters).to include(ts: "2016-02-09 04:01:22")
+        expect(subject.request_parameters.fetch(:q)).to include("2016-02-09T04:01:22")
       end
 
       it "should not modify the given time object" do
@@ -138,7 +146,7 @@ describe Query do
 
   describe "#end_time=" do
     before do
-      subject.pattern  = "semla"
+      subject.search_query  = "semla"
     end
 
     context "when given time in UTC" do
@@ -150,7 +158,7 @@ describe Query do
       let(:time) { Time.parse(timestamp) }
 
       it "should not change timezone" do
-        expect(subject.request_parameters).to include(tsTo: "2016-02-09 09:01:22")
+        expect(subject.request_parameters.fetch(:q)).to include("end-date:2016-02-09T09:01:22")
       end
 
       it "should not modify the given time object" do
@@ -176,7 +184,7 @@ describe Query do
       let(:time) { Time.parse(timestamp) }
 
       it "should convert to UTC" do
-        expect(subject.request_parameters).to include(tsTo: "2016-02-09 04:01:22")
+        expect(subject.request_parameters.fetch(:q)).to include("end-date:2016-02-09T04:01:22")
       end
 
       it "should not modify the given time object" do
@@ -203,25 +211,25 @@ describe Query do
     end
   end
 
-  context "with valid pattern" do
-    before { subject.pattern = "christmas" }
+  context "with valid search query" do
+    before { subject.search_query = "christmas" }
 
     it "should add language" do
       subject.language = "en"
-      expect(subject.request_parameters).to include(documentlang: 'en')
+      expect(subject.request_parameters.fetch(:q)).to include("lang:en")
     end
 
     it "should encode url paramters" do
       subject.end_time = Time.parse("2013-12-28 09:01:22 UTC")
-      expect(subject.url_parameters).to include('tsTo=2013-12-28+09%3A01%3A22')
+      expect(subject.url_parameters).to include('end-date%3A2013-12-28T09%3A01%3A22')
     end
   end
 
-  describe "#pattern" do
-    before { subject.pattern = "spotify" }
+  describe "#search_query" do
+    before { subject.search_query = "spotify" }
 
-    it "should add searchpattern" do
-      expect(subject.url_parameters).to include("searchpattern=spotify")
+    it "should add q parameter" do
+      expect(subject.url_parameters).to include("q=spotify")
     end
   end
 
@@ -229,7 +237,7 @@ describe Query do
     context "when called" do
       subject do
         query = described_class.new(client_double)
-        query.pattern = 'something'
+        query.search_query = 'something'
         query
       end
 
@@ -242,8 +250,8 @@ describe Query do
 
     context "when searching for spotify" do
       subject {
-        query = described_class.new(Client.new('api_key'))
-        query.pattern = 'spotify page-size:10'
+        query = described_class.new(Client.new)
+        query.search_query = 'spotify page-size:10'
         query.language = 'sv'
         query
       }

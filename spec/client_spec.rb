@@ -90,13 +90,13 @@ describe Client do
 
       let(:query) do
         query = subject.query
-        query.pattern = "something"
+        query.search_query = "something"
         query
       end
 
       it "should raise error on invalid API key" do
         VCR.use_cassette("search_without_valid_api_key") do
-          expect { subject.execute_query(query) }.to raise_error(AuthError, "The API key does not exist.")
+          expect { subject.execute_query(query) }.to raise_error(AuthError, /Unauthorized/)
         end
       end
     end

@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-require 'date'
-
 module Twingly
   module LiveFeed
 
@@ -14,7 +12,7 @@ module Twingly
     # @attr_reader [String] text the blog post text
     # @attr_reader [String] language_code ISO two letter language code for the
     #   language that the post was written in
-    # @attr_reader [String] location_code ISO two letter language code for the
+    # @attr_reader [String] location_code ISO two letter country code for the
     #   location of the blog
     # @attr_reader [Hash] coordinates a hash containing :latitude and :longitude
     #   from the post RSS
@@ -28,9 +26,9 @@ module Twingly
     # @attr_reader [String] blog_id the blog ID (Twingly internal identification)
     # @attr_reader [String] blog_name the name of the blog
     # @attr_reader [String] blog_url the blog URL
-    # @attr_reader [Integer] blog_rank the rank of the blog, based on authority and language
+    # @attr_reader [Integer] blog_rank the rank of the blog, based on authority and language.
     #   See https://developer.twingly.com/resources/ranking/#blogrank
-    # @attr_reader [] authority the blog's authority/influence
+    # @attr_reader [Integer] authority the blog's authority/influence.
     #   See https://developer.twingly.com/resources/ranking/#authority
     class Post
       attr_reader :id, :author, :url, :title, :text, :location_code,
