@@ -130,7 +130,7 @@ module Twingly
       end
 
       def format_timestamp_for_query(timestamp)
-        timestamp.to_time.utc.strftime("%FT%T")
+        timestamp.to_time.utc.iso8601
       end
     end
   end

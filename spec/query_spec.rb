@@ -91,7 +91,7 @@ describe Query do
       let(:time) { Time.parse(timestamp) }
 
       it "should not change timezone" do
-        expect(subject.request_parameters.fetch(:q)).to include("2016-02-09T09:01:22")
+        expect(subject.request_parameters.fetch(:q)).to include("2016-02-09T09:01:22Z")
       end
 
       it "should not modify the given time object" do
@@ -117,7 +117,7 @@ describe Query do
       let(:time) { Time.parse(timestamp) }
 
       it "should convert to UTC" do
-        expect(subject.request_parameters.fetch(:q)).to include("2016-02-09T04:01:22")
+        expect(subject.request_parameters.fetch(:q)).to include("2016-02-09T04:01:22Z")
       end
 
       it "should not modify the given time object" do
@@ -158,7 +158,7 @@ describe Query do
       let(:time) { Time.parse(timestamp) }
 
       it "should not change timezone" do
-        expect(subject.request_parameters.fetch(:q)).to include("end-date:2016-02-09T09:01:22")
+        expect(subject.request_parameters.fetch(:q)).to include("end-date:2016-02-09T09:01:22Z")
       end
 
       it "should not modify the given time object" do
@@ -184,7 +184,7 @@ describe Query do
       let(:time) { Time.parse(timestamp) }
 
       it "should convert to UTC" do
-        expect(subject.request_parameters.fetch(:q)).to include("end-date:2016-02-09T04:01:22")
+        expect(subject.request_parameters.fetch(:q)).to include("end-date:2016-02-09T04:01:22Z")
       end
 
       it "should not modify the given time object" do
@@ -221,7 +221,7 @@ describe Query do
 
     it "should encode url paramters" do
       subject.end_time = Time.parse("2013-12-28 09:01:22 UTC")
-      expect(subject.url_parameters).to include('end-date%3A2013-12-28T09%3A01%3A22')
+      expect(subject.url_parameters).to include('end-date%3A2013-12-28T09%3A01%3A22Z')
     end
   end
 
