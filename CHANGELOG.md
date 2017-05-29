@@ -1,5 +1,8 @@
 # Change Log
 
+## [v5.1.2](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.2) (2017-05-29)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.1...v5.1.2)
+
 ## [v5.1.1](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.1) (2017-05-17)
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.0...v5.1.1)
 
