@@ -65,13 +65,12 @@ module Twingly
         end
       end
 
-      # TODO: Decide if a class or hash should be used...
       def parse_coordinates(element)
         return {} if element.children.empty?
 
         {
-          latitude:  element.at_xpath("latitude/text()"),
-          longitude: element.at_xpath("longitude/text()"),
+          latitude:  element.at_xpath("latitude").text.to_f,
+          longitude: element.at_xpath("longitude").text.to_f,
         }
       end
 

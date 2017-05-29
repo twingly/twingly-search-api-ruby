@@ -283,6 +283,24 @@ describe Parser do
       end
     end
 
+    context "with a valid result containing coordinates" do
+      let(:fixture) { :valid_coordinates }
+
+      describe "#posts.first" do
+        subject(:post) { result.posts.first }
+        let(:expected_coordinates) do
+          {
+            latitude:  49.1,
+            longitude: 10.75,
+          }
+        end
+
+        describe "#coordinates" do
+          its(:coordinates) { should eq(expected_coordinates) }
+        end
+      end
+    end
+
     context "with a valid empty result" do
       let(:fixture) { :valid_empty }
 
