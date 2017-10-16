@@ -219,7 +219,7 @@ describe Query do
       expect(subject.request_parameters.fetch(:q)).to include("lang:en")
     end
 
-    it "should encode url paramters" do
+    it "should encode url parameters" do
       subject.end_time = Time.parse("2013-12-28 09:01:22 UTC")
       expect(subject.url_parameters).to include('end-date%3A2013-12-28T09%3A01%3A22Z')
     end
