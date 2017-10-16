@@ -1,5 +1,12 @@
 # Change Log
 
+## [v5.1.3](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.3) (2017-10-16)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.2...v5.1.3)
+
+**Merged pull requests:**
+
+- Revert "Include timezone info for timestamps in search query" [\#69](https://github.com/twingly/twingly-search-api-ruby/pull/69) ([walro](https://github.com/walro))
+
 ## [v5.1.2](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.2) (2017-05-29)
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.1...v5.1.2)
 
