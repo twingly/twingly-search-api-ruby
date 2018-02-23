@@ -1,5 +1,22 @@
 # Change Log
 
+## [v5.1.4](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.4) (2018-02-23)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.3...v5.1.4)
+
+**Implemented enhancements:**
+
+- Looser requirement on Faraday [\#70](https://github.com/twingly/twingly-search-api-ruby/issues/70)
+
+**Fixed bugs:**
+
+- Update yard gem dependency [\#72](https://github.com/twingly/twingly-search-api-ruby/issues/72)
+
+**Merged pull requests:**
+
+- Looser requirements on Faraday [\#74](https://github.com/twingly/twingly-search-api-ruby/pull/74) ([jage](https://github.com/jage))
+- Test with latest Ruby versions [\#73](https://github.com/twingly/twingly-search-api-ruby/pull/73) ([dentarg](https://github.com/dentarg))
+- Test with latest rubies, support Ruby 2.4 and JRuby 9.1 [\#71](https://github.com/twingly/twingly-search-api-ruby/pull/71) ([walro](https://github.com/walro))
+
 ## [v5.1.3](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.3) (2017-10-16)
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.2...v5.1.3)
 
