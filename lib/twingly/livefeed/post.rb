@@ -61,6 +61,32 @@ module Twingly
         @blog_rank     = params.fetch('blogRank').to_i
         @authority     = params.fetch('authority').to_i
       end
+
+      # @return [Hash] a hash containing all post attributes.
+      def to_h
+        {
+          id: @id,
+          author: @author,
+          url: @url,
+          title: @title,
+          text: @text,
+          language_code: @language_code,
+          location_code: @location_code,
+          coordinates: @coordinates,
+          links: @links,
+          tags: @tags,
+          images: @images,
+          indexed_at: @indexed_at,
+          published_at: @published_at,
+          reindexed_at: @reindexed_at,
+          inlinks_count: @inlinks_count,
+          blog_id: @blog_id,
+          blog_name: @blog_name,
+          blog_url: @blog_url,
+          blog_rank: @blog_rank,
+          authority: @authority,
+        }
+      end
     end
   end
 end

@@ -23,6 +23,7 @@ describe Post do
   it { should respond_to :blog_url }
   it { should respond_to :blog_rank }
   it { should respond_to :authority }
+  it { should respond_to :to_h }
 
   deprecated_methods = %i(summary indexed published outlinks)
   deprecated_methods.each do |method_name|
@@ -30,6 +31,53 @@ describe Post do
       it do
         expect { subject.public_send(method_name) }
           .to output(/deprecated/).to_stderr
+      end
+    end
+  end
+
+  describe "#to_h" do
+    let(:post) do
+      document = Fixture.get(:minimal_valid)
+      result = Parser.new.parse(document)
+
+      result.posts.first
+    end
+
+    let(:post_hash) do
+      post.to_h
+    end
+
+    attributes = %i[
+      id
+      author
+      url
+      title
+      text
+      location_code
+      language_code
+      coordinates
+      links
+      tags
+      images
+      indexed_at
+      published_at
+      reindexed_at
+      inlinks_count
+      blog_id
+      blog_name
+      blog_url
+      blog_rank
+      authority
+    ]
+
+    it do
+      expect(post_hash.keys).to match_array(attributes)
+    end
+
+    attributes.each do |key|
+      describe "#to_h[:#{key}]" do
+        subject { post_hash[key] }
+        it { is_expected.to eq(post.public_send(key)) }
       end
     end
   end
