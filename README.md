@@ -27,7 +27,7 @@ To learn more about the features of this gem, read the [gem documentation] or ch
 
 To learn more about the capabilities of Twingly's APIs, please read the [Blog Search API documentation] and [Blog LiveFeed API documentation].
 
-[gem documentation]: http://www.rubydoc.info/github/twingly/twingly-search-api-ruby
+[gem documentation]: https://www.rubydoc.info/github/twingly/twingly-search-api-ruby
 [Blog Search API documentation]: https://developer.twingly.com/resources/search/
 [Blog LiveFeed API documentation]: https://developer.twingly.com/resources/livefeed/
 
@@ -106,4 +106,4 @@ This gem is documented using [YARD]. To start a local YARD server run:
 
 The YARD server reloads the documentation automatically so there is no need to restart it when making changes.
 
-[YARD]: http://yardoc.org/
+[YARD]: https://yardoc.org/
