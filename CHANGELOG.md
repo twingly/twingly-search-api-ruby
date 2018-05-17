@@ -1,5 +1,12 @@
 # Change Log
 
+## [v5.2.0](https://github.com/twingly/twingly-search-api-ruby/tree/v5.2.0) (2018-05-17)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.4...v5.2.0)
+
+**Merged pull requests:**
+
+- Add Post\#to\_h for both LiveFeed and Search [\#77](https://github.com/twingly/twingly-search-api-ruby/pull/77) ([dentarg](https://github.com/dentarg))
+
 ## [v5.1.4](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.4) (2018-02-23)
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.3...v5.1.4)
 
