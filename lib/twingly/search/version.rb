@@ -1,5 +1,5 @@
 module Twingly
   module Search
-    VERSION = "5.1.4"
+    VERSION = "5.2.0"
   end
 end
