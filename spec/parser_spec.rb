@@ -326,7 +326,7 @@ describe Parser do
     context "with a nonexistent api key result" do
       let(:fixture) { :nonexistent_api_key }
 
-      it "should raise AuthError" do
+      it "should raise QueryError" do
         expect { subject }.to raise_error(QueryError)
       end
     end

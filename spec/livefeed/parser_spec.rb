@@ -314,7 +314,7 @@ module Twingly::LiveFeed
       context "with an empty api key result" do
         let(:fixture) { :empty_api_key }
 
-        it "should raise AuthError" do
+        it "should raise QueryError" do
           expect { subject }.to raise_error(QueryError)
         end
       end
