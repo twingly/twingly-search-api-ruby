@@ -47,8 +47,9 @@ module Twingly
       def parse_post(element)
         post_params = {}
         element.element_children.each do |child|
-          post_params[child.name] =
-            case child.name
+          name = child.name.freeze
+          post_params[name] =
+            case name
             when "tags", "links", "images"
               parse_array(child)
             when "coordinates"
