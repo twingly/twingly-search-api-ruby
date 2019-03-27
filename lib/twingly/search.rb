@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "search/version"
 require_relative "search/error"
 require_relative "search/client"
