@@ -37,6 +37,9 @@ module Twingly
         :published_at, :reindexed_at, :inlinks_count, :blog_id, :blog_name,
         :blog_url, :blog_rank, :authority
 
+      EMPTY_ARRAY = [].freeze
+      EMPTY_HASH  = {}.freeze
+
       # Sets all instance variables for the {Post}, given a Hash.
       #
       # @param [Hash] params containing blog post data.
@@ -48,10 +51,10 @@ module Twingly
         @text          = params.fetch('text')
         @language_code = params.fetch('languageCode')
         @location_code = params.fetch('locationCode')
-        @coordinates   = params.fetch('coordinates', {})
-        @links         = params.fetch('links', [])
-        @tags          = params.fetch('tags', [])
-        @images        = params.fetch('images', [])
+        @coordinates   = params.fetch('coordinates') { EMPTY_HASH }
+        @links         = params.fetch('links') { EMPTY_ARRAY }
+        @tags          = params.fetch('tags') { EMPTY_ARRAY }
+        @images        = params.fetch('images') { EMPTY_ARRAY }
         @indexed_at    = Time.parse(params.fetch('indexedAt'))
         @published_at  = Time.parse(params.fetch('publishedAt'))
         @reindexed_at  = Time.parse(params.fetch('reindexedAt'))
