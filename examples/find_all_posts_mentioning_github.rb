@@ -8,8 +8,14 @@ class SearchPostStream
     end
 
     @query = client.query do |query|
-      query.language     = language
-      query.search_query = "sort-order:asc sort:published #{keyword}"
+      query_parts = [
+        "sort-order:asc",
+        "sort:published",
+        keyword,
+      ]
+      query_parts << "lang:#{language}" if language
+
+      query.search_query = query_parts.join(" ")
     end
   end
 
