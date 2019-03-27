@@ -48,7 +48,11 @@ module Twingly
       #
       # @param client [Client] the client that this query should be connected to.
       def initialize(client)
-        @client = client
+        @client     = client
+        @start_time = nil
+        @end_time   = nil
+        @language   = nil
+
         yield self if block_given?
       end
 
