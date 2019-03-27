@@ -11,9 +11,9 @@ class SearchPostStream
       query_parts = [
         "sort-order:asc",
         "sort:published",
+        keyword,
       ]
       query_parts << "lang:#{language}" if language
-      query_parts << keyword
 
       query.search_query = query_parts.join(" ")
     end
