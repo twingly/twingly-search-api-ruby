@@ -49,7 +49,7 @@ module Twingly
         element.element_children.each do |child|
           post_params[child.name] =
             case child.name
-            when *%w(tags links images)
+            when "tags", "links", "images"
               parse_array(child)
             when "coordinates"
               parse_coordinates(child)
