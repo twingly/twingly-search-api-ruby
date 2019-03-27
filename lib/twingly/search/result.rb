@@ -35,12 +35,17 @@ module Twingly
       end
 
       def inspect
-        matches = "@posts, "
-        matches << "@number_of_matches_returned=#{self.number_of_matches_returned}, "
-        matches << "@number_of_matches_total=#{self.number_of_matches_total}"
-        matches << "@incomplete_result=#{self.incomplete?}"
+        instance_methods = [
+          "posts",
+          "number_of_matches_returned=#{self.number_of_matches_returned}",
+          "number_of_matches_total=#{self.number_of_matches_total}",
+          "incomplete_result=#{self.incomplete?}",
+          "seconds_elapsed=#{self.seconds_elapsed}",
+          "all_results_returned?=#{self.all_results_returned?}",
+          "incomplete?=#{self.incomplete?}",
+        ].join(", ")
 
-        sprintf("#<%s:0x%x %s>", self.class.name, __id__, matches)
+        sprintf("#<%s:0x%x %s>", self.class.name, __id__, instance_methods)
       end
     end
   end

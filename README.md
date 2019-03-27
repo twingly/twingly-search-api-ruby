@@ -46,7 +46,7 @@ query = client.query do |query|
 end
 
 result = query.execute
-=> #<Twingly::Search::Result:0x3ff7adcbe3d4 @posts, @number_of_matches_returned=10, @number_of_matches_total=3035221>
+=> #<Twingly::Search::Result:0x3fca8ad3aa60 posts, number_of_matches_returned=10, number_of_matches_total=281, incomplete_result=false, seconds_elapsed=0.239, all_results_returned?=false, incomplete?=false>
 result.posts # will include all returned posts
 ```
 
@@ -64,7 +64,7 @@ end
 
 # get the next chunk of posts
 result = client.next_result
-=> #<Twingly::LiveFeed::Result:0x3fcd98215c14 @posts, @ts=2017-04-18 14:42:18 UTC, @from=2017-04-18 13:42:06 UTC, @number_of_posts=989, @max_number_of_posts=1000, @first_post=2017-04-18 13:42:19 UTC, @last_post=2017-04-18 14:42:13 UTC>
+=> #<Twingly::LiveFeed::Result:0x3fca8ad4e81c posts, ts=2019-03-27 12:52:54 UTC, from=2019-03-27 11:52:53 UTC, number_of_posts=709, max_number_of_posts=1000, first_post=2019-03-27 11:53:02 UTC, last_post=2019-03-27 12:52:42 UTC, next_timestamp=2019-03-27 12:52:42 UTC>
 
 result.posts # will include all returned posts
 ```
