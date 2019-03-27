@@ -25,7 +25,7 @@ module Twingly::LiveFeed
       subject { described_class.new.inspect }
 
       instance_methods.each do |method|
-        it { should include(method.to_s) }
+        it { should match(/ #{Regexp.quote(method)}[,=]/) }
       end
     end
   end
