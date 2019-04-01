@@ -39,7 +39,6 @@ module Twingly
           "posts",
           "number_of_matches_returned=#{self.number_of_matches_returned}",
           "number_of_matches_total=#{self.number_of_matches_total}",
-          "incomplete_result=#{self.incomplete?}",
           "seconds_elapsed=#{self.seconds_elapsed}",
           "all_results_returned?=#{self.all_results_returned?}",
           "incomplete?=#{self.incomplete?}",
