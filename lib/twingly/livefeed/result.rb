@@ -23,16 +23,18 @@ module Twingly
       end
 
       def inspect
-        instance_variables = "@posts, "
-        instance_variables << "@ts=#{self.ts}, "
-        instance_variables << "@from=#{self.from}, "
-        instance_variables << "@number_of_posts=#{self.number_of_posts}, "
-        instance_variables << "@max_number_of_posts=#{self.max_number_of_posts}, "
-        instance_variables << "@first_post=#{self.first_post}, "
-        instance_variables << "@last_post=#{self.last_post}"
-        instance_variables << "@next_timestamp=#{self.next_timestamp}"
+        instance_methods = [
+          "posts",
+          "ts=#{self.ts}",
+          "from=#{self.from}",
+          "number_of_posts=#{self.number_of_posts}",
+          "max_number_of_posts=#{self.max_number_of_posts}",
+          "first_post=#{self.first_post}",
+          "last_post=#{self.last_post}",
+          "next_timestamp=#{self.next_timestamp}",
+        ].join(", ")
 
-        sprintf("#<%s:0x%x %s>", self.class.name, __id__, instance_variables)
+        sprintf("#<%s:0x%x %s>", self.class.name, __id__, instance_methods)
       end
     end
   end
