@@ -19,7 +19,7 @@ module Twingly
       # @param options [Hash]
       # @option options [String] :user_agent the user agent to be used
       #    for all requests
-      # @raise [AuthError] if an API key is not set.
+      # @raise [AuthenticationError] if an API key is not set.
       def initialize(api_key = nil, options = {})
         @api_key    = api_key
         @user_agent = options.fetch(:user_agent) { DEFAULT_USER_AGENT }
@@ -70,7 +70,7 @@ module Twingly
       end
 
       def api_key_missing
-        fail AuthError, "No API key has been provided."
+        fail AuthenticationError, "No API key has been provided."
       end
     end
   end

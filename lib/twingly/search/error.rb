@@ -6,8 +6,10 @@ module Twingly
           case code.to_s
           when /^400/, /^404/
             QueryError
-          when /^401/, /^402/
-            AuthError
+          when /^401/ # E.g. API key not enabled
+            AuthenticationError
+          when /^402/ # E.g. language access denied
+            AuthorizationError
           else
             ServerError
           end
@@ -16,7 +18,10 @@ module Twingly
       end
     end
 
-    class AuthError < Error
+    class AuthenticationError < Error
+    end
+
+    class AuthorizationError < Error
     end
 
     class ServerError < Error
