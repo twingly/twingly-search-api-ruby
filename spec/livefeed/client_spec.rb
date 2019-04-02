@@ -40,11 +40,6 @@ module Twingly::LiveFeed
 
         it do
           expect { subject }
-            .to raise_error(AuthError, "No API key has been provided.")
-        end
-
-        it do
-          expect { subject }
             .to raise_error(AuthenticationError, "No API key has been provided.")
         end
       end

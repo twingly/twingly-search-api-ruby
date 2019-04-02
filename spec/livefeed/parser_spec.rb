@@ -309,10 +309,6 @@ module Twingly::LiveFeed
         it "should raise AuthenticationError" do
           expect { subject }.to raise_error(AuthenticationError)
         end
-
-        it "should raise AuthError" do
-          expect { subject }.to raise_error(AuthError)
-        end
       end
 
       context "with an empty api key result" do
