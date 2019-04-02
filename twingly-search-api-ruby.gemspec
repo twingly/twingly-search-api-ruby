@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "Ruby API client for Twingly Search"
   spec.description   = "Twingly Search is a product from Twingly AB"
   spec.license       = 'MIT'
-  spec.required_ruby_version = ">= 2.1.0"
+  spec.required_ruby_version = ">= 2.4.0"
 
   spec.files         = `git ls-files`.split($/)
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
