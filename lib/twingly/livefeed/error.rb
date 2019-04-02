@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Twingly
   module LiveFeed
     class Error < StandardError

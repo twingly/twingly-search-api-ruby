@@ -73,8 +73,8 @@ result.posts # will include all returned posts
 
 * API key, [sign up](https://www.twingly.com/try-for-free) via [twingly.com](https://www.twingly.com/) to get one
 * Ruby
-  * Ruby 2.1, 2.2, 2.3, 2.4
-  * JRuby 9.0, 9.1
+  * Ruby >= 2.4
+  * JRuby >= 9.2
 
 ## Development
 
@@ -87,6 +87,15 @@ Make sure you have all the dependencies
 Run the tests
 
     bundle exec rake
+
+### Profiling
+
+It's possible to profile memory and object allocation:
+
+    bundle exec ruby profiler/profile_livefeed.rb
+    bundle exec ruby profiler/profile_search.rb
+
+Currently using [memory_profiler](https://github.com/SamSaffron/memory_profiler) for reports and [VCR](https://github.com/vcr/vcr) for saving requests (to make runs comparable).
 
 ### Release
 
