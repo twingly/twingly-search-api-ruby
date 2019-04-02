@@ -88,6 +88,15 @@ Run the tests
 
     bundle exec rake
 
+### Profiling
+
+It's possible to profile memory and object allocation:
+
+    bundle exec ruby profiler/profile_livefeed.rb
+    bundle exec ruby profiler/profile_search.rb
+
+Currently using [memory_profiler](https://github.com/SamSaffron/memory_profiler) for reports and [VCR](https://github.com/vcr/vcr) for saving requests (to make runs comparable).
+
 ### Release
 
 1. Make a commit bumping the version in `lib/twingly/search/version.rb`, follow [Semantic Versioning 2.0.0](http://semver.org/). No need to push as this will be taken care of automatically in the next step.
