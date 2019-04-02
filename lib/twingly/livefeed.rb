@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "livefeed/version"
 require_relative "livefeed/error"
 require_relative "livefeed/client"

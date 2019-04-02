@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Twingly
   module LiveFeed
     # Represents a result from a request to the LiveFeed API

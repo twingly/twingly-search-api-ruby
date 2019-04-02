@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Twingly
   module Search
     # Represents a result from a {Query} to the Search API
