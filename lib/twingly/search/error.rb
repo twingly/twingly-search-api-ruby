@@ -18,10 +18,13 @@ module Twingly
       end
     end
 
-    class AuthenticationError < Error
+    class AuthError < Error
     end
 
-    class AuthorizationError < Error
+    class AuthenticationError < AuthError
+    end
+
+    class AuthorizationError < AuthError
     end
 
     class ServerError < Error

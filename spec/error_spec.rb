@@ -12,12 +12,14 @@ describe Twingly::Search::Error do
       let(:code) { 401 }
 
       it { is_expected.to be_a(AuthenticationError) }
+      it { is_expected.to be_a(AuthError) }
     end
 
     context "when given code 402" do
       let(:code) { 402 }
 
       it { is_expected.to be_a(AuthorizationError) }
+      it { is_expected.to be_a(AuthError) }
     end
 
     context "when given code 400" do
@@ -43,6 +45,7 @@ describe Twingly::Search::Error do
     error_classes = [
       AuthenticationError,
       AuthorizationError,
+      AuthError,
       ServerError,
       QueryError,
     ]
