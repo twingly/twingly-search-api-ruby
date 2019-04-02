@@ -24,7 +24,7 @@ describe Client do
       before { expect_any_instance_of(described_class).to receive(:env_api_key).and_return(nil) }
       subject { described_class.new }
 
-      it { expect { subject }.to raise_error(AuthError, "No API key has been provided.") }
+      it { expect { subject }.to raise_error(AuthenticationError, "No API key has been provided.") }
     end
 
     context "with block" do
@@ -45,7 +45,7 @@ describe Client do
           end
         end
 
-        it "should not raise an AuthError" do
+        it "should not raise an AuthenticationError" do
           expect { subject }.not_to raise_exception
         end
 
@@ -96,7 +96,7 @@ describe Client do
 
       it "should raise error on invalid API key" do
         VCR.use_cassette("search_without_valid_api_key") do
-          expect { subject.execute_query(query) }.to raise_error(AuthError, /Unauthorized/)
+          expect { subject.execute_query(query) }.to raise_error(AuthenticationError, /Unauthorized/)
         end
       end
     end

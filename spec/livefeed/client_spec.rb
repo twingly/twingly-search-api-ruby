@@ -40,7 +40,7 @@ module Twingly::LiveFeed
 
         it do
           expect { subject }
-            .to raise_error(AuthError, "No API key has been provided.")
+            .to raise_error(AuthenticationError, "No API key has been provided.")
         end
       end
 
@@ -62,7 +62,7 @@ module Twingly::LiveFeed
             end
           end
 
-          it "should not raise an AuthError" do
+          it "should not raise an AuthenticationError" do
             expect { subject }.not_to raise_exception
           end
 

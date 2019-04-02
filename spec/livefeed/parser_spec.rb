@@ -306,8 +306,8 @@ module Twingly::LiveFeed
       context "with an unauthorized api key result" do
         let(:fixture) { :unauthorized_api_key }
 
-        it "should raise AuthError" do
-          expect { subject }.to raise_error(AuthError)
+        it "should raise AuthenticationError" do
+          expect { subject }.to raise_error(AuthenticationError)
         end
       end
 

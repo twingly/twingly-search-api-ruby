@@ -32,7 +32,7 @@ module Twingly
       # @option options [String] :max_posts the maximum number of posts that can
       #    be returned for each request
       # @option options [String] :timestamp the timestamp to start the client at
-      # @raise [AuthError] if an API key is not set
+      # @raise [AuthenticationError] if an API key is not set
       def initialize(api_key = nil, options = {})
         @api_key    = api_key
         @user_agent = options.fetch(:user_agent) { DEFAULT_USER_AGENT }
@@ -51,7 +51,7 @@ module Twingly
       # then returns the result.
       #
       # @raise [QueryError] if the timestamp is invalid.
-      # @raise [AuthError] if the API couldn't authenticate you. Make sure your API key is correct.
+      # @raise [AuthenticationError] if the API couldn't authenticate you. Make sure your API key is correct.
       # @raise [ServerError] if the query could not be executed due to a server error.
       # @return [Result] the result for this request.
       def next_result
@@ -112,7 +112,7 @@ module Twingly
       end
 
       def api_key_missing
-        fail AuthError, "No API key has been provided."
+        fail AuthenticationError, "No API key has been provided."
       end
 
       def assert_valid_time(time)

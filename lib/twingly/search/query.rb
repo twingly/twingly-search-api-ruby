@@ -66,7 +66,8 @@ module Twingly
       # Executes the query and returns the result.
       #
       # @raise [QueryError] if {#search_query} is empty.
-      # @raise [AuthError] if the API couldn't authenticate you. Make sure your API key is correct.
+      # @raise [AuthenticationError] if the API couldn't authenticate you. Make sure your API key is correct.
+      # @raise [AuthorizationError] if you don't have access to something.
       # @raise [ServerError] if the query could not be executed due to a server error.
       # @return [Result] the result for this query.
       def execute

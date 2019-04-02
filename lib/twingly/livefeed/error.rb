@@ -9,7 +9,7 @@ module Twingly
           when /^400/, /^404/
             QueryError
           when /^401/
-            AuthError
+            AuthenticationError
           else
             ServerError
           end
@@ -19,6 +19,9 @@ module Twingly
     end
 
     class AuthError < Error
+    end
+
+    class AuthenticationError < AuthError
     end
 
     class ServerError < Error
