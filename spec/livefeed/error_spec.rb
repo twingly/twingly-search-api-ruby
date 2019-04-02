@@ -13,6 +13,7 @@ module Twingly::LiveFeed
         let(:code) { 401 }
 
         it { is_expected.to be_a(AuthError) }
+        it { is_expected.to be_a(AuthenticationError) }
       end
 
       context "when given code 400" do
