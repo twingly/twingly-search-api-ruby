@@ -1,5 +1,29 @@
 # Change Log
 
+## [v5.3.0](https://github.com/twingly/twingly-search-api-ruby/tree/v5.3.0) (2019-04-03)
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.2.0...v5.3.0)
+
+**Implemented enhancements:**
+
+- Differentiate between 401 and 402 status codes [\#80](https://github.com/twingly/twingly-search-api-ruby/issues/80)
+- Low hanging fruit that would reduce memory consumption [\#75](https://github.com/twingly/twingly-search-api-ruby/issues/75)
+- Add fixture for "Invalid language code\(s\)" [\#56](https://github.com/twingly/twingly-search-api-ruby/issues/56)
+
+**Fixed bugs:**
+
+- Inconsistent formating in Result\#inspect [\#79](https://github.com/twingly/twingly-search-api-ruby/issues/79)
+- Uninitialized variable warnings [\#76](https://github.com/twingly/twingly-search-api-ruby/issues/76)
+
+**Merged pull requests:**
+
+- Drop support for older Rubies [\#87](https://github.com/twingly/twingly-search-api-ruby/pull/87) ([walro](https://github.com/walro))
+- AuthError -\> AuthenticationError/AuthorizationError [\#86](https://github.com/twingly/twingly-search-api-ruby/pull/86) ([jage](https://github.com/jage))
+- Travis for modern Rubies [\#85](https://github.com/twingly/twingly-search-api-ruby/pull/85) ([jage](https://github.com/jage))
+- Profile for object allocation and pick some fruit [\#84](https://github.com/twingly/twingly-search-api-ruby/pull/84) ([jage](https://github.com/jage))
+- Improve Result\#inspect output [\#83](https://github.com/twingly/twingly-search-api-ruby/pull/83) ([jage](https://github.com/jage))
+- Initialize variables to avoid warnings [\#82](https://github.com/twingly/twingly-search-api-ruby/pull/82) ([jage](https://github.com/jage))
+- Remove deprecated Query\#language usage in example [\#81](https://github.com/twingly/twingly-search-api-ruby/pull/81) ([jage](https://github.com/jage))
+
 ## [v5.2.0](https://github.com/twingly/twingly-search-api-ruby/tree/v5.2.0) (2018-05-17)
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.4...v5.2.0)
 
