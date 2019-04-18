@@ -3,10 +3,14 @@ sudo: false
 before_install:
   - gem update bundler
 cache: bundler
-rvm:
-  - 2.4.6
-  - 2.5.5
-  - 2.6.2
-  - jruby-9.2.6.0
+matrix:
+  include:
+    - rvm: 2.4.6
+    - rvm: 2.5.5
+    - rvm: 2.6.2
+    - rvm: jruby-9.2.6.0
+    - rvm: 2.6.2
+      install: true # This skips 'bundle install'
+      script: gem build *.gemspec && gem install *.gem
 notifications:
   email: false
