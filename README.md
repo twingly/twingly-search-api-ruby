@@ -100,6 +100,7 @@ Currently using [memory_profiler](https://github.com/SamSaffron/memory_profiler)
 ### Release
 
 1. Make a commit bumping the version in `lib/twingly/search/version.rb`, follow [Semantic Versioning 2.0.0](http://semver.org/). No need to push as this will be taken care of automatically in the next step.
+1. Ensure you are signed in to RubyGems.org as [twingly][twingly-rubygems] with `gem signin`.
 1. Build and the release gem with `bundle exec rake release`. This will create a git tag for the version and push the `.gem` file to [RubyGems.org].
 1. Generate a changelog with `github_changelog_generator` (`gem install github_changelog_generator` if you don't have it). Set `CHANGELOG_GITHUB_TOKEN` to a personal access token to increase the API rate limit. (The changelog uses [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator/))
 1. Update release information on the [releases page]. This is done manually.
@@ -116,3 +117,4 @@ This gem is documented using [YARD]. To start a local YARD server run:
 The YARD server reloads the documentation automatically so there is no need to restart it when making changes.
 
 [YARD]: https://yardoc.org/
+[twingly-rubygems]: https://rubygems.org/profiles/twingly
