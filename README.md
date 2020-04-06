@@ -73,7 +73,7 @@ result.posts # will include all returned posts
 
 * API key, [sign up](https://www.twingly.com/try-for-free) via [twingly.com](https://www.twingly.com/) to get one
 * Ruby
-  * Ruby >= 2.4
+  * Ruby >= 2.5
   * JRuby >= 9.2
 
 ## Development
