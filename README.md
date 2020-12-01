@@ -1,6 +1,6 @@
 # Twingly Search API Ruby
 
-[![Build Status](https://travis-ci.org/twingly/twingly-search-api-ruby.png?branch=master)](https://travis-ci.org/twingly/twingly-search-api-ruby)
+[![GitHub Build Status](https://github.com/twingly/twingly-search-api-ruby/workflows/CI/badge.svg)](https://github.com/twingly/twingly-search-api-ruby/actions)
 [![Code Climate](https://codeclimate.com/github/twingly/twingly-search-api-ruby/badges/gpa.svg)](https://codeclimate.com/github/twingly/twingly-search-api-ruby)
 
 A Ruby gem for Twingly's Blog Search API (previously known as Analytics API) and Blog LiveFeed API. Twingly is a blog search service that provides a searchable API known as [Twingly Blog Search API][Blog Search API documentation] and a blog data firehose called [Twingly Blog LiveFeed API][Blog LiveFeed API documentation].
