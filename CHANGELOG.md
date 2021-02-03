@@ -1,6 +1,24 @@
-# Change Log
+# Changelog
+
+## [v5.3.1](https://github.com/twingly/twingly-search-api-ruby/tree/v5.3.1) (2021-02-03)
+
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.3.0...v5.3.1)
+
+**Implemented enhancements:**
+
+- Make Travis test gem installation [\#63](https://github.com/twingly/twingly-search-api-ruby/issues/63)
+
+**Merged pull requests:**
+
+- Allow newer versions of Faraday [\#93](https://github.com/twingly/twingly-search-api-ruby/pull/93) ([Pontus4](https://github.com/Pontus4))
+- Run tests on GitHub Actions [\#92](https://github.com/twingly/twingly-search-api-ruby/pull/92) ([walro](https://github.com/walro))
+- Test with latest Ruby/JRuby versions and drop support for Ruby 2.4 [\#91](https://github.com/twingly/twingly-search-api-ruby/pull/91) ([roback](https://github.com/roback))
+- Bump rake version [\#90](https://github.com/twingly/twingly-search-api-ruby/pull/90) ([walro](https://github.com/walro))
+- Newer Ruby on Travis [\#89](https://github.com/twingly/twingly-search-api-ruby/pull/89) ([roback](https://github.com/roback))
+- Test gem installation on TravisCI [\#88](https://github.com/twingly/twingly-search-api-ruby/pull/88) ([roback](https://github.com/roback))
 
 ## [v5.3.0](https://github.com/twingly/twingly-search-api-ruby/tree/v5.3.0) (2019-04-03)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.2.0...v5.3.0)
 
 **Implemented enhancements:**
@@ -25,6 +43,7 @@
 - Remove deprecated Query\#language usage in example [\#81](https://github.com/twingly/twingly-search-api-ruby/pull/81) ([jage](https://github.com/jage))
 
 ## [v5.2.0](https://github.com/twingly/twingly-search-api-ruby/tree/v5.2.0) (2018-05-17)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.4...v5.2.0)
 
 **Merged pull requests:**
@@ -32,6 +51,7 @@
 - Add Post\#to\_h for both LiveFeed and Search [\#77](https://github.com/twingly/twingly-search-api-ruby/pull/77) ([dentarg](https://github.com/dentarg))
 
 ## [v5.1.4](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.4) (2018-02-23)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.3...v5.1.4)
 
 **Implemented enhancements:**
@@ -49,6 +69,7 @@
 - Test with latest rubies, support Ruby 2.4 and JRuby 9.1 [\#71](https://github.com/twingly/twingly-search-api-ruby/pull/71) ([walro](https://github.com/walro))
 
 ## [v5.1.3](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.3) (2017-10-16)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.2...v5.1.3)
 
 **Merged pull requests:**
@@ -56,9 +77,11 @@
 - Revert "Include timezone info for timestamps in search query" [\#69](https://github.com/twingly/twingly-search-api-ruby/pull/69) ([walro](https://github.com/walro))
 
 ## [v5.1.2](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.2) (2017-05-29)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.1...v5.1.2)
 
 ## [v5.1.1](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.1) (2017-05-17)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.1.0...v5.1.1)
 
 **Merged pull requests:**
@@ -66,6 +89,7 @@
 - Include timezone info for timestamps in search query [\#67](https://github.com/twingly/twingly-search-api-ruby/pull/67) ([roback](https://github.com/roback))
 
 ## [v5.1.0](https://github.com/twingly/twingly-search-api-ruby/tree/v5.1.0) (2017-05-09)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.0.1...v5.1.0)
 
 **Fixed bugs:**
@@ -82,6 +106,7 @@
 - Use any rake 11 version [\#59](https://github.com/twingly/twingly-search-api-ruby/pull/59) ([dentarg](https://github.com/dentarg))
 
 ## [v5.0.1](https://github.com/twingly/twingly-search-api-ruby/tree/v5.0.1) (2016-03-03)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v5.0.0...v5.0.1)
 
 **Fixed bugs:**
@@ -98,6 +123,7 @@
 - Actually test what we intend to test [\#52](https://github.com/twingly/twingly-search-api-ruby/pull/52) ([dentarg](https://github.com/dentarg))
 
 ## [v5.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/v5.0.0) (2016-02-17)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v4.0.1...v5.0.0)
 
 **Implemented enhancements:**
@@ -119,6 +145,7 @@
 - Test Ruby 2.3 on Travis CI [\#42](https://github.com/twingly/twingly-search-api-ruby/pull/42) ([walro](https://github.com/walro))
 
 ## [v4.0.1](https://github.com/twingly/twingly-search-api-ruby/tree/v4.0.1) (2016-01-28)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v4.0.0...v4.0.1)
 
 **Merged pull requests:**
@@ -127,6 +154,7 @@
 - Take contenttype into account [\#37](https://github.com/twingly/twingly-search-api-ruby/pull/37) ([walro](https://github.com/walro))
 
 ## [v4.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/v4.0.0) (2015-12-02)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/v3.0.0...v4.0.0)
 
 **Implemented enhancements:**
@@ -150,8 +178,10 @@
 - Let client handle api call [\#28](https://github.com/twingly/twingly-search-api-ruby/pull/28) ([roback](https://github.com/roback))
 - Cleanup [\#26](https://github.com/twingly/twingly-search-api-ruby/pull/26) ([roback](https://github.com/roback))
 - Show deprecation warnings for twingly-analytics [\#23](https://github.com/twingly/twingly-search-api-ruby/pull/23) ([roback](https://github.com/roback))
+- Rename analytics to search in readme [\#20](https://github.com/twingly/twingly-search-api-ruby/pull/20) ([roback](https://github.com/roback))
 
 ## [v3.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/v3.0.0) (2015-11-20)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/2.0.1...v3.0.0)
 
 **Implemented enhancements:**
@@ -162,9 +192,9 @@
 
 - Rename analytics to search [\#24](https://github.com/twingly/twingly-search-api-ruby/pull/24) ([roback](https://github.com/roback))
 - Improve "Development and release" section in README [\#22](https://github.com/twingly/twingly-search-api-ruby/pull/22) ([roback](https://github.com/roback))
-- Rename analytics to search in readme [\#20](https://github.com/twingly/twingly-search-api-ruby/pull/20) ([roback](https://github.com/roback))
 
 ## [2.0.1](https://github.com/twingly/twingly-search-api-ruby/tree/2.0.1) (2015-09-24)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/2.0.0...2.0.1)
 
 **Fixed bugs:**
@@ -177,6 +207,7 @@
 - Generate Changelog \(with instructions to update it\) [\#16](https://github.com/twingly/twingly-search-api-ruby/pull/16) ([jage](https://github.com/jage))
 
 ## [2.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/2.0.0) (2015-09-14)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/1.0.1...2.0.0)
 
 **Implemented enhancements:**
@@ -188,6 +219,7 @@
 - Improve time pagination \(breaking compatibility for Query\#start\_time and Query\#end\_time\) [\#15](https://github.com/twingly/twingly-search-api-ruby/pull/15) ([jage](https://github.com/jage))
 
 ## [1.0.1](https://github.com/twingly/twingly-search-api-ruby/tree/1.0.1) (2015-04-29)
+
 [Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/1.0.0...1.0.1)
 
 **Fixed bugs:**
@@ -206,6 +238,9 @@
 - Use Faraday instead of Net::HTTP directly [\#9](https://github.com/twingly/twingly-search-api-ruby/pull/9) ([jage](https://github.com/jage))
 
 ## [1.0.0](https://github.com/twingly/twingly-search-api-ruby/tree/1.0.0) (2014-10-30)
+
+[Full Changelog](https://github.com/twingly/twingly-search-api-ruby/compare/d26d3011f16ce3fea7d8a78079804163dae81d6a...1.0.0)
+
 **Implemented enhancements:**
 
 - Use HTTPS for API access [\#7](https://github.com/twingly/twingly-search-api-ruby/issues/7)
@@ -218,10 +253,6 @@
 - Add a LICENSE [\#6](https://github.com/twingly/twingly-search-api-ruby/issues/6)
 - Wrap lines at 72 characters [\#2](https://github.com/twingly/twingly-search-api-ruby/issues/2)
 
-**Merged pull requests:**
-
-- Refactor to improve readability [\#3](https://github.com/twingly/twingly-search-api-ruby/pull/3) ([jage](https://github.com/jage))
 
 
-
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
