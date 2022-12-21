@@ -20,7 +20,7 @@ module Twingly
       #   within the maximum allowed query time.
       # @return [false] if all servers responded within the maximum allowed
       #   query time.
-      # @see https://developer.twingly.com/resources/search/#response
+      # @see https://app.twingly.com/blog_search?tab=documentation
       def incomplete?
         @incomplete_result
       end

@@ -21,7 +21,7 @@ class SearchPostStream
 
   # Run block for each blog post returned from api.
   # Uses a sliding time-based window to get all results.
-  # @see https://developer.twingly.com/resources/search/#pagination
+  # @see https://app.twingly.com/blog_search?tab=documentation
   def each
     loop do
       result = execute_with_retry

@@ -28,8 +28,8 @@ To learn more about the features of this gem, read the [gem documentation] or ch
 To learn more about the capabilities of Twingly's APIs, please read the [Blog Search API documentation] and [Blog LiveFeed API documentation].
 
 [gem documentation]: https://www.rubydoc.info/github/twingly/twingly-search-api-ruby
-[Blog Search API documentation]: https://developer.twingly.com/resources/search/
-[Blog LiveFeed API documentation]: https://developer.twingly.com/resources/livefeed/
+[Blog Search API documentation]: https://app.twingly.com/blog_search?tab=documentation
+[Blog LiveFeed API documentation]: https://app.twingly.com/blog_livefeed?tab=documentation
 
 ### Blog Search API
 
